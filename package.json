@@ -6,11 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --mode: development",
-    "watch": "webpack --progress --watch" 
+    "watch": "webpack --progress --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.5.0",
+    "prettier": "2.8.8",
     "webpack": "^5.85.0",
     "webpack-cli": "^5.1.1"
   }
