@@ -1,4 +1,4 @@
-import { direction } from "./direction";
+import direction from "./direction";
 
 test("direction func returns both vertical and horizontal", () => {
   const arr = [];
