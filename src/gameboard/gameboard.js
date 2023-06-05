@@ -3,27 +3,42 @@ import createCoorArr from "./createCoorArr/createCoorArr";
 import direction from "./direction/direction";
 
 class GameBoard {
-  ships = [];
+  shipsArr = [];
 
-  checkIfCoorFree(arr) {
+  get ships() {
+    return this.shipsArr
+  } 
+
+  set ships(value) {
+    if (Array.isArray(value)) {
+     this.shipsArr = this.shipsArr.concat(value);
+    } else {
+      this.shipsArr.push(value)
+    }
+  } 
+
+  checkIfCoorTaken(arr) {
     for (let i = 0; i < arr.length; i += 1) {
       for (let y = 0; y < this.ships.length; y += 1) {
         if (this.ships[y].coordinates.includes(arr[i])) {
-          return false;
+          return true;
         }
       }
     }
-    return true;
+    return false;
   }
 
   placeShip(length) {
-    let coordinates = createCoorArr(length, direction());
-
-    return {
-      ship: new Ship(length),
-      coordinates: createCoorArr(length, direction()),
-    };
+    let coor = createCoorArr(length, direction());
+    while (this.checkIfCoorTaken(coor)) {
+      coor = createCoorArr(length, direction())
+    }
+     this.ships = ({
+        ship: new Ship(length),
+        coordinates: coor,
+      });
+    }
   }
-}
+
 
 export default GameBoard;
