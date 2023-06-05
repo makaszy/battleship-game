@@ -1,5 +1,5 @@
 
-import { Ship } from "./ship"
+import Ship  from "./ship"
 
 
 test("Ship length test ex.1 ", () => {
