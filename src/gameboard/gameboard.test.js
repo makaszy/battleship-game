@@ -15,9 +15,9 @@ test("Check if legal check finds illegal moves", () => {
     { ship: {}, coordinates: [1, 8, 3] },
   ];
 
-  expect(gameBoard.checkIfCoorTaken([12, 2, 24])).toBe(false);
+  expect(gameBoard.checkIfCoorFree([12, 2, 24])).toBe(false);
 
-  expect(gameBoard.checkIfCoorTaken([12, 5, 24])).toBe(true);
+  expect(gameBoard.checkIfCoorFree([12, 5, 24])).toBe(true);
 
-  expect(gameBoard.checkIfCoorTaken([12, 8, 24])).toBe(false);
+  expect(gameBoard.checkIfCoorFree([12, 8, 24])).toBe(false);
 });

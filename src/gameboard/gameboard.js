@@ -5,7 +5,7 @@ import direction from "./direction/direction";
 class GameBoard {
   ships = [];
 
-  checkIfCoorTaken(arr) {
+  checkIfCoorFree(arr) {
     for (let i = 0; i < arr.length; i += 1) {
       for (let y = 0; y < this.ships.length; y += 1) {
         if (this.ships[y].coordinates.includes(arr[i])) {
@@ -16,21 +16,14 @@ class GameBoard {
     return true;
   }
 
-  /* 
-
-
   placeShip(length) {
-    let coordinates = createCoorArr(length, direction())
-    if
+    let coordinates = createCoorArr(length, direction());
 
-
-
-    return  {
+    return {
       ship: new Ship(length),
-      coordinates: createCoorArr(length, direction())
-    }
+      coordinates: createCoorArr(length, direction()),
+    };
   }
- */
 }
 
 export default GameBoard;
