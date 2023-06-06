@@ -6,16 +6,16 @@ class GameBoard {
   shipsArr = [];
 
   get ships() {
-    return this.shipsArr
-  } 
+    return this.shipsArr;
+  }
 
   set ships(value) {
     if (Array.isArray(value)) {
-     this.shipsArr = this.shipsArr.concat(value);
+      this.shipsArr = this.shipsArr.concat(value);
     } else {
-      this.shipsArr.push(value)
+      this.shipsArr.push(value);
     }
-  } 
+  }
 
   checkIfCoorTaken(arr) {
     for (let i = 0; i < arr.length; i += 1) {
@@ -29,16 +29,15 @@ class GameBoard {
   }
 
   placeShip(length) {
-    let coor = createCoorArr(length, direction());
+    let coor = createCoorArr.random(length, direction());
     while (this.checkIfCoorTaken(coor)) {
-      coor = createCoorArr(length, direction())
+      coor = createCoorArr.random(length, direction());
     }
-     this.ships = ({
-        ship: new Ship(length),
-        coordinates: coor,
-      });
-    }
+    this.ships = {
+      ship: new Ship(length),
+      coordinates: coor,
+    };
   }
-
+}
 
 export default GameBoard;
