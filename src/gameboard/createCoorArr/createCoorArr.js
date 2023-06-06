@@ -2,8 +2,7 @@
 
 import createCoordinate from "../createCoordinate/createCoordinate";
 
-function createCoorArr(length, direction) {
-  const arr = [createCoordinate(length, direction)];
+function createRestCoor(arr, length, direction) {
   for (let i = 1; i < length; i += 1) {
     if (direction === "horizontal") { 
       arr.push(arr[i-1] + 1)
@@ -12,6 +11,13 @@ function createCoorArr(length, direction) {
     };
   }
   return arr;
+
+}
+
+function createCoorArr(length, direction) {
+  const arr = [createCoordinate(length, direction)];
+  return createRestCoor(arr, length, direction)
+  
 }
 
 export default createCoorArr;
