@@ -28,6 +28,7 @@ class GameBoard {
     return false;
   }
 
+  
   placeShip(length) {
     let coor = createCoorArr.random(length, direction());
     while (this.checkIfCoorTaken(coor)) {

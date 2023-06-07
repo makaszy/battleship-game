@@ -23,6 +23,7 @@ test("createCoordinate test horizontal 2", () => {
     arr.push(+coordinate.toString().slice(-1));
   }
   expect(arr.every(isBelow)).toBe(true);
+  expect(arr.includes(5)).toBe(true)
 });
 
 test("createCoordinate test vertical 1", () => {
@@ -38,6 +39,7 @@ test("createCoordinate test vertical 1", () => {
     }
   }
   expect(arr.every(isBelow)).toBe(true);
+  expect(arr.includes(4)).toBe(true);
 });
 
 test("createCoordinate test vertical 2", () => {
@@ -52,4 +54,5 @@ test("createCoordinate test vertical 2", () => {
     }
   }
   expect(arr.every(isBelow)).toBe(true);
+  expect(arr.includes(5)).toBe(true);
 });

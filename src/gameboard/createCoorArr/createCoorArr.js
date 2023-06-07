@@ -12,6 +12,24 @@ function createRestCoor(arr, length, direction) {
   }
   return arr;
 }
+
+function checkIfFits(tileNum, length, direction) {
+  if (direction === "horizontal") {
+    let tensString = tileNum.toString().charAt(0); 
+    tensString += "0";
+    const max = +(tensString) + 10;
+    if (tileNum + (length -1) <= max) {
+      return true;
+    }
+  } else if (direction === "vertical") {
+    if (tileNum + ((length - 1) * 10) < 100) {
+      return true;
+    }
+  }
+  return false
+}
+
+
 const createCoorArr = {
   
   random(length, direction) {
@@ -20,8 +38,11 @@ const createCoorArr = {
   },
   
   deliberate(tileNum, length, direction) {
-    const arr = [tileNum];
-    return createRestCoor(arr, length, direction);
+    if (checkIfFits(tileNum, length, direction)) {
+      const arr = [tileNum];
+      return createRestCoor(arr, length, direction);
+    } 
+    return Error("Ship would not fit")
   }
 
 }
