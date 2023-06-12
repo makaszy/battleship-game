@@ -1,10 +1,10 @@
-import createCoorArr from "../createCoorArr/createCoorArr";
+import createCoorArr from "./createCoorArr/createCoorArr";
 
 class Ship {
   
   constructor(obj) {
     this.length = obj.length
-    this.coordinatesArr = createCoorArr(obj)
+    this.coordinates = createCoorArr(obj)
   }
 
   timesHit = 0;

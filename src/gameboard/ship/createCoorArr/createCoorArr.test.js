@@ -1,4 +1,4 @@
-import createCoorArr from "./createCoorArr"
+import createCoorArr from "./createCoorArr";
 
 test("Func generates the right amount of coordinates ex.1", () => {
   expect(createCoorArr({ tileNum: 21, length: 3, direction: "horizontal",})).toHaveLength(3);

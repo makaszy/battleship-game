@@ -1,16 +1,17 @@
 import GameBoard from "./gameboard";
- 
-test("Check if legal check finds illegal moves", () => {
+import Ship from "./ship/ship";
+
+test("Check if taken check finds illegal moves", () => {
   const gameBoard = new GameBoard();
-  gameBoard.ships= [
-    { ship: {}, coordinates: [1, 2, 3] },
-    { ship: {}, coordinates: [1, 2, 3] },
-    { ship: {}, coordinates: [1, 8, 3] },
-  ];
+  const ship1 = new Ship({ tileNum: 1, length: 3, direction: "horizontal" });
 
-  expect(gameBoard.checkIfCoorTaken([12, 2, 24])).toBe(true);
+  gameBoard.ships = ship1;
+  
+  const ship2 = new Ship({ tileNum: 1, length: 3, direction: "horizontal" });
 
-  expect(gameBoard.checkIfCoorTaken([12, 5, 24])).toBe(false);
+  const ship3 = new Ship({ tileNum: 66, length: 4, direction: "horizontal" });
 
-  expect(gameBoard.checkIfCoorTaken([12, 8, 24])).toBe(true);
+  expect(gameBoard.checkIfCoorTaken(ship2.coordinates)).toBe(true);
+
+  expect(gameBoard.checkIfCoorTaken(ship3.coordinates)).toBe(false);
 });

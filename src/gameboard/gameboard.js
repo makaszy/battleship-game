@@ -17,10 +17,10 @@ class GameBoard {
     }
   }
 
-  checkIfCoorTaken(arr) {
-    for (let i = 0; i < arr.length; i += 1) {
+  checkIfCoorTaken(coordinates) {
+    for (let i = 0; i < coordinates.length; i += 1) {
       for (let y = 0; y < this.ships.length; y += 1) {
-        if (this.ships[y].coordinates.includes(arr[i])) {
+        if (this.ships[y].coordinates.includes(coordinates[i])) {
           return true;
         }
       }
@@ -38,9 +38,10 @@ class GameBoard {
     this.ships = ship
   }
 
+  // eslint-disable-next-line consistent-return
   placeShip(obj) {
     const ship = new Ship(obj);
-    if (this.checkIfCoorTaken(ship.coordinatesArr)) {
+    if (this.checkIfCoorTaken(ship)) {
       return false;
     } 
     this.ships = ship;
