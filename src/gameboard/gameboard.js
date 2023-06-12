@@ -1,6 +1,6 @@
 import Ship from "./ship/ship";
-import createCoorArr from "./createCoorArr/createCoorArr";
-import direction from "./direction/direction";
+import ShipInfo from "./shipInfo/shipInfo";
+
 
 class GameBoard {
   shipsArr = [];
@@ -28,16 +28,22 @@ class GameBoard {
     return false;
   }
 
-  
-  placeShip(length) {
-    let coor = createCoorArr.random(length, direction());
-    while (this.checkIfCoorTaken(coor)) {
-      coor = createCoorArr.random(length, direction());
+  generateShip(length) {
+    let shipInfo = new ShipInfo(length);
+    let ship = new Ship(shipInfo);
+    while (this.checkIfCoorTaken(ship.coordinatesArr)) { 
+      shipInfo = new ShipInfo(length);
+      ship = new Ship(shipInfo);
     }
-    this.ships = {
-      ship: new Ship(length),
-      coordinates: coor,
-    };
+    this.ships = ship
+  }
+
+  placeShip(obj) {
+    const ship = new Ship(obj);
+    if (this.checkIfCoorTaken(ship.coordinatesArr)) {
+      return false;
+    } 
+    this.ships = ship;
   }
 }
 

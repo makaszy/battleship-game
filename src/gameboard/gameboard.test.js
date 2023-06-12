@@ -1,10 +1,4 @@
 import GameBoard from "./gameboard";
-
-  test("Gameboard.placeShip() adds ship to ships property", ()=> {
-  const gameBoard = new GameBoard();
-  gameBoard.placeShip(3);
-  expect(gameBoard.ships).toHaveLength(1);
-}) 
  
 test("Check if legal check finds illegal moves", () => {
   const gameBoard = new GameBoard();

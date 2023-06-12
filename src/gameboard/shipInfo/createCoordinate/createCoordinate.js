@@ -1,4 +1,4 @@
-import getRandomNum from "../randomNum";
+import getRandomNum from "../../randomNum";
 
 function createCoordinate(length, direction) {
   if (direction === "horizontal") {
