@@ -1,6 +1,6 @@
 import createCoorArr from "./createCoorArr/createCoorArr";
 
-/* Creates ship object */
+/* Creates ship object from shipInfo object */
 class Ship {
   
   constructor(obj) {
