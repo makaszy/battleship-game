@@ -1,4 +1,4 @@
-// create coordinate arr for ship placement
+// create coordinate arr for ship placement from shipInfo object
 
 function createCoorArr(obj) {
   const arr = [obj.tileNum]

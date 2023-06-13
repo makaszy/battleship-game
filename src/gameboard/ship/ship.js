@@ -1,5 +1,6 @@
 import createCoorArr from "./createCoorArr/createCoorArr";
 
+/* Creates ship object */
 class Ship {
   
   constructor(obj) {
@@ -16,7 +17,10 @@ class Ship {
   }
 
   isSunk() {
-    return this.timesHit === this.length;
+    if (this.timesHit === this.length) {
+      this.sunk = true;
+    }
+    return this.sunk
   }
 
 }
