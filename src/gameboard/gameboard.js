@@ -1,7 +1,6 @@
 import Ship from "./ship/ship";
 import ShipInfo from "./shipInfo/shipInfo";
 
-
 class GameBoard {
   shipsArr = [];
 
@@ -17,7 +16,7 @@ class GameBoard {
     }
   }
 
-  checkIfCoorTaken(coordinates) {
+  isTaken(coordinates) {
     for (let i = 0; i < coordinates.length; i += 1) {
       for (let y = 0; y < this.ships.length; y += 1) {
         if (this.ships[y].coordinates.includes(coordinates[i])) {
@@ -31,19 +30,19 @@ class GameBoard {
   generateShip(length) {
     let shipInfo = new ShipInfo(length);
     let ship = new Ship(shipInfo);
-    while (this.checkIfCoorTaken(ship.coordinatesArr)) { 
+    while (this.isTaken(ship.coordinatesArr)) {
       shipInfo = new ShipInfo(length);
       ship = new Ship(shipInfo);
     }
-    this.ships = ship
+    this.ships = ship;
   }
 
   // eslint-disable-next-line consistent-return
   placeShip(obj) {
     const ship = new Ship(obj);
-    if (this.checkIfCoorTaken(ship)) {
+    if (this.isTaken(ship)) {
       return false;
-    } 
+    }
     this.ships = ship;
   }
 }
