@@ -45,6 +45,24 @@ class GameBoard {
     }
     this.ships = ship;
   }
+
+
+  receiveAttack(num) {
+    for (let y = 0; y < this.ships.length; y += 1) {
+      if (this.ships[y].coordinates.includes(num)) {
+        this.ships[y].hit()
+        if (this.ships[y].isSunk()) {
+          return this.isOver()
+        }
+        return true;
+      }
+    }
+    return false  
+  }
+  
+  isOver() {
+    return (this.ships.every(ship => ship.sunk === true)) ? "GAME OVER" : false; 
+  }
 }
 
 export default GameBoard;
