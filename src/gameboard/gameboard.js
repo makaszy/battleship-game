@@ -27,7 +27,7 @@ class GameBoard {
     return false;
   }
 
-  generateShip(length) {
+  placeRandomShip(length) {
     let shipInfo = new ShipInfo(length);
     let ship = new Ship(shipInfo);
     while (this.isTaken(ship.coordinatesArr)) {
