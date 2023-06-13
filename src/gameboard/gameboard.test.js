@@ -24,8 +24,26 @@ test("GameBoard receives Attack", () => {
 
 })
 
-test("GameBoard announces game over when ships are sunk", () => {
+test("GameBoard announces game over when ships are sunk ex.1", () => {
   const gameBoard = new GameBoard();
   gameBoard.placeShip({tileNum: 1, length: 1, direction: "horizontal"});
   expect(gameBoard.receiveAttack(1)).toBe("GAME OVER");
 })
+
+test("GameBoard announces game over when ships are sunk ex. 2", () => {
+  const gameBoard = new GameBoard();
+  gameBoard.placeShip({tileNum: 1, length: 1, direction: "horizontal"});
+  gameBoard.placeShip({tileNum: 10, length: 1, direction: "horizontal"});
+  gameBoard.receiveAttack(10)
+  
+  expect(gameBoard.receiveAttack(1)).toBe("GAME OVER");
+})
+
+
+test("GameBoard announces sunk when ship is sunk", () => {
+  const gameBoard = new GameBoard();
+  gameBoard.placeShip({tileNum: 1, length: 1, direction: "horizontal"});
+  gameBoard.placeShip({tileNum: 10, length: 1, direction: "horizontal"});
+  expect(gameBoard.receiveAttack(1)).toBe("SUNK");
+})
+

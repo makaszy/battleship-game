@@ -30,7 +30,7 @@ class GameBoard {
   placeRandomShip(length) {
     let shipInfo = new ShipInfo(length);
     let ship = new Ship(shipInfo);
-    while (this.isTaken(ship.coordinatesArr)) {
+    while (this.isTaken(ship.coordinates)) {
       shipInfo = new ShipInfo(length);
       ship = new Ship(shipInfo);
     }
@@ -40,7 +40,7 @@ class GameBoard {
   // eslint-disable-next-line consistent-return
   placeShip(obj) {
     const ship = new Ship(obj);
-    if (this.isTaken(ship)) {
+    if (this.isTaken(ship.coordinates)) {
       return false;
     }
     this.ships = ship;
@@ -61,7 +61,7 @@ class GameBoard {
   }
   
   isOver() {
-    return (this.ships.every(ship => ship.sunk === true)) ? "GAME OVER" : false; 
+    return (this.ships.every(ship => ship.sunk === true)) ? "GAME OVER" : "SUNK"; 
   }
 }
 
