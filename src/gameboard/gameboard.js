@@ -16,6 +16,8 @@ class GameBoard {
     }
   }
 
+  missedArr = [];
+
   /* Checks if coordinates already have a ship on them */
 
   isTaken(coordinates) {
@@ -64,6 +66,7 @@ class GameBoard {
         return true;
       }
     }
+    this.missedArr.push(num);
     return false  
   }
   
