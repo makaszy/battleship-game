@@ -1,10 +1,10 @@
 import getRandomTileNum from "./getRandomTileNum/getRandomTileNum";
-import direction from "./direction/direction";
+import getRandomDirection from "./getRandomDirection/getRandomDirection";
 
 class ShipInfo {
   constructor(length) {
     this.length = length;
-    this.direction = direction();
+    this.direction = getRandomDirection();
     this.tileNum = getRandomTileNum(this.length, this.direction);
   }
 }

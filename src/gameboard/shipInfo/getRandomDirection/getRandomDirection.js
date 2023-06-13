@@ -1,7 +1,7 @@
 import getRandomNum from "../../randomNum";
 
-function direction() {
+function getRandomDirection() {
   return getRandomNum(2) === 1 ? "horizontal" : "vertical";
 }
 
-export default direction;
+export default getRandomDirection;
