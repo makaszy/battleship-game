@@ -22,18 +22,11 @@ class GameBoard {
   for ex. If a ship is placed horizontally on tile 21 max would be 30  */
   
   static calcMax(obj) {
-    let max;
-    if (obj.direction === "horizontal") {
-      if (obj.tileNum < 11) {
-        max = 10
-      } else {
-        let tensString = obj.tileNum.toString().charAt(0); 
-        tensString += "0";
-        max = +(tensString) + 10;
-      }
-    } else {
-      max = 100;
-    }
+    if (obj.direction === "horizontal" && obj.tileNum > 10) {
+     const max = +(`${obj.tileNum.toString().charAt(0)}0`)+ 10; 
+     return max;
+    } 
+    const max = (obj.direction==="horizontal") ? 10 : 100;
     return max;
   }
   
