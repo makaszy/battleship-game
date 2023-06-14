@@ -3,10 +3,8 @@ import GameBoard from "./gameboard";
 test("Check if placeShip fails if coordinates for the ship are already taken", ()=> {
   const gameBoard = new GameBoard();
   gameBoard.placeShip({length: 2, tileNum: 3, direction: "horizontal",})
-
   expect(gameBoard.placeShip({length: 2, tileNum: 3, direction: "horizontal",})).toBe(false)
-  expect(gameBoard.placeShip({length: 2, tileNum: 32, direction: "horizontal",})).toBe("Ship Placed")
-  
+  expect(gameBoard.placeShip({length: 2, tileNum: 32, direction: "horizontal",})).toBe("Ship Placed")  
 })
 
 test("Check if placeShip fails if ship is too big to fit on gameBoard properly", () => {
@@ -34,7 +32,6 @@ test("GameBoard announces game over when ships are sunk ex. 2", () => {
   gameBoard.placeShip({tileNum: 1, length: 1, direction: "horizontal"});
   gameBoard.placeShip({tileNum: 10, length: 1, direction: "horizontal"});
   gameBoard.receiveAttack(10)
-  
   expect(gameBoard.receiveAttack(1)).toBe("GAME OVER");
 })
 
