@@ -3,14 +3,14 @@ import GameBoard from "./gameboard";
 test("Check if placeShip fails if coordinates for the ship are already taken", ()=> {
   const gameBoard = new GameBoard();
   gameBoard.placeShip({length: 2, tileNum: 3, direction: "horizontal",})
-  expect(gameBoard.placeShip({length: 2, tileNum: 3, direction: "horizontal",})).toBe(false)
+  expect(gameBoard.placeShip({length: 2, tileNum: 3, direction: "horizontal",})).toStrictEqual(Error("Ship couldn't be placed there"))
   expect(gameBoard.placeShip({length: 2, tileNum: 32, direction: "horizontal",})).toBe("Ship Placed")  
 })
 
 test("Check if placeShip fails if ship is too big to fit on gameBoard properly", () => {
   const gameBoard = new GameBoard();
-  expect(gameBoard.placeShip({length: 9, tileNum: 39, direction: "horizontal",})).toBe(false)
-  expect(gameBoard.placeShip({length: 2, tileNum: 91, direction: "vertical",})).toBe(false)
+  expect(gameBoard.placeShip({length: 9, tileNum: 39, direction: "horizontal",})).toStrictEqual(Error("Ship couldn't be placed there"))
+  expect(gameBoard.placeShip({length: 2, tileNum: 91, direction: "vertical",})).toStrictEqual(Error("Ship couldn't be placed there"))
 })
 
 test("GameBoard receives Attack", () => {

@@ -78,7 +78,7 @@ class GameBoard {
   placeShip(obj) {
     const ship = new Ship(obj);
     if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj)) {
-      return false;
+      return Error("Ship couldn't be placed there");
     }
     this.ships = ship;
     return "Ship Placed"
