@@ -12,14 +12,6 @@ class Player {
   isNew(value) {
     return !this.attackArr.includes(value)
   }
-
-  attack(value) {
-    if (this.isNew(value)) {
-      this.attackArr = value;
-      return value;
-    }
-    return Error("Tile has already been attacked");
-  }
 }
 
 export default Player
