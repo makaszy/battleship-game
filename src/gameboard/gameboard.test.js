@@ -16,6 +16,12 @@ test("Check if isTaken check finds illegal moves", () => {
   expect(gameBoard.isTaken(ship3.coordinates)).toBe(false);
 });
 
+test("Check if placeShip fails if ship is too big to fit on gameBoard properly", () => {
+  const gameBoard = new GameBoard();
+  expect(gameBoard.placeShip({length: 9, tileNum: 39, direction: "horizontal",})).toBe(false)
+  expect(gameBoard.placeShip({length: 2, tileNum: 91, direction: "vertical",})).toBe(false)
+})
+
 test("GameBoard receives Attack", () => {
   const gameBoard = new GameBoard();
   gameBoard.placeShip({tileNum: 1, length: 3, direction: "horizontal"});
@@ -46,4 +52,5 @@ test("GameBoard announces sunk when ship is sunk", () => {
   gameBoard.placeShip({tileNum: 10, length: 1, direction: "horizontal"});
   expect(gameBoard.receiveAttack(1)).toBe("SUNK");
 })
+
 

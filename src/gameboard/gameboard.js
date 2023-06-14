@@ -17,6 +17,42 @@ class GameBoard {
   }
 
   missedArr = [];
+  
+  /* Calculates the max acceptable tile for a ship depending on its start (tileNum).
+  for ex. If a ship is placed horizontally on tile 21 max would be 30  */
+  
+  static calcMax(obj) {
+    let max;
+    if (obj.direction === "horizontal") {
+      if (obj.tileNum < 11) {
+        max = 10
+      } else {
+        let tensString = obj.tileNum.toString().charAt(0); 
+        tensString += "0";
+        max = +(tensString) + 10;
+      }
+    } else {
+      max = 100;
+    }
+    return max;
+  }
+  
+  /* Calculates the length of the ship in tile numbers. The minus -1 accounts for the tileNum that is added in the isTooBig func */
+
+  static calcLength(obj) {
+    return (obj.direction === "horizontal") ? (obj.length -1) : ((obj.length - 1) * 10)
+  }
+
+  /* Checks if the ship placement would be legal, or if the ship is too big to be placed on the tile */
+
+  static isTooBig(obj) {
+    const max = GameBoard.calcMax(obj);
+    const shipLength = this.calcLength(obj)
+    if ((obj.tileNum + shipLength <= max)) {
+      return false
+    }
+    return true;
+  }
 
   /* Checks if coordinates already have a ship on them */
 
@@ -30,8 +66,9 @@ class GameBoard {
     }
     return false;
   }
+  
 
-  /* Recreates a random ship, until its coordinates are not taken */
+  /* Recreates a random ship, until its coordinates are not taken. Does not need to make the isTooBig check since getRandomTile creates only tiles that fit */
 
   placeRandomShip(length) {
     let shipInfo = new ShipInfo(length);
@@ -45,13 +82,13 @@ class GameBoard {
 
   /* Checks if a ships coordinates are taken, if not places ship in shipsArr, otherwise returns false */
 
-  // eslint-disable-next-line consistent-return
   placeShip(obj) {
     const ship = new Ship(obj);
-    if (this.isTaken(ship.coordinates)) {
+    if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj)) {
       return false;
     }
     this.ships = ship;
+    return "Ship Placed"
   }
 
   /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */
