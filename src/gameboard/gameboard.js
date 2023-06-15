@@ -93,7 +93,7 @@ class GameBoard {
         if (this.ships[y].isSunk()) {
           return this.isOver()
         }
-        return true;
+        return {tile: num, hit: true, sunk: false, };
       }
     }
     this.missedArr.push(num);

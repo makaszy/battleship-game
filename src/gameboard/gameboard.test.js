@@ -16,7 +16,7 @@ test("Check if placeShip fails if ship is too big to fit on gameBoard properly",
 test("GameBoard receives Attack", () => {
   const gameBoard = new GameBoard();
   gameBoard.placeShip({tileNum: 1, length: 3, direction: "horizontal"});
-  expect(gameBoard.receiveAttack(2)).toBe(true);
+  expect(gameBoard.receiveAttack(2)).toMatchObject({hit: true, tile: 2});
   expect(gameBoard.receiveAttack(50)).toBe(false);
 
 })
