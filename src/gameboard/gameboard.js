@@ -91,19 +91,19 @@ class GameBoard {
       if (this.ships[y].coordinates.includes(num)) {
         this.ships[y].hit()
         if (this.ships[y].isSunk()) {
-          return this.isOver()
+          return Object.assign(this.isOver(), {tile: num})
         }
         return {tile: num, hit: true, sunk: false, };
       }
     }
     this.missedArr.push(num);
-    return false  
+    return {tile: num, hit: false, sunk: false, };
   }
   
   /* Called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */
 
   isOver() {
-    return (this.ships.every(ship => ship.sunk === true)) ? "GAME OVER" : "SUNK"; 
+    return (this.ships.every(ship => ship.sunk === true)) ? {hit: true, sunk: true, gameover: true} : {hit: true, sunk: true,}; 
   }
 }
 
