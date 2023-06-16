@@ -1,7 +1,7 @@
 import GameBoard from "../../common/gameboard/gameboard";
 import Ship from "../../common/ship/ship";
 
-class HumanGameBoard extends GameBoard {
+class UserGameBoard extends GameBoard {
   /* Calculates the max acceptable tile for a ship depending on its start (tileNum).
   for ex. If a ship is placed horizontally on tile 21 max would be 30  */
 
@@ -25,8 +25,8 @@ class HumanGameBoard extends GameBoard {
   /* Checks if the ship placement would be legal, or if the ship is too big to be placed on the tile */
 
   static isTooBig(obj) {
-    const max = HumanGameBoard.calcMax(obj);
-    const shipLength = HumanGameBoard.calcLength(obj);
+    const max = UserGameBoard.calcMax(obj);
+    const shipLength = UserGameBoard.calcLength(obj);
     if (obj.tileNum + shipLength <= max) {
       return false;
     }
@@ -45,4 +45,4 @@ class HumanGameBoard extends GameBoard {
   }
 }
 
-export default HumanGameBoard;
+export default UserGameBoard;

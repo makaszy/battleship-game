@@ -1,6 +1,6 @@
 import Player from "../../common/player/player";
 
-class HumanPlayer extends Player {
+class UserPlayer extends Player {
   attack(value) {
     if (this.isNew(value)) {
       this.attackArr = value;
@@ -10,5 +10,4 @@ class HumanPlayer extends Player {
   }
 }
 
-
-export default HumanPlayer
+export default UserPlayer;

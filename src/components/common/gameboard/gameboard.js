@@ -35,7 +35,7 @@ class GameBoard {
       if (this.ships[y].coordinates.includes(num)) {
         this.ships[y].hit()
         if (this.ships[y].isSunk()) {
-          return Object.assign(this.isOver(), {tile: num})
+          return Object.assign(this.isOver(), {tiles: this.ships[y].coordinates})
         }
         return {tile: num, hit: true, sunk: false, };
       }

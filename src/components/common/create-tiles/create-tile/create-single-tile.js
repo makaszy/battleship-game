@@ -1,7 +1,7 @@
 function createSingleTile(id) {
   const tile = document.createElement("div");
   tile.classList.add("gameboard__tile");
-  tile.setAttribute("id", id);
+  tile.setAttribute("data", id)
   return tile;
 }
 
