@@ -1,16 +1,6 @@
+import addHitOrMissClass from "../../common/add-hit-or-miss-class/add-hit-or-miss-class";
 
-
-function miss(obj) {
-  const tile = document.querySelector(`gameboard--computer data=${obj.tile}`);
-  tile.classList.add("miss");
-}
-
-function hit(obj) {
-  const tile = document.querySelector(`gameboard--computer data=${obj.tile}`);
-  tile.classList.add("hit");
-}
-
-function sunk(obj) {
+function addSunkClass(obj) {
   obj.tiles.forEach(element => {
     const tile = document.querySelector(`.gameboard--computer data=${element}`);
     tile.classList.remove("hit");
@@ -20,11 +10,10 @@ function sunk(obj) {
 
 function receiveAttack(obj ) {
   if (obj.sunk) {
-    sunk(obj)
-  } else if (obj.hit) {
-    hit(obj)
+    addSunkClass(obj)
   } else {
-    miss(obj)
+    const tile = document.querySelector(`gameboard--computer data=${obj.tile}`);
+    addHitOrMissClass(obj, tile)
   }
 }
 
