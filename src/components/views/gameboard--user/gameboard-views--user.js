@@ -1,20 +1,7 @@
-import addHitOrMissClass from "../../common/add-hit-or-miss-class/add-hit-or-miss-class";
+import GameBoardViewUpdater from "../../common/gameboard-view-updater/gameboard-view-updater";
 
-function addSunkClass(obj) {
-  obj.tiles.forEach(element => {
-    const tile = document.querySelector(`.gameboard--user data=${element}`);
-    tile.classList.remove("hit");
-    tile.classList.add("sunk");
-  });
-}
+const user = "user";
 
-function receiveAttack(obj ) {
-  if (obj.sunk) {
-    addSunkClass(obj)
-  } else {
-    const tile = document.querySelector(`gameboard--user data=${obj.tile}`);
-    addHitOrMissClass(obj, tile)
-  }
-}
+const userViewUpdater = new GameBoardViewUpdater(user);
 
-export default receiveAttack;
+export default userViewUpdater;
