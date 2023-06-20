@@ -1,4 +1,5 @@
 const path = require("path");
+const sass = require("sass")
 
 module.exports = {
   entry: "./src/index.js",
@@ -30,8 +31,7 @@ module.exports = {
             loader: "sass-loader",
             options: {
               // Prefer `dart-sass`
-              // eslint-disable-next-line global-require
-              implementation: require("sass"),
+              implementation: sass,
             },
           },
         ],
