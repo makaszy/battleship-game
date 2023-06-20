@@ -4,4 +4,6 @@ const computer = "computer"
 
 const computerViewUpdater = new GameBoardViewUpdater(computer);
 
+
+
 export default computerViewUpdater;
