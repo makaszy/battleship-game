@@ -10,23 +10,63 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/DOM/setup/createTiles/createTile/createTile.js":
-/*!************************************************************!*\
-  !*** ./src/DOM/setup/createTiles/createTile/createTile.js ***!
-  \************************************************************/
+/***/ "./src/components/common/create-tiles/create-event-tiles.js":
+/*!******************************************************************!*\
+  !*** ./src/components/common/create-tiles/create-event-tiles.js ***!
+  \******************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\nfunction createTile(id) {\n  const tile = document.createElement(\"div\");\n  tile.classList.add(\"gameboard__tile\");\n  tile.setAttribute(\"id\", id);\n  return tile;\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createTile);\n\n//# sourceURL=webpack://battleship-game/./src/DOM/setup/createTiles/createTile/createTile.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_tile_create_single_event_tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-tile/create-single-event-tile */ \"./src/components/common/create-tiles/create-tile/create-single-event-tile.js\");\n\nfunction createEventTiles(div, callback) {\n  for (let i = 1; i <= 100; i += 1) {\n    div.appendChild((0,_create_tile_create_single_event_tile__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(i, callback));\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createEventTiles);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/create-tiles/create-event-tiles.js?");
 
 /***/ }),
 
-/***/ "./src/DOM/setup/createTiles/createTiles.js":
-/*!**************************************************!*\
-  !*** ./src/DOM/setup/createTiles/createTiles.js ***!
-  \**************************************************/
+/***/ "./src/components/common/create-tiles/create-tile/create-single-event-tile.js":
+/*!************************************************************************************!*\
+  !*** ./src/components/common/create-tiles/create-tile/create-single-event-tile.js ***!
+  \************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _createTile_createTile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createTile/createTile */ \"./src/DOM/setup/createTiles/createTile/createTile.js\");\n\nfunction createTiles(div) {\n  for (let i = 1; i <= 100; i += 1) {\n    div.appendChild((0,_createTile_createTile__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(i));\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createTiles);\n\n//# sourceURL=webpack://battleship-game/./src/DOM/setup/createTiles/createTiles.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_single_tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-single-tile */ \"./src/components/common/create-tiles/create-tile/create-single-tile.js\");\n\nfunction createSingleEventTile(id, callback) {\n  const tile = (0,_create_single_tile__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(id);\n  tile.addEventListener(\"dblclick\", callback);\n  return tile;\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createSingleEventTile);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/create-tiles/create-tile/create-single-event-tile.js?");
+
+/***/ }),
+
+/***/ "./src/components/common/create-tiles/create-tile/create-single-tile.js":
+/*!******************************************************************************!*\
+  !*** ./src/components/common/create-tiles/create-tile/create-single-tile.js ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\nfunction createSingleTile(id) {\n  const tile = document.createElement(\"div\");\n  tile.classList.add(\"gameboard__tile\");\n  tile.setAttribute(\"data-id\", id);\n  return tile;\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createSingleTile);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/create-tiles/create-tile/create-single-tile.js?");
+
+/***/ }),
+
+/***/ "./src/components/common/create-tiles/create-tiles.js":
+/*!************************************************************!*\
+  !*** ./src/components/common/create-tiles/create-tiles.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_tile_create_single_tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-tile/create-single-tile */ \"./src/components/common/create-tiles/create-tile/create-single-tile.js\");\n\nfunction createTiles(div) {\n  for (let i = 1; i <= 100; i += 1) {\n    div.appendChild((0,_create_tile_create_single_tile__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(i));\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createTiles);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/create-tiles/create-tiles.js?");
+
+/***/ }),
+
+/***/ "./src/components/common/get-data-id/get-data-id.js":
+/*!**********************************************************!*\
+  !*** ./src/components/common/get-data-id/get-data-id.js ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\nfunction getDataId(event) {\n  return event.target.getAttribute(\"dataid\");\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (getDataId);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/get-data-id/get-data-id.js?");
+
+/***/ }),
+
+/***/ "./src/components/layout/layout--attack-stage.js":
+/*!*******************************************************!*\
+  !*** ./src/components/layout/layout--attack-stage.js ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/create-tiles/create-event-tiles */ \"./src/components/common/create-tiles/create-event-tiles.js\");\n/* harmony import */ var _common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/create-tiles/create-tiles */ \"./src/components/common/create-tiles/create-tiles.js\");\n/* harmony import */ var _common_get_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/get-data-id/get-data-id */ \"./src/components/common/get-data-id/get-data-id.js\");\n\n\n\nconst gameBoardDivUser = document.querySelector(\".gameboard--user\");\nconst gameBoardDivComputer = document.querySelector(\".gameboard--computer\");\n(0,_common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(gameBoardDivUser);\n(0,_common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(gameBoardDivComputer, _common_get_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n\n//# sourceURL=webpack://battleship-game/./src/components/layout/layout--attack-stage.js?");
 
 /***/ }),
 
@@ -36,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cre
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _DOM_setup_createTiles_createTiles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DOM/setup/createTiles/createTiles */ \"./src/DOM/setup/createTiles/createTiles.js\");\n\nconst gameBoardDivPlayer = document.querySelector(\".gameboard--player\");\nconst gameBoardDivPC = document.querySelector(\".gameboard--pc\");\n(0,_DOM_setup_createTiles_createTiles__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(gameBoardDivPlayer);\n(0,_DOM_setup_createTiles_createTiles__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(gameBoardDivPC);\n\n//# sourceURL=webpack://battleship-game/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_layout_layout_attack_stage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/layout/layout--attack-stage */ \"./src/components/layout/layout--attack-stage.js\");\n\n\n//# sourceURL=webpack://battleship-game/./src/index.js?");
 
 /***/ })
 
