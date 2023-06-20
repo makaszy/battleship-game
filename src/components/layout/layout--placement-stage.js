@@ -1,6 +1,9 @@
-import createTiles from "../common/createTiles/create-tiles";
+import createTiles from "../common/create-tiles/create-tiles";
 
-const gameBoardDivPlayer = document.querySelector(".gameboard--player");
+const gameBoardDivUser = document.querySelector(".gameboard--user");
 
-createTiles(gameBoardDivPlayer);
+
+createTiles(gameBoardDivUser);
+
+
 
