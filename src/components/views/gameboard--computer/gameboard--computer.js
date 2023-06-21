@@ -17,3 +17,4 @@ class ComputerGameBoard extends GameBoard {
 }
 
 export default ComputerGameBoard;
+

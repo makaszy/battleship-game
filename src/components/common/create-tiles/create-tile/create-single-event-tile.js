@@ -2,7 +2,7 @@ import createSingleTile from "./create-single-tile";
 
 function createSingleEventTile(id, callback) {
   const tile = createSingleTile(id);
-  tile.addEventListener("dblclick", callback);
+  tile.addEventListener("click", callback);
   return tile;
 }
 
