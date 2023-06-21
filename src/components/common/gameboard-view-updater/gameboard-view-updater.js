@@ -1,6 +1,6 @@
 class GameBoardViewUpdater {
   constructor(string) {
-    this.string = string
+    this.string = string;
   }
 
   static updateSunk(tile) {
@@ -12,28 +12,29 @@ class GameBoardViewUpdater {
   }
 
   static getStatus(obj) {
-    return (obj.hit) ? "hit" : "miss";
+    return obj.hit ? "hit" : "miss";
   }
 
   updateSunkTiles(obj) {
-    obj.tiles.forEach(element => {
-      const tile = document.querySelector(`.gameboard--${this.string} data=${element}`);
+    obj.tiles.forEach((element) => {
+      const tile = document.querySelector(
+        `.gameboard--${this.string} [data-id="${element}"]`
+      );
       GameBoardViewUpdater.updateSunk(tile);
     });
   }
-  
 
-  receiveAttackView(obj) {
+  handleAttackView = (obj) => {
+    console.log("handleAttack")
     if (obj.sunk) {
       this.updateSunkTiles(obj);
     } else {
-      const tile = document.querySelector(`.gameboard--${this.string} data=${obj.tile}`);
-      tile.classList.add(GameBoardViewUpdater.getStatus(obj))
+      const tile = document.querySelector(
+        `.gameboard--${this.string} [data-id="${obj.tile}"]`
+      );
+      tile.classList.add(GameBoardViewUpdater.getStatus(obj));
     }
   }
 }
-
-
-
 
 export default GameBoardViewUpdater;

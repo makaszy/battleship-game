@@ -25,27 +25,27 @@ test("Check if placeShip fails if ship is too big to fit on gameBoard properly",
 test("GameBoard receives Attack", () => {
   const gameBoard = new UserGameBoard();
   gameBoard.placeShip({ tileNum: 1, length: 3, direction: "horizontal" });
-  expect(gameBoard.receiveAttack(2)).toMatchObject({ hit: true, tile: 2 });
-  expect(gameBoard.receiveAttack(50)).toMatchObject({ hit: false });
+  expect(gameBoard.handleAttack(2)).toMatchObject({ hit: true, tile: 2 });
+  expect(gameBoard.handleAttack(50)).toMatchObject({ hit: false });
 });
 
 test("GameBoard announces game over when ships are sunk ex.1", () => {
   const gameBoard = new UserGameBoard();
   gameBoard.placeShip({ tileNum: 1, length: 1, direction: "horizontal" });
-  expect(gameBoard.receiveAttack(1)).toMatchObject({ gameover: true });
+  expect(gameBoard.handleAttack(1)).toMatchObject({ gameover: true });
 });
 
 test("GameBoard announces game over when ships are sunk ex. 2", () => {
   const gameBoard = new UserGameBoard();
   gameBoard.placeShip({ tileNum: 1, length: 1, direction: "horizontal" });
   gameBoard.placeShip({ tileNum: 10, length: 1, direction: "horizontal" });
-  gameBoard.receiveAttack(10);
-  expect(gameBoard.receiveAttack(1)).toMatchObject({ gameover: true });
+  gameBoard.handleAttack(10);
+  expect(gameBoard.handleAttack(1)).toMatchObject({ gameover: true });
 });
 
 test("GameBoard announces sunk when ship is sunk", () => {
   const gameBoard = new UserGameBoard();
   gameBoard.placeShip({ tileNum: 1, length: 1, direction: "horizontal" });
   gameBoard.placeShip({ tileNum: 10, length: 1, direction: "horizontal" });
-  expect(gameBoard.receiveAttack(1)).toMatchObject({ sunk: true });
+  expect(gameBoard.handleAttack(1)).toMatchObject({ sunk: true });
 });

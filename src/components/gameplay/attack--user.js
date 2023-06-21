@@ -4,6 +4,6 @@ const userClick = new PubSub();
 
 const userAttack = new PubSub();
 
-const receiveUserAttack = new PubSub();
+const handleUserAttack = new PubSub();
 
-export { userAttack, receiveUserAttack, userClick };
+export { userAttack, handleUserAttack, userClick };
