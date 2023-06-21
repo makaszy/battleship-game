@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cre
   \************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\nclass Player {\n  /* constructor() {\n    this.previousAttacks = [ ]\n  }  */\n  previousAttacks = [];\n  get attackArr() {\n    return this.previousAttacks;\n  }\n  set attackArr(value) {\n    this.previousAttacks.push(value);\n  }\n  isNew(value) {\n    return !this.attackArr.includes(value);\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (Player);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/player/player.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nclass Player {\n  previousAttacks = [];\n  get attackArr() {\n    return this.previousAttacks;\n  }\n  set attackArr(value) {\n    this.previousAttacks.push(value);\n  }\n  isNew(value) {\n    return !this.attackArr.includes(value);\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (Player);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/player/player.js?");
 
 /***/ }),
 

@@ -6,7 +6,6 @@ class UserPlayer extends Player {
   attack = (value) => {
     if (super.isNew(value)) {
       super.attackArr = value;
-
       return value;
     }
     return Error("Tile has already been attacked");
