@@ -50,6 +50,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cre
 
 /***/ }),
 
+/***/ "./src/components/common/gameboard/gameboard.js":
+/*!******************************************************!*\
+  !*** ./src/components/common/gameboard/gameboard.js ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\nclass GameBoard {\n  shipsArr = [];\n  get ships() {\n    return this.shipsArr;\n  }\n  set ships(value) {\n    if (Array.isArray(value)) {\n      this.shipsArr = this.shipsArr.concat(value);\n    } else {\n      this.shipsArr.push(value);\n    }\n  }\n  missedArr = [];\n\n  /* Checks if coordinates already have a ship on them */\n\n  isTaken(coordinates) {\n    for (let i = 0; i < coordinates.length; i += 1) {\n      for (let y = 0; y < this.ships.length; y += 1) {\n        if (this.ships[y].coordinates.includes(coordinates[i])) {\n          return true;\n        }\n      }\n    }\n    return false;\n  }\n\n  /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */\n\n  receiveAttack = num => {\n    console.log('pushed');\n    for (let y = 0; y < this.ships.length; y += 1) {\n      if (this.ships[y].coordinates.includes(num)) {\n        this.ships[y].hit();\n        if (this.ships[y].isSunk()) {\n          return Object.assign(this.isOver(), {\n            tiles: this.ships[y].coordinates\n          });\n        }\n        return {\n          tile: num,\n          hit: true,\n          sunk: false\n        };\n      }\n    }\n    this.missedArr.push(num);\n    return {\n      tile: num,\n      hit: false,\n      sunk: false\n    };\n  };\n\n  /* Called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */\n\n  isOver() {\n    return this.ships.every(ship => ship.sunk === true) ? {\n      hit: true,\n      sunk: true,\n      gameover: true\n    } : {\n      hit: true,\n      sunk: true\n    };\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameBoard);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/gameboard/gameboard.js?");
+
+/***/ }),
+
 /***/ "./src/components/common/player/player.js":
 /*!************************************************!*\
   !*** ./src/components/common/player/player.js ***!
@@ -80,6 +90,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gam
 
 /***/ }),
 
+/***/ "./src/components/common/ship/create-coordinates-arr/create-coor-arr.js":
+/*!******************************************************************************!*\
+  !*** ./src/components/common/ship/create-coordinates-arr/create-coor-arr.js ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* Creates a coordinate arr for a ship object's coordinates property from shipInfo object */\n\nfunction createCoorArr(obj) {\n  const arr = [obj.tileNum];\n  for (let i = 1; i < obj.length; i += 1) {\n    if (obj.direction === \"horizontal\") {\n      arr.push(arr[i - 1] + 1);\n    } else {\n      arr.push(arr[i - 1] + 10);\n    }\n  }\n  return arr;\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (createCoorArr);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/ship/create-coordinates-arr/create-coor-arr.js?");
+
+/***/ }),
+
+/***/ "./src/components/common/ship/ship.js":
+/*!********************************************!*\
+  !*** ./src/components/common/ship/ship.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_coordinates_arr_create_coor_arr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-coordinates-arr/create-coor-arr */ \"./src/components/common/ship/create-coordinates-arr/create-coor-arr.js\");\n\n\n/* Creates ship object from shipInfo object */\n\nclass Ship {\n  constructor(obj) {\n    this.length = obj.length;\n    this.coordinates = (0,_create_coordinates_arr_create_coor_arr__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(obj);\n  }\n  timesHit = 0;\n  sunk = false;\n  hit() {\n    this.timesHit += 1;\n  }\n  isSunk() {\n    if (this.timesHit === this.length) {\n      this.sunk = true;\n    }\n    return this.sunk;\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (Ship);\n\n//# sourceURL=webpack://battleship-game/./src/components/common/ship/ship.js?");
+
+/***/ }),
+
 /***/ "./src/components/gameplay/attack--user.js":
 /*!*************************************************!*\
   !*** ./src/components/gameplay/attack--user.js ***!
@@ -96,7 +126,47 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/create-tiles/create-event-tiles */ \"./src/components/common/create-tiles/create-event-tiles.js\");\n/* harmony import */ var _common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/create-tiles/create-tiles */ \"./src/components/common/create-tiles/create-tiles.js\");\n/* harmony import */ var _common_publish_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/publish-data-id/get-data-id */ \"./src/components/common/publish-data-id/get-data-id.js\");\n/* harmony import */ var _views_player_user_player_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/player--user/player--user */ \"./src/components/views/player--user/player--user.js\");\n/* harmony import */ var _gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../gameplay/attack--user */ \"./src/components/gameplay/attack--user.js\");\n\n\n\n\n\nconst gameBoardDivUser = document.querySelector(\".gameboard--user\");\nconst gameBoardDivComputer = document.querySelector(\".gameboard--computer\");\nconst player = new _views_player_user_player_user__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\n_gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__.userClick.subscribe(player.attack);\n(0,_common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(gameBoardDivUser);\n(0,_common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(gameBoardDivComputer, _common_publish_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n\n//# sourceURL=webpack://battleship-game/./src/components/layout/layout--attack-stage.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/create-tiles/create-event-tiles */ \"./src/components/common/create-tiles/create-event-tiles.js\");\n/* harmony import */ var _common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/create-tiles/create-tiles */ \"./src/components/common/create-tiles/create-tiles.js\");\n/* harmony import */ var _common_publish_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/publish-data-id/get-data-id */ \"./src/components/common/publish-data-id/get-data-id.js\");\n/* harmony import */ var _views_player_user_player_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/player--user/player--user */ \"./src/components/views/player--user/player--user.js\");\n/* harmony import */ var _gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../gameplay/attack--user */ \"./src/components/gameplay/attack--user.js\");\n/* harmony import */ var _views_gameboard_computer_gameboard_computer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/gameboard--computer/gameboard--computer */ \"./src/components/views/gameboard--computer/gameboard--computer.js\");\n\n\n\n\n\n\nconst gameBoardDivUser = document.querySelector(\".gameboard--user\");\nconst gameBoardDivComputer = document.querySelector(\".gameboard--computer\");\nconst player = new _views_player_user_player_user__WEBPACK_IMPORTED_MODULE_3__[\"default\"](_gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__.receiveUserAttack);\nconst computerBoard = new _views_gameboard_computer_gameboard_computer__WEBPACK_IMPORTED_MODULE_5__[\"default\"]();\n_gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__.userClick.subscribe(player.attack);\n_gameplay_attack_user__WEBPACK_IMPORTED_MODULE_4__.receiveUserAttack.subscribe(computerBoard.receiveAttack);\n(0,_common_create_tiles_create_tiles__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(gameBoardDivUser);\n(0,_common_create_tiles_create_event_tiles__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(gameBoardDivComputer, _common_publish_data_id_get_data_id__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n\n//# sourceURL=webpack://battleship-game/./src/components/layout/layout--attack-stage.js?");
+
+/***/ }),
+
+/***/ "./src/components/views/gameboard--computer/gameboard--computer.js":
+/*!*************************************************************************!*\
+  !*** ./src/components/views/gameboard--computer/gameboard--computer.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_gameboard_gameboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/gameboard/gameboard */ \"./src/components/common/gameboard/gameboard.js\");\n/* harmony import */ var _common_ship_ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/ship/ship */ \"./src/components/common/ship/ship.js\");\n/* harmony import */ var _ship_info_ship_info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ship-info/ship-info */ \"./src/components/views/gameboard--computer/ship-info/ship-info.js\");\n\n\n\nclass ComputerGameBoard extends _common_gameboard_gameboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  /* Recreates a random ship, until its coordinates are not taken. */\n\n  placeShip(length) {\n    let shipInfo = new _ship_info_ship_info__WEBPACK_IMPORTED_MODULE_2__[\"default\"](length);\n    let ship = new _common_ship_ship__WEBPACK_IMPORTED_MODULE_1__[\"default\"](shipInfo);\n    while (this.isTaken(ship.coordinates)) {\n      shipInfo = new _ship_info_ship_info__WEBPACK_IMPORTED_MODULE_2__[\"default\"](length);\n      ship = new _common_ship_ship__WEBPACK_IMPORTED_MODULE_1__[\"default\"](shipInfo);\n    }\n    ;\n    this.ships = ship;\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (ComputerGameBoard);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/gameboard--computer/gameboard--computer.js?");
+
+/***/ }),
+
+/***/ "./src/components/views/gameboard--computer/ship-info/get-random-direction/get-random-direction.js":
+/*!*********************************************************************************************************!*\
+  !*** ./src/components/views/gameboard--computer/ship-info/get-random-direction/get-random-direction.js ***!
+  \*********************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../utils/get-random-num */ \"./src/utils/get-random-num.js\");\n\nfunction getRandomDirection() {\n  return (0,_utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(2) === 1 ? \"horizontal\" : \"vertical\";\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (getRandomDirection);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/gameboard--computer/ship-info/get-random-direction/get-random-direction.js?");
+
+/***/ }),
+
+/***/ "./src/components/views/gameboard--computer/ship-info/get-random-tile-num/get-random-tile-num.js":
+/*!*******************************************************************************************************!*\
+  !*** ./src/components/views/gameboard--computer/ship-info/get-random-tile-num/get-random-tile-num.js ***!
+  \*******************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../utils/get-random-num */ \"./src/utils/get-random-num.js\");\n\n\n/* Create a random tileNum */\n\nfunction getRandomTileNum(length, direction) {\n  if (direction === \"horizontal\") {\n    return +((0,_utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(11).toString() + (0,_utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(11 - length));\n  }\n  return +((0,_utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(11 - length).toString() + (0,_utils_get_random_num__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(11));\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (getRandomTileNum);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/gameboard--computer/ship-info/get-random-tile-num/get-random-tile-num.js?");
+
+/***/ }),
+
+/***/ "./src/components/views/gameboard--computer/ship-info/ship-info.js":
+/*!*************************************************************************!*\
+  !*** ./src/components/views/gameboard--computer/ship-info/ship-info.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _get_random_direction_get_random_direction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./get-random-direction/get-random-direction */ \"./src/components/views/gameboard--computer/ship-info/get-random-direction/get-random-direction.js\");\n/* harmony import */ var _get_random_tile_num_get_random_tile_num__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get-random-tile-num/get-random-tile-num */ \"./src/components/views/gameboard--computer/ship-info/get-random-tile-num/get-random-tile-num.js\");\n\n\nclass ShipInfo {\n  constructor(length) {\n    this.length = length;\n    this.direction = (0,_get_random_direction_get_random_direction__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n    this.tileNum = (0,_get_random_tile_num_get_random_tile_num__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(this.length, this.direction);\n  }\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (ShipInfo);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/gameboard--computer/ship-info/ship-info.js?");
 
 /***/ }),
 
@@ -106,7 +176,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
   \***********************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_player_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/player/player */ \"./src/components/common/player/player.js\");\n\nclass UserPlayer extends _common_player_player__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  attack = value => {\n    if (super.isNew(value)) {\n      super.attackArr = value;\n      return value;\n    }\n    return Error(\"Tile has already been attacked\");\n  };\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (UserPlayer);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/player--user/player--user.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_player_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/player/player */ \"./src/components/common/player/player.js\");\n\nclass UserPlayer extends _common_player_player__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(pubSub) {\n    super();\n    this.pubSub = pubSub;\n  }\n  attack = value => {\n    if (super.isNew(value)) {\n      super.attackArr = value;\n      this.pubSub.publish(value);\n      return value;\n    }\n    throw new Error(\"Tile has already been attacked\");\n  };\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (UserPlayer);\n\n//# sourceURL=webpack://battleship-game/./src/components/views/player--user/player--user.js?");
 
 /***/ }),
 
@@ -117,6 +187,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_layout_layout_attack_stage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/layout/layout--attack-stage */ \"./src/components/layout/layout--attack-stage.js\");\n\n\n//# sourceURL=webpack://battleship-game/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils/get-random-num.js":
+/*!*************************************!*\
+  !*** ./src/utils/get-random-num.js ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\nfunction getRandomNum(max) {\n  return Math.floor(Math.random() * max);\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (getRandomNum);\n\n//# sourceURL=webpack://battleship-game/./src/utils/get-random-num.js?");
 
 /***/ })
 
