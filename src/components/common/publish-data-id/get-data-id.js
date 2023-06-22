@@ -1,7 +1,7 @@
 import { userClick } from "../../pub-subs/attack--user"
 
-function publishDataId() {
+function attack() {
   userClick.publish(this.dataset.id);
 }
 
-export default publishDataId;
+export {attack};
