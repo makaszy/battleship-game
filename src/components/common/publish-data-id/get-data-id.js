@@ -1,9 +1,7 @@
-import { userClick } from "../../gameplay/attack--user"
+import { userClick } from "../../pub-subs/attack--user"
 
-function publishDataId() { 
-
-  userClick.publish(this.dataset.id)
+function publishDataId() {
+  userClick.publish(this.dataset.id);
 }
 
-
-export default publishDataId
+export default publishDataId;
