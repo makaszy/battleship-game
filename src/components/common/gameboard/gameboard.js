@@ -36,7 +36,6 @@ class GameBoard {
   /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */
 
   handleAttack = (num) => {
-    console.log("pushed");
     for (let y = 0; y < this.ships.length; y += 1) {
       if (this.ships[y].coordinates.includes(+num)) {
         this.ships[y].hit();

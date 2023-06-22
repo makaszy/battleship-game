@@ -53,3 +53,4 @@ function initUserBoard() {
 }
 
 init.userGameBoard.subscribe(initUserBoard)
+

@@ -25,7 +25,6 @@ class GameBoardViewUpdater {
   }
 
   handleAttackView = (obj) => {
-    console.log("handleAttack")
     if (obj.sunk) {
       this.updateSunkTiles(obj);
     } else {
