@@ -38,7 +38,7 @@ class GameBoard {
   handleAttack = (num) => {
     console.log("pushed");
     for (let y = 0; y < this.ships.length; y += 1) {
-      if (this.ships[y].coordinates.includes(num)) {
+      if (this.ships[y].coordinates.includes(+num)) {
         this.ships[y].hit();
         if (this.ships[y].isSunk()) {
           return this.pubSub.publish(Object.assign(this.isOver(), {

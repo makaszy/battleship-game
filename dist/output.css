@@ -13,4 +13,12 @@
   background-color: blue;
 }
 
+.hit {
+  background-color: red;
+}
+
+.sunk {
+  background-color: green;
+}
+
 /*# sourceMappingURL=output.css.map */
