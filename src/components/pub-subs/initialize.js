@@ -1,8 +1,9 @@
 import PubSub from "../common/pub-sub/pub-sub";
 
-const initComputerGameboard = new PubSub();
-const initUserPlayer = new PubSub();
+const computerGameboard = new PubSub();
+const userPlayer = new PubSub();
+const computerPlayer = new PubSub();
 
 
 
-export {initUserPlayer, initComputerGameboard}  ;
+export {userPlayer, computerGameboard, computerPlayer}  ;

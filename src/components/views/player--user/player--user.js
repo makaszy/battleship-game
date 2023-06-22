@@ -1,5 +1,5 @@
 import Player from "../../common/player/player";
-import { initUserPlayer } from "../../pub-subs/initialize";
+import * as init from "../../pub-subs/initialize";
 import { userClick, userAttack } from "../../pub-subs/attack--user";
 
 class UserPlayer extends Player {
@@ -23,6 +23,6 @@ function initPlayer() {
   userClick.subscribe(player.attack);
 }
 
-initUserPlayer.subscribe(initPlayer)
+init.userPlayer.subscribe(initPlayer)
 
 export default UserPlayer;

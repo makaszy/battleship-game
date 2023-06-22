@@ -2,7 +2,7 @@ import GameBoard from "../../common/gameboard/gameboard";
 import Ship from "../../common/ship/ship";
 import ShipInfo from "./ship-info/ship-info";
 import { userAttack, handleUserAttack } from "../../pub-subs/attack--user";
-import {initComputerGameboard, }from "../../pub-subs/initialize";
+import * as init from "../../pub-subs/initialize";
 
 
 class ComputerGameBoard extends GameBoard {
@@ -30,5 +30,5 @@ function initCompGB(value) {
   }
 }
 
-initComputerGameboard.subscribe(initCompGB);
+init.computerGameboard.subscribe(initCompGB);
 

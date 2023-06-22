@@ -1,5 +1,8 @@
 import Player from "../../common/player/player";
 import getRandomNum from "../../../utils/get-random-num";
+import { computerAttack } from "../../pub-subs/attack--computer";
+import { userAttack } from "../../pub-subs/attack--user";
+import * as init from "../../pub-subs/initialize"
 
 class ComputerPlayer extends Player {
   constructor(pubSub) {
@@ -18,4 +21,10 @@ class ComputerPlayer extends Player {
   }
 }
 
-export default ComputerPlayer;
+function initCompPlayer () {
+  const computerPlayer = new ComputerPlayer(computerAttack);
+  userAttack.subscribe(computerPlayer.attack);
+}
+
+init.computerPlayer.subscribe(initCompPlayer)
+
