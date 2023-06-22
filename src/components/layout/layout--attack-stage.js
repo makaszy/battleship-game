@@ -14,7 +14,7 @@ import {
   computerAttack,
   handleComputerAttack,
 } from "../pub-subs/attack--computer";
-import UserGameBoard from "../views/gameboard--user/gameboard--user";
+import "../views/gameboard--user/gameboard--user";
 
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
@@ -25,9 +25,8 @@ createEventTiles(gameBoardDivComputer, publishDataId);
 
 
 
-const userBoard = new UserGameBoard(handleComputerAttack);
-computerAttack.subscribe(userBoard.handleAttack);
 
-init.userPlayer.publish()
+init.userPlayer.publish();
 init.computerGameboard.publish(true);
-init.computerPlayer.publish()
+init.computerPlayer.publish();
+init.userGameBoard.publish();

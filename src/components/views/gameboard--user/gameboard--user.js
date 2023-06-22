@@ -1,5 +1,7 @@
 import GameBoard from "../../common/gameboard/gameboard";
 import Ship from "../../common/ship/ship";
+import { handleComputerAttack, computerAttack } from "../../pub-subs/attack--computer";
+import * as init from "../../pub-subs/initialize"
 
 class UserGameBoard extends GameBoard {
   /* Calculates the max acceptable tile for a ship depending on its start (tileNum).
@@ -45,4 +47,9 @@ class UserGameBoard extends GameBoard {
   }
 }
 
-export default UserGameBoard;
+function initUserBoard() {
+  const userBoard = new UserGameBoard(handleComputerAttack);
+  computerAttack.subscribe(userBoard.handleAttack);
+}
+
+init.userGameBoard.subscribe(initUserBoard)
