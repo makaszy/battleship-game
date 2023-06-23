@@ -1,6 +1,7 @@
 import Player from "../../common/player/player";
 import * as init from "../../pub-subs/initialize";
-import { userClick, userAttack } from "../../pub-subs/attack--user";
+import { userAttack } from "../../pub-subs/attack--user";
+import * as userClick from "../../pub-subs/events"
 
 class UserPlayer extends Player {
  constructor(pubSub) {
@@ -20,7 +21,7 @@ class UserPlayer extends Player {
 
 function initPlayer() {
   const player = new UserPlayer(userAttack);
-  userClick.subscribe(player.attack);
+  userClick.attack.subscribe(player.attack);
 }
 
 init.userPlayer.subscribe(initPlayer)

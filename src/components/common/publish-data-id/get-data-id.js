@@ -1,7 +1,14 @@
-import { userClick } from "../../pub-subs/attack--user"
+
+import * as userClick from "../../pub-subs/events"
 
 function attack() {
-  userClick.publish(this.dataset.id);
+  userClick.attack.publish(this.dataset.id);
 }
 
-export {attack};
+function pickPlacement() {
+  userClick.pickPlacement.publish(this.dataset.id)
+}
+
+/* Files are imported * as publishDataId */
+
+export {attack, pickPlacement};
