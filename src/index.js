@@ -1,1 +1,1 @@
-import "./components/layout/layout--attack-stage";
+import "./components/layout/layout--placement-stage";
