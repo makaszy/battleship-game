@@ -16,6 +16,30 @@
     <div class="gameboard--user"></div>
   </div>
   <div>
+    <form action="" method="post">
+      <fieldset>
+        <legend>Ship length</legend>
+        <label for="ship-5">Ship length 5</label>
+        <input required type="radio" id="ship-5" name="ship" value="5">
+        <label for="ship-4">Ship length 4</label>
+        <input type="radio" id="ship-4" name="ship" value="4">
+        <label for="ship-3">Ship length 3</label>
+        <input type="radio" id="ship-3" name="ship" value="3">
+        <label for="ship-2">Ship length 2</label>
+        <input type="radio" id="ship-2" name="ship" value="2">
+      </fieldset>
+      <fieldset>
+        <legend>Direction</legend>
+        <label for="direction-horizontal">Horizontal</label>
+        <input required type="radio" id="direction-horizontal" value="horizontal" name="direction">
+        <label for="direction-vertical">Vertical</label>
+        <input type="radio" id="direction-vertical" value="vertical" name="direction">
+      </fieldset>
+      <button type="button">Place Ship</button>
+
+    </form>
+  </div>
+  <div>
     <h1>My Opponents Fleet</h1>
     <div class="gameboard--computer"></div>
   </div>
