@@ -6,22 +6,18 @@ import displayRadioValue from "../../../utils/display-radio-value";
 const shipPlacement = {
   num: 0,
   updateNum(value) {
-    
     this.num = value;
-    console.log(this.num)
     userClick.input.publish();
   }
 }
 
 
 function createShipInfo() {
-  const length = displayRadioValue("ship");
-
-  const direction = displayRadioValue("direction");
-
+  console.log("shipcreatedRUn")
   const {num} = shipPlacement
-
-  return new ShipInfoUser(num, length, direction)
+  const length = displayRadioValue("ship");
+  const direction = displayRadioValue("direction");
+  return new ShipInfoUser(num, length, direction)  
 }
 
 userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));

@@ -8,9 +8,12 @@ const gameBoardDivUser = document.querySelector(".gameboard--user");
 
 const inputs = document.querySelectorAll(".placement-form__input")
 
+function userClicked () {
+  userClick.input.publish()
+}
 
 inputs.forEach((input) => {
-  input.addEventListener("click", userClick.input.publish())
+  input.addEventListener("click", userClicked)
   
 });
 
