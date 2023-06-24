@@ -5,6 +5,7 @@ import * as userClick from "../../pub-subs/events"
 const shipPlacement = {
   num: null,
   updateNum(value) {
+    console.log("updated")
     this.num = value;
     userClick.input.publish();
   }
@@ -12,6 +13,7 @@ const shipPlacement = {
 
 
 function createShipInfo() {
+  console.log("infoCreated")
   const length = document.querySelector("input[name=`ship`]").value
 
   const direction = document.querySelector("input[name=`direction`]").value
