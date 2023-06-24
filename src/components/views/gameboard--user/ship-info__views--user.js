@@ -1,29 +1,30 @@
 import ShipInfoUser from "./ship-info--user";
 import * as userClick from "../../pub-subs/events"
+import displayRadioValue from "../../../utils/display-radio-value";
 
 
 const shipPlacement = {
-  num: null,
+  num: 0,
   updateNum(value) {
-    console.log("updated")
+    
     this.num = value;
+    console.log(this.num)
     userClick.input.publish();
   }
 }
 
 
 function createShipInfo() {
-  console.log("infoCreated")
-  const length = document.querySelector("input[name=`ship`]").value
+  const length = displayRadioValue("ship");
 
-  const direction = document.querySelector("input[name=`direction`]").value
+  const direction = displayRadioValue("direction");
 
   const {num} = shipPlacement
 
   return new ShipInfoUser(num, length, direction)
 }
 
-userClick.pickPlacement.subscribe(shipPlacement.updateNum);
+userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));
 
 userClick.input.subscribe(createShipInfo);
 
