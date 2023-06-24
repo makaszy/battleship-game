@@ -6,8 +6,10 @@ const shipPlacement = {
   num: null,
   updateNum(value) {
     this.num = value;
+    userClick.input.publish();
   }
 }
+
 
 function createShipInfo() {
   const length = document.querySelector("input[name=`ship`]").value
@@ -19,5 +21,7 @@ function createShipInfo() {
   return new ShipInfoUser(num, length, direction)
 }
 
-userClick.pickPlacement.subscribe(shipPlacement.updateNum)
+userClick.pickPlacement.subscribe(shipPlacement.updateNum);
+
+userClick.input.subscribe(createShipInfo);
 

@@ -4,6 +4,8 @@ const attack = new PubSub();
 
 const pickPlacement = new PubSub();
 
+const input = new PubSub();
+
 /* Files are imported * as userClick */
 
-export {pickPlacement, attack}
+export {pickPlacement, attack, input}
