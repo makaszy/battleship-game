@@ -1,5 +1,6 @@
 import ShipInfoUser from "./ship-info--user";
 import * as userClick from "../../pub-subs/events"
+import * as publishDomData from "../../common/publish-data-id/get-data-id"
 import displayRadioValue from "../../../utils/display-radio-value";
 
 
@@ -7,7 +8,7 @@ const shipPlacement = {
   num: 0,
   updateNum(value) {
     this.num = value;
-    userClick.input.publish();
+    publishDomData.alertShipInfoChanges();
   }
 }
 

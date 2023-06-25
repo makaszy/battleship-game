@@ -1,14 +1,23 @@
+import * as userClick from "../../pub-subs/events";
 
-import * as userClick from "../../pub-subs/events"
+/* triggers when a user picks a coordinate to attack */
 
 function attack() {
   userClick.attack.publish(this.dataset.id);
 }
 
+/* triggers shipPlacement.updateNum in ship-info__views--user which stores the user's current ship placement pick. Once updated userClick.input.publish() is run */
+
 function pickPlacement() {
-  userClick.pickPlacement.publish(this.dataset.id)
+  userClick.pickPlacement.publish(this.dataset.id);
 }
 
-/* Files are imported * as publishDataId */
+/* triggers createShipInfo func in ship-info__views--user when user clicked an input */
 
-export {attack, pickPlacement};
+function alertShipInfoChanges() {
+  userClick.input.publish();
+}
+
+/* Files are imported * as publishDomData */
+
+export { attack, pickPlacement, alertShipInfoChanges};

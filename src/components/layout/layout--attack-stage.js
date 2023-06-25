@@ -9,18 +9,14 @@ import * as init from "../pub-subs/initialize";
 
 import createEventTiles from "../common/create-tiles/create-event-tiles";
 import createTiles from "../common/create-tiles/create-tiles";
-import * as publishDataId from "../common/publish-data-id/get-data-id";
-
+import * as publishDomData from "../common/publish-data-id/get-data-id";
 
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
 createTiles(gameBoardDivUser);
 
-createEventTiles(gameBoardDivComputer, publishDataId.attack);
-
-
-
+createEventTiles(gameBoardDivComputer, publishDomData.attack);
 
 init.userPlayer.publish();
 init.computerGameboard.publish(true);
