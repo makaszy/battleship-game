@@ -45,7 +45,6 @@ class UserGameBoard extends GameBoard {
   }
 
   publishValidity = (obj) => {
-    console.log("yeaah")
     console.log(this.isValid(obj))
     userClick.validityViews.publish(this.isValid(obj))
   }
@@ -60,7 +59,7 @@ class UserGameBoard extends GameBoard {
 
   publishPlaceShip = (obj) => {
     const ship = this.placeShip(obj)
-    userClick.createShipView.publish({coordinates: ship.coordinates})
+    userClick.createShipView.publish({coordinates: ship.coordinates, length: ship.length})
   }
 }
 

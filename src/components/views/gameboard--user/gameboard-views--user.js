@@ -5,6 +5,23 @@ import * as userClick from "../../pub-subs/events"
 class GameBoardUserViewUpdater extends GameBoardViewUpdater {
   btn = document.querySelector('.placement-form__place-btn')
 
+  static hideRadio(obj) {
+    const radioInput = document.querySelector(`#ship-${obj.length}`);
+    radioInput.classList.add("hidden");
+    const radioLabel = document.querySelector([`[for="ship-${obj.length}"]`])
+    radioLabel.classList.add("hidden");
+  }
+
+  static nextShipChecked() {
+    const radio = document.querySelector(`:not(.hidden)[name="ship"]`)
+    if (radio == null) {
+      /* Place publish for layout attack stage here */
+    } else {
+      radio.setAttribute("checked", "")
+    }
+    
+  }
+
  /* Clears the validity check of the previous selection from the user gameboard. If it passes the check it unlocks the place ship btn */
    clearValidityView = () => {
     const tiles = document.querySelectorAll(".gameboard__tile");
@@ -36,6 +53,8 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
 
   handlePlacementView = (obj) => {
     this.clearValidityView();
+    this.constructor.hideRadio(obj)
+    this.constructor.nextShipChecked();
     obj.coordinates.forEach(coordinate => {
       const tile = document.querySelector(
         `.gameboard--${this.string} [data-id="${coordinate}"]`
