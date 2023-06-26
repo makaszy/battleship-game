@@ -17,11 +17,21 @@ function createShipInfo() {
   const { tileNum } = shipPlacement;
   const length = displayRadioValue("ship");
   const direction = displayRadioValue("direction");
-
   const shipInfo = new ShipInfoUser(tileNum, length, direction)
-  userClick.shipInfo.publish(shipInfo);
+  return shipInfo
+}
+
+function publishShipInfoCheck() {
+  const shipInfo = createShipInfo()
+  userClick.shipInfo.publish(shipInfo);  
+}
+
+function publishShipInfoCreate() {
+  const shipInfo = createShipInfo()
+  userClick.shipPlaceBtn.publish(shipInfo);  
+
 }
 
 userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));
 
-userClick.input.subscribe(createShipInfo);
+userClick.input.subscribe(publishShipInfoCheck);

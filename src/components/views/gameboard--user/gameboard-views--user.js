@@ -23,6 +23,10 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
       (obj.valid) ? tile.classList.add("placement--valid") : tile.classList.add("placement--invalid");
     });
   }
+
+  
+
+
 }
 
 const user = "user";
