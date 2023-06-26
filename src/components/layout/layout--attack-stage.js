@@ -9,7 +9,7 @@ import * as init from "../pub-subs/initialize";
 
 import createEventTiles from "../common/create-tiles/create-event-tiles";
 import createTiles from "../common/create-tiles/create-tiles";
-import * as publishDomData from "../common/publish-data-id/get-data-id";
+import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
