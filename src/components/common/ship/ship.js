@@ -4,7 +4,7 @@ import createCoorArr from "./create-coordinates-arr/create-coor-arr";
 
 class Ship {
   constructor(obj) {
-    this.length = obj.length;
+    this.length = +obj.length;
     this.coordinates = createCoorArr(obj);
   }
 

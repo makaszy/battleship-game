@@ -1,5 +1,6 @@
 import createEventTiles from "../common/create-tiles/create-event-tiles";
 import "../views/gameboard--user/ship-info__views--user";
+import "../views/gameboard--user/gameboard--user";
 import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 
 const gameBoardDivUser = document.querySelector(".gameboard--user");

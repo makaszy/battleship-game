@@ -4,19 +4,22 @@ import * as publishDomData from "../../common/publish-dom-data/publish-dom-data"
 import displayRadioValue from "../../../utils/display-radio-value";
 
 const shipPlacement = {
-  num: 0,
+  tileNum: 0,
   updateNum(value) {
-    this.num = value;
+    this.tileNum = value;
     publishDomData.alertShipInfoChanges();
   },
 };
 
 function createShipInfo() {
-  console.log("shipcreatedRUn");
-  const { num } = shipPlacement;
+  console.log("shipcreatedRun");
+
+  const { tileNum } = shipPlacement;
   const length = displayRadioValue("ship");
   const direction = displayRadioValue("direction");
-  return new ShipInfoUser(num, length, direction);
+
+  const shipInfo = new ShipInfoUser(tileNum, length, direction)
+  userClick.shipInfo.publish(shipInfo);
 }
 
 userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));

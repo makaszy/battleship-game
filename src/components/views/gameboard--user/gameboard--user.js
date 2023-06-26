@@ -2,6 +2,7 @@ import GameBoard from "../../common/gameboard/gameboard";
 import Ship from "../../common/ship/ship";
 import { handleComputerAttack, computerAttack } from "../../pub-subs/attack--computer";
 import * as init from "../../pub-subs/initialize"
+import * as userClick from "../../pub-subs/events"
 
 class UserGameBoard extends GameBoard {
   /* Calculates the max acceptable tile for a ship depending on its start (tileNum).
@@ -35,6 +36,20 @@ class UserGameBoard extends GameBoard {
     return true;
   }
 
+  isValid = (obj) => {
+    const ship = new Ship(obj);
+    if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj)) {
+      return { valid: false, coordinates: ship.coordinates} 
+    }
+    return { valid: true, coordinates: ship.coordinates }
+  }
+
+  publishValidity = (obj) => {
+    console.log("yeaah")
+    console.log(this.isValid(obj))
+    userClick.validityViews.publish(this.isValid(obj))
+  }
+
   /* Checks if a ships coordinates are taken, if not places ship in shipsArr, otherwise returns false */
 
   placeShip(obj) {
@@ -52,5 +67,12 @@ function initUserBoard() {
   computerAttack.subscribe(userBoard.handleAttack);
 }
 
+function initPlacementBoard() {
+  const userPlacementBoard = new UserGameBoard(handleComputerAttack);
+
+  
+  userClick.shipInfo.subscribe(userPlacementBoard.publishValidity); 
+}
+initPlacementBoard();
 init.userGameBoard.subscribe(initUserBoard)
 

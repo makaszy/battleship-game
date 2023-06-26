@@ -1,7 +1,7 @@
 class ShipInfoUser {
-  constructor (num, length, direction) {
-    this.num = num;
-    this.length = length;
+  constructor (tileNum, length, direction) {
+    this.tileNum = +tileNum;
+    this.length = +length;
     this.direction = direction
   }
 }
