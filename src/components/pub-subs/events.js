@@ -12,6 +12,12 @@ const shipInfo = new PubSub();
 /* gameboard.publishValidity publishes an obj with a boo. valid property and a list of coordinates.   */
 const validityViews = new PubSub();
 
+/* When place ship btn is pressed publishShipInfoCreate() will create shipInfo  */
+const shipPlaceBtn = new PubSub();
+
+/* When  publishShipInfoCreate() creates the shipInfo */
+const createShip = new PubSub();
+
 /* Files are imported * as userClick */
 
-export {pickPlacement, attack, input, shipInfo, validityViews}
+export {pickPlacement, attack, input, shipInfo, validityViews, shipPlaceBtn, createShip}

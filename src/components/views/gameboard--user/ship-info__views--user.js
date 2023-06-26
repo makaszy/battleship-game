@@ -28,10 +28,10 @@ function publishShipInfoCheck() {
 
 function publishShipInfoCreate() {
   const shipInfo = createShipInfo()
-  userClick.shipPlaceBtn.publish(shipInfo);  
-
+  userClick.createShip.publish(shipInfo);  
 }
 
 userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));
 
 userClick.input.subscribe(publishShipInfoCheck);
+userClick.shipPlaceBtn.subscribe(publishShipInfoCreate)
