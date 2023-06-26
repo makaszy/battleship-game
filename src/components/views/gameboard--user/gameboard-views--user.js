@@ -4,7 +4,8 @@ import * as userClick from "../../pub-subs/events"
 
 class GameBoardUserViewUpdater extends GameBoardViewUpdater {
   btn = document.querySelector('.placement-form__place-btn')
-
+  
+  /* when a ship is placed the radio input for that ship is hidden */
   static hideRadio(obj) {
     const radioInput = document.querySelector(`#ship-${obj.length}`);
     radioInput.classList.add("hidden");
@@ -12,6 +13,8 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
     radioLabel.classList.add("hidden");
   }
 
+  /* when a ship is placed the next radio input is checked so that you can't place two of the same ships twice,
+     when there are no more ships to place nextShipChecked will initialize the attack stage */
   static nextShipChecked() {
     const radio = document.querySelector(`:not(.hidden)[name="ship"]`)
     if (radio == null) {
