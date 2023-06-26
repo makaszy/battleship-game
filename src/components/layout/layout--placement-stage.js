@@ -12,4 +12,8 @@ inputs.forEach((input) => {
   input.addEventListener("click", publishDomData.alertShipInfoChanges);
 });
 
+const placeShipBtn = document.querySelector(".placement-form__place-btn")
+
+placeShipBtn.addEventListener("click", publishDomData.placeShipBtn)
+
 createEventTiles(gameBoardDivUser, publishDomData.pickPlacement);

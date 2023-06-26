@@ -50,17 +50,20 @@ class UserGameBoard extends GameBoard {
     userClick.validityViews.publish(this.isValid(obj))
   }
 
-  /* Checks if a ships coordinates are taken, if not places ship in shipsArr, otherwise returns false */
+  /* places ship in shipsArr */
 
-  placeShip(obj) {
+  placeShip = (obj) => {
     const ship = new Ship(obj);
-    if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj)) {
-      return Error("Ship couldn't be placed there");
-    }
     this.ships = ship;
-    return "Ship Placed";
+    return ship;
+  }
+
+  publishPlaceShip = (obj) => {
+    const ship = this.placeShip(obj)
+    userClick.createShipView.publish({coordinates: ship.coordinates})
   }
 }
+
 
 function initUserBoard() {
   const userBoard = new UserGameBoard(handleComputerAttack);
@@ -70,8 +73,8 @@ function initUserBoard() {
 function initPlacementBoard() {
   const userPlacementBoard = new UserGameBoard(handleComputerAttack);
 
-  
   userClick.shipInfo.subscribe(userPlacementBoard.publishValidity); 
+  userClick.createShip.subscribe(userPlacementBoard.publishPlaceShip);
 }
 initPlacementBoard();
 init.userGameBoard.subscribe(initUserBoard)

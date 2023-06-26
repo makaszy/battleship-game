@@ -18,6 +18,10 @@ function alertShipInfoChanges() {
   userClick.input.publish();
 }
 
+function placeShipBtn() {
+  userClick.shipPlaceBtn.publish();
+}
+
 /* Files are imported * as publishDomData */
 
-export { attack, pickPlacement, alertShipInfoChanges};
+export { attack, pickPlacement, alertShipInfoChanges, placeShipBtn};

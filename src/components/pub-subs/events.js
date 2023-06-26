@@ -15,9 +15,12 @@ const validityViews = new PubSub();
 /* When place ship btn is pressed publishShipInfoCreate() will create shipInfo  */
 const shipPlaceBtn = new PubSub();
 
-/* When  publishShipInfoCreate() creates the shipInfo */
+/* When  publishShipInfoCreate() creates the shipInfo. The gameboard.placeShip  */
 const createShip = new PubSub();
+
+/* UserGameBoard.publishPlaceShip publishes ship coordinates. GameBoardUserViewUpdater.handlePlacementView adds placement-ship class to tiles  */
+const createShipView = new PubSub();
 
 /* Files are imported * as userClick */
 
-export {pickPlacement, attack, input, shipInfo, validityViews, shipPlaceBtn, createShip}
+export {pickPlacement, attack, input, shipInfo, validityViews, shipPlaceBtn, createShip, createShipView}

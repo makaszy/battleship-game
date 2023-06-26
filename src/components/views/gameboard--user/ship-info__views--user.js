@@ -27,6 +27,7 @@ function publishShipInfoCheck() {
 }
 
 function publishShipInfoCreate() {
+  console.log("yoo")
   const shipInfo = createShipInfo()
   userClick.createShip.publish(shipInfo);  
 }
