@@ -3,6 +3,11 @@
   height: 500px;
 }
 
+.gameboard--user {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(100px, 1fr));
+}
+
 .gameboard__tile {
   width: 100px;
   height: 100px;
@@ -19,6 +24,14 @@
 
 .sunk {
   background-color: green;
+}
+
+.placement--valid {
+  border-color: green;
+}
+
+.placement--invalid {
+  border-color: red;
 }
 
 /*# sourceMappingURL=output.css.map */
