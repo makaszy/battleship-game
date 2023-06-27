@@ -14,11 +14,13 @@ import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
-createTiles(gameBoardDivUser);
-
-createEventTiles(gameBoardDivComputer, publishDomData.attack);
-
-init.userPlayer.publish();
-init.computerGameboard.publish(true);
-init.computerPlayer.publish();
-init.userGameBoard.publish();
+function initializeAttackStage() {
+  console.log("wha")
+  createTiles(gameBoardDivUser);
+  createEventTiles(gameBoardDivComputer, publishDomData.attack);
+  init.userPlayer.publish();
+  init.computerGameboard.publish(true);
+  init.computerPlayer.publish();
+  init.userGameBoard.publish();
+}
+init.attackStage.subscribe(initializeAttackStage)

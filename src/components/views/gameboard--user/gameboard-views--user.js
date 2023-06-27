@@ -1,6 +1,7 @@
 import GameBoardViewUpdater from "../../common/gameboard-view-updater/gameboard-view-updater";
-import { handleComputerAttack } from "../../pub-subs/attack--computer"
-import * as userClick from "../../pub-subs/events"
+import { handleComputerAttack } from "../../pub-subs/attack--computer";
+import * as userClick from "../../pub-subs/events";
+import * as init from "../../pub-subs/initialize";
 
 class GameBoardUserViewUpdater extends GameBoardViewUpdater {
   btn = document.querySelector('.placement-form__place-btn')
@@ -17,7 +18,11 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
      when there are no more ships to place nextShipChecked will initialize the attack stage */
   static nextShipChecked() {
     const radio = document.querySelector(`:not(.hidden)[name="ship"]`)
-    if (radio == null) {
+    
+    console.log(radio)
+    if (radio === null) {
+      console.log("yess")
+      init.attackStage.publish();
       /* Place publish for layout attack stage here */
     } else {
       radio.setAttribute("checked", "")
