@@ -5,6 +5,7 @@ import * as init from "../../pub-subs/initialize"
 import * as userClick from "../../pub-subs/events"
 
 class UserGameBoard extends GameBoard {
+
   /* Calculates the max acceptable tile for a ship depending on its start (tileNum).
   for ex. If a ship is placed horizontally on tile 21 max would be 30  */
 
@@ -63,18 +64,15 @@ class UserGameBoard extends GameBoard {
   }
 }
 
-
 function initUserBoard() {
   const userBoard = new UserGameBoard(handleComputerAttack);
-  computerAttack.subscribe(userBoard.handleAttack);
+  userClick.shipInfo.subscribe(userBoard.publishValidity); 
+  userClick.createShip.subscribe(userBoard.publishPlaceShip);
+  function initHandleAttack() {
+    computerAttack.subscribe(userBoard.handleAttack);
+  }
+  init.attackStage.subscribe(initHandleAttack)
 }
 
-function initPlacementBoard() {
-  const userPlacementBoard = new UserGameBoard(handleComputerAttack);
-
-  userClick.shipInfo.subscribe(userPlacementBoard.publishValidity); 
-  userClick.createShip.subscribe(userPlacementBoard.publishPlaceShip);
-}
-initPlacementBoard();
-init.attackStage.subscribe(initUserBoard)
+initUserBoard();
 

@@ -20,11 +20,11 @@
 }
 
 .hit {
-  background-color: red;
+  background-color: red !important;
 }
 
 .sunk {
-  background-color: green;
+  background-color: green !important;
 }
 
 .placement--valid {
