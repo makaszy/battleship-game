@@ -9,8 +9,6 @@ import * as init from "../pub-subs/initialize";
 
 import createEventTiles from "../common/create-tiles/create-event-tiles";
 import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
-import { input } from "../pub-subs/events";
-
 
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
@@ -39,11 +37,16 @@ function resetForm() {
   showAllHidden(formLabels);
 }
 
+function hideForm() {
+  const form = document.querySelector(".placement-form")
+  form.classList.add("hidden");
+}
 
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
   removeEventListeners()
   resetForm();
+  hideForm();
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
 }
 
