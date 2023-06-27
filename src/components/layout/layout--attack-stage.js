@@ -14,12 +14,9 @@ import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
-function initializeAttackStage() {
+function initAttackStageTiles() {
   createTiles(gameBoardDivUser);
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
-/*   init.userPlayer.publish();
-  init.computerGameboard.publish();
-  init.computerPlayer.publish();
-  init.userGameBoard.publish(); */
 }
-init.attackStage.subscribe(initializeAttackStage)
+
+init.attackStage.subscribe(initAttackStageTiles)
