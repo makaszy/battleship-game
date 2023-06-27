@@ -51,7 +51,7 @@ function resetForm() {
 init.newGame.subscribe(resetForm);
 
 function hideCompBoard() {
-  const computerBoard = document.querySelector(".gameboard--computer");
+  const computerBoard = document.querySelector(".div--computer");
   computerBoard.classList.add("hidden");
 }
 
