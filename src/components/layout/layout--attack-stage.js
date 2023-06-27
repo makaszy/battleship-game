@@ -27,6 +27,12 @@ function hideForm() {
   form.classList.add("hidden");
 }
 
+function showCompBoard() {
+  const compBoard = document.querySelector(".gameboard--computer");
+  compBoard.classList.remove("hidden");
+}
+init.attackStage.subscribe(showCompBoard)
+
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
   removeEventListeners()
