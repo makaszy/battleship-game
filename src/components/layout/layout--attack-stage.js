@@ -9,6 +9,7 @@ import * as init from "../pub-subs/initialize";
 
 import createEventTiles from "../common/create-tiles/create-event-tiles";
 import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
+import { input } from "../pub-subs/events";
 
 
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
@@ -22,9 +23,27 @@ function removeEventListeners( ) {
   })
 }
 
+function showAllHidden(nodes) {
+  const nodesArr = Array.from(nodes);
+  nodesArr.forEach((node) => {
+    if (node.classList.contains("hidden")) {
+      node.classList.remove("hidden");
+    }
+  })
+}
+
+function resetForm() { 
+  const formInputs = document.querySelectorAll(".placement-form__input");
+  const formLabels = document.querySelectorAll("label")
+  showAllHidden(formInputs);
+  showAllHidden(formLabels);
+}
+
+
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
   removeEventListeners()
+  resetForm();
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
 }
 
