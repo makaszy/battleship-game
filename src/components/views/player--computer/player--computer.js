@@ -26,5 +26,5 @@ function initCompPlayer () {
   userAttack.subscribe(computerPlayer.attack);
 }
 
-init.computerPlayer.subscribe(initCompPlayer)
+init.attackStage.subscribe(initCompPlayer)
 

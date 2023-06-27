@@ -15,12 +15,11 @@ const gameBoardDivUser = document.querySelector(".gameboard--user");
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
 function initializeAttackStage() {
-  console.log("wha")
   createTiles(gameBoardDivUser);
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
-  init.userPlayer.publish();
+/*   init.userPlayer.publish();
   init.computerGameboard.publish();
   init.computerPlayer.publish();
-  init.userGameBoard.publish();
+  init.userGameBoard.publish(); */
 }
 init.attackStage.subscribe(initializeAttackStage)

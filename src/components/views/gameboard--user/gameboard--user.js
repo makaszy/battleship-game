@@ -76,5 +76,5 @@ function initPlacementBoard() {
   userClick.createShip.subscribe(userPlacementBoard.publishPlaceShip);
 }
 initPlacementBoard();
-init.userGameBoard.subscribe(initUserBoard)
+init.attackStage.subscribe(initUserBoard)
 

@@ -28,5 +28,5 @@ function initCompGB() {
     userAttack.subscribe(computerBoard.handleAttack);
 }
 
-init.computerGameboard.subscribe(initCompGB);
+init.attackStage.subscribe(initCompGB);
 

@@ -24,6 +24,6 @@ function initPlayer() {
   userClick.attack.subscribe(player.attack);
 }
 
-init.userPlayer.subscribe(initPlayer)
+init.attackStage.subscribe(initPlayer)
 
 export default UserPlayer;
