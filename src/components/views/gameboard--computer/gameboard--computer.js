@@ -19,15 +19,15 @@ class ComputerGameBoard extends GameBoard {
   }
 }
 
-function initCompGB(value) {
-  if (value === true) {
+function initCompGB() {
+  /* if (value === true) { */
     const computerBoard = new ComputerGameBoard(handleUserAttack);
-    computerBoard.placeShip(1);
-    computerBoard.placeShip(1);
-    computerBoard.placeShip(1);
-    computerBoard.placeShip(1);
+    computerBoard.placeShip(5);
+    computerBoard.placeShip(4);
+    computerBoard.placeShip(3);
+    computerBoard.placeShip(2);
     userAttack.subscribe(computerBoard.handleAttack);
-  }
+  /* } */
 }
 
 init.computerGameboard.subscribe(initCompGB);

@@ -19,7 +19,7 @@ function initializeAttackStage() {
   createTiles(gameBoardDivUser);
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
   init.userPlayer.publish();
-  init.computerGameboard.publish(true);
+  init.computerGameboard.publish();
   init.computerPlayer.publish();
   init.userGameBoard.publish();
 }

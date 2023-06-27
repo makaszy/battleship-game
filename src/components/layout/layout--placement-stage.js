@@ -3,7 +3,7 @@ import "../views/gameboard--user/ship-info__views--user";
 import "../views/gameboard--user/gameboard--user";
 import "../views/gameboard--user/gameboard-views--user"
 import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
-import "../layout/layout--attack-stage";
+import "./layout--attack-stage";
 
 const gameBoardDivUser = document.querySelector(".gameboard--user");
 
