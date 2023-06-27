@@ -21,22 +21,7 @@ function removeEventListeners( ) {
   })
 }
 
-function showAllHidden(nodes) {
-  const nodesArr = Array.from(nodes);
-  nodesArr.forEach((node) => {
-    if (node.classList.contains("hidden")) {
-      node.classList.remove("hidden");
-    }
-  })
-}
-
-function resetForm() { 
-  const formInputs = document.querySelectorAll(".placement-form__input");
-  const formLabels = document.querySelectorAll("label")
-  showAllHidden(formInputs);
-  showAllHidden(formLabels);
-}
-
+/* hides the form */
 function hideForm() {
   const form = document.querySelector(".placement-form")
   form.classList.add("hidden");
@@ -45,9 +30,8 @@ function hideForm() {
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
   removeEventListeners()
-  resetForm();
-  hideForm();
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
 }
 
-init.attackStage.subscribe(initAttackStageTiles)
+init.attackStage.subscribe(initAttackStageTiles);
+init.attackStage.subscribe(hideForm)
