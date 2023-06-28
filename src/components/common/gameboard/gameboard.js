@@ -55,9 +55,12 @@ class GameBoard {
   /* Called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */
 
   isOver() {
-    return this.ships.every((ship) => ship.sunk === true)
-      ? { hit: true, sunk: true, gameover: true }
-      : { hit: true, sunk: true };
+    this.ships.every((ship) => {
+      if (ship.sunk === true) {
+       return { hit: true, sunk: true, gameover: true }
+    }
+    return { hit: true, sunk: true };
+    })
   }
 }
 

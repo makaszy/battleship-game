@@ -1,6 +1,5 @@
 import PubSub from "../common/pub-sub/pub-sub";
 
-
 /* initializes the placement stage */
 
 const placementStage = new PubSub();
