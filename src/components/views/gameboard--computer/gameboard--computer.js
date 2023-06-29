@@ -21,10 +21,11 @@ class ComputerGameBoard extends GameBoard {
 
 function initCompGB() {
     const computerBoard = new ComputerGameBoard(handleUserAttack);
-    computerBoard.placeShip(5);
+    computerBoard.placeShip(7);
+   /*  computerBoard.placeShip(5);
     computerBoard.placeShip(4);
     computerBoard.placeShip(3);
-    computerBoard.placeShip(2);
+    computerBoard.placeShip(2); */
     userAttack.subscribe(computerBoard.handleAttack);
 }
 

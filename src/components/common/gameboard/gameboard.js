@@ -40,9 +40,8 @@ class GameBoard {
       if (this.ships[y].coordinates.includes(+num)) {
         this.ships[y].hit();
         if (this.ships[y].isSunk()) {
-          return this.pubSub.publish(Object.assign(this.isOver(), {
-            tiles: this.ships[y].coordinates,
-          }));
+          const obj = {hit: true, sunk: true, tiles: this.ships[y].coordinates }
+          return (this.isOver()) ? this.pubSub.publish({...obj, ...{gameover: true}}) : this.pubSub.publish(obj)
         }
         return this.pubSub.publish({ tile: num, hit: true, sunk: false });
       }
@@ -54,14 +53,11 @@ class GameBoard {
 
   /* Called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */
 
-  isOver() {
-    this.ships.every((ship) => {
-      if (ship.sunk === true) {
-       return { hit: true, sunk: true, gameover: true }
-    }
-    return { hit: true, sunk: true };
-    })
-  }
+  isOver = () => { 
+    const check = this.ships.every((ship) => ship.sunk === true);
+    return check
+  } 
+  
 }
 
 export default GameBoard;

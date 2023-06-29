@@ -1,3 +1,5 @@
+import * as init from "../../pub-subs/initialize"
+
 class GameBoardViewUpdater {
   constructor(string) {
     this.string = string;
@@ -27,6 +29,9 @@ class GameBoardViewUpdater {
   handleAttackView = (obj) => {
     if (obj.sunk) {
       this.updateSunkTiles(obj);
+      if (obj.gameover) {
+        init.gameover.publish(this.string)
+      } 
     } else {
       const tile = document.querySelector(
         `.gameboard--${this.string} [data-id="${obj.tile}"]`

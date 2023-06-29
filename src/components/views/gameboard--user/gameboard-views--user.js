@@ -18,10 +18,7 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
      when there are no more ships to place nextShipChecked will initialize the attack stage */
   static nextShipChecked() {
     const radio = document.querySelector(`:not(.hidden)[name="ship"]`)
-    
-    console.log(radio)
     if (radio === null) {
-      console.log("yess")
       init.attackStage.publish();
       /* Place publish for layout attack stage here */
     } else {

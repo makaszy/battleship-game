@@ -40,5 +40,32 @@ function initAttackStageTiles() {
   createEventTiles(gameBoardDivComputer, publishDomData.attack);
 }
 
+/* Creates gameover notification and new game btn */
+
+function showGameOver(string) {
+  const main = document.querySelector("main")
+  const notification = createGameOverAlert(string);
+  main.appendChild(notification);
+}
+
+function createGameOverAlert(string) {
+  const div = document.createElement("div");
+  div.classList.add("game-over-alert");
+  
+  const h1 = document.createElement("h1");
+  h1.classList.add("game-over-notification__heading")
+  h1.textContent = "GAME OVER";
+  div.appendChild(h1);
+
+  const h3 = document.createElement("h3");
+  h3.classList.add("game-over-notification__sub-heading");
+  (string === "user") ? (h3.textContent = "YOU LOST") : (h3.textContent = "YOU WON");
+  div.appendChild(h3);
+  return div
+} 
+
+/* removes gameover notification */
+
 init.attackStage.subscribe(initAttackStageTiles);
 init.attackStage.subscribe(hideForm)
+init.gameover.subscribe(showGameOver)
