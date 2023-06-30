@@ -12,8 +12,4 @@ const attackStage = new PubSub();
 
 const gameover = new PubSub();
 
-/* initializes a new game */
-
-const newGame = new PubSub();
-
-export { attackStage, placementStage, newGame, gameover }  ;
+export { attackStage, placementStage, gameover }  ;

@@ -47,7 +47,7 @@ function createNewGameBtn() {
   btn.setAttribute("type", "button");
   btn.textContent = "Start New Game";
   btn.addEventListener("click", () => {
-    init.newGame.publish();
+    window.location.reload()
   })
   return btn
 }
@@ -83,7 +83,6 @@ function removeGameOver() {
   div.remove();
 }
 
-init.newGame.subscribe(removeGameOver);
 
 init.attackStage.subscribe(initAttackStageTiles);
 init.attackStage.subscribe(hideForm)

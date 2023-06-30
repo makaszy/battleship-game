@@ -30,7 +30,6 @@ function resetBoards() {
   removeTiles("computer");
 }
 
-init.newGame.subscribe(resetBoards);
 
 function showAllHidden(nodes) {
   const nodesArr = Array.from(nodes);
@@ -50,14 +49,11 @@ function resetForm() {
   showAllHidden(formLabels);
 }
 
-init.newGame.subscribe(resetForm);
-
 function hideCompBoard() {
   const computerBoard = document.querySelector(".div--computer");
   computerBoard.classList.add("hidden");
 }
 
-init.newGame.subscribe(hideCompBoard);
 init.placementStage.subscribe(hideCompBoard)
 
 function addInputListeners() {
@@ -82,6 +78,6 @@ function createPlacementTiles() {
 }
 
 init.placementStage.subscribe(createPlacementTiles)
-init.newGame.subscribe(createPlacementTiles)
+
 
 
