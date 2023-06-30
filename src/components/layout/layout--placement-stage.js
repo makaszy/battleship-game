@@ -6,49 +6,6 @@ import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 import "./layout--attack-stage";
 import * as init from "../pub-subs/initialize";
 
-/* remove existing tiles */
-
-function removeTiles(playerString) {
-  if (
-    typeof playerString !== "string" &&
-    (playerString === "user" || playerString === "computer")
-  ) {
-    throw new Error(
-      "Function argument has to be a string with the value user or computer"
-    );
-  }
-  const gameboard = document.querySelector(`.gameboard--${playerString}`);
-  while (gameboard.firstChild) {
-    gameboard.removeChild(gameboard.lastChild);
-  }
-}
-
-/* removes existing tiles from gameboard--computer and gameboard--user */
-
-function resetBoards() {
-  removeTiles("user");
-  removeTiles("computer");
-}
-
-
-function showAllHidden(nodes) {
-  const nodesArr = Array.from(nodes);
-  nodesArr.forEach((node) => {
-    if (node.classList.contains("hidden")) {
-      node.classList.remove("hidden");
-    }
-  });
-}
-
-function resetForm() {
-  const form = document.querySelector(".placement-form")
-  form.classList.remove("hidden");
-  const formInputs = document.querySelectorAll(".placement-form__input");
-  const formLabels = document.querySelectorAll("label");
-  showAllHidden(formInputs);
-  showAllHidden(formLabels);
-}
-
 function hideCompBoard() {
   const computerBoard = document.querySelector(".div--computer");
   computerBoard.classList.add("hidden");
@@ -78,6 +35,5 @@ function createPlacementTiles() {
 }
 
 init.placementStage.subscribe(createPlacementTiles)
-
 
 

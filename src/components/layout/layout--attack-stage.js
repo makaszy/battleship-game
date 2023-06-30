@@ -77,12 +77,6 @@ function showGameOver(string) {
   main.appendChild(notification);
 }
 
-/* removes gameover notification */
-function removeGameOver() {
-  const div = document.querySelector(".game-over-notification");
-  div.remove();
-}
-
 
 init.attackStage.subscribe(initAttackStageTiles);
 init.attackStage.subscribe(hideForm)
