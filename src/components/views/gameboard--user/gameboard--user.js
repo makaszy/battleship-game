@@ -11,6 +11,9 @@ class UserGameBoard extends GameBoard {
 
   static calcMax(obj) {
     if (obj.direction === "horizontal" && obj.tileNum > 10) {
+      if (obj.tileNum % 10 === 0) {
+        return obj.tileNum
+      }
       const max = +`${obj.tileNum.toString().charAt(0)}0` + 10;
       return max;
     }
