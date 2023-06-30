@@ -42,6 +42,8 @@ function showAllHidden(nodes) {
 }
 
 function resetForm() {
+  const form = document.querySelector(".placement-form")
+  form.classList.remove("hidden");
   const formInputs = document.querySelectorAll(".placement-form__input");
   const formLabels = document.querySelectorAll("label");
   showAllHidden(formInputs);

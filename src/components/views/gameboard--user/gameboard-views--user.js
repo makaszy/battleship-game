@@ -20,7 +20,6 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
     const radio = document.querySelector(`:not(.hidden)[name="ship"]`)
     if (radio === null) {
       init.attackStage.publish();
-      /* Place publish for layout attack stage here */
     } else {
       radio.setAttribute("checked", "")
     }

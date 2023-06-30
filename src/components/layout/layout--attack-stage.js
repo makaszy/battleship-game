@@ -42,15 +42,20 @@ function initAttackStageTiles() {
 
 /* Creates gameover notification and new game btn */
 
-function showGameOver(string) {
-  const main = document.querySelector("main")
-  const notification = createGameOverAlert(string);
-  main.appendChild(notification);
+function createNewGameBtn() {
+  const btn = document.createElement("button");
+  btn.setAttribute("type", "button");
+  btn.textContent = "Start New Game";
+  btn.addEventListener("click", () => {
+    init.newGame.publish();
+  })
+  return btn
 }
+
 
 function createGameOverAlert(string) {
   const div = document.createElement("div");
-  div.classList.add("game-over-alert");
+  div.classList.add("game-over-notification");
   
   const h1 = document.createElement("h1");
   h1.classList.add("game-over-notification__heading")
@@ -61,10 +66,24 @@ function createGameOverAlert(string) {
   h3.classList.add("game-over-notification__sub-heading");
   (string === "user") ? (h3.textContent = "YOU LOST") : (h3.textContent = "YOU WON");
   div.appendChild(h3);
+  div.appendChild(createNewGameBtn());
   return div
 } 
 
+
+function showGameOver(string) {
+  const main = document.querySelector("main")
+  const notification = createGameOverAlert(string);
+  main.appendChild(notification);
+}
+
 /* removes gameover notification */
+function removeGameOver() {
+  const div = document.querySelector(".game-over-notification");
+  div.remove();
+}
+
+init.newGame.subscribe(removeGameOver);
 
 init.attackStage.subscribe(initAttackStageTiles);
 init.attackStage.subscribe(hideForm)
