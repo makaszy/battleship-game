@@ -9,6 +9,9 @@ const shipPlacement = {
     this.tileNum = value;
     publishDomData.alertShipInfoChanges();
   },
+  resetNum() {
+    this.tileNum = 0;
+  }
 };
 
 function createShipInfo() {
@@ -31,10 +34,9 @@ function publishShipInfoCreate() {
       return true;
     } return false
   })
-  console.log(shipInfo)
-  console.log(isComplete)
   if (isComplete) {
-    userClick.createShip.publish(shipInfo);  
+    userClick.createShip.publish(shipInfo); 
+    shipPlacement.resetNum(); 
   }
 }
 

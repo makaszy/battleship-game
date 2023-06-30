@@ -22,6 +22,7 @@ class GameBoardUserViewUpdater extends GameBoardViewUpdater {
       init.attackStage.publish();
     } else {
       radio.setAttribute("checked", "")
+      
     }
     
   }
