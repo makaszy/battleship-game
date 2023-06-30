@@ -16,6 +16,7 @@ class ComputerGameBoard extends GameBoard {
       ship = new Ship(shipInfo);
     }
     this.ships = ship;
+    console.log(ship)
   }
 }
 

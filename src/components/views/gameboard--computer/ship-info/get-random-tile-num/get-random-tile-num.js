@@ -4,9 +4,9 @@ import getRandomNum from "../../../../../utils/get-random-num";
 
 function getRandomTileNum(length, direction) {
   if (direction === "horizontal") {
-    return +(getRandomNum(11).toString() + getRandomNum(11 - length));
+    return +(getRandomNum(10).toString() + getRandomNum(11 - length).toString());
   }
-  return +(getRandomNum(11 - length).toString() + getRandomNum(11));
+  return +(getRandomNum(11- length).toString() + getRandomNum(10).toString());
 }
 
 export default getRandomTileNum;
