@@ -12,8 +12,6 @@ const shipPlacement = {
 };
 
 function createShipInfo() {
-  console.log("shipcreatedRun");
-
   const { tileNum } = shipPlacement;
   const length = displayRadioValue("ship");
   const direction = displayRadioValue("direction");
@@ -28,7 +26,16 @@ function publishShipInfoCheck() {
 
 function publishShipInfoCreate() {
   const shipInfo = createShipInfo()
-  userClick.createShip.publish(shipInfo);  
+  const isComplete = Object.values(shipInfo).every(value => {
+    if (value !== null && value !== undefined && value !== false && value !== 0) {
+      return true;
+    } return false
+  })
+  console.log(shipInfo)
+  console.log(isComplete)
+  if (isComplete) {
+    userClick.createShip.publish(shipInfo);  
+  }
 }
 
 userClick.pickPlacement.subscribe(shipPlacement.updateNum.bind(shipPlacement));
