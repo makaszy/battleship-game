@@ -49,7 +49,6 @@ class UserGameBoard extends GameBoard {
   }
 
   publishValidity = (obj) => {
-    console.log(this.isValid(obj))
     userClick.validityViews.publish(this.isValid(obj))
   }
 
