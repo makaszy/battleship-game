@@ -33,6 +33,11 @@ class GameBoard {
     return false;
   }
 
+  /* Checks if coordinate is an edge tile */
+  static isEdge(coordinate) {
+    return (coordinate % 10 === 0)
+  }
+
   /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */
 
   handleAttack = (num) => {
