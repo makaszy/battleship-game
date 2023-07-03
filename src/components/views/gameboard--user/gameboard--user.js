@@ -11,7 +11,7 @@ class UserGameBoard extends GameBoard {
 
   static calcMax(obj) {
     if (obj.direction === "horizontal" && obj.tileNum > 10) {
-      if (GameBoard.isEdge(obj.tileNum)) {
+      if (obj.tileNum % 10 === 0) {
         return obj.tileNum
       }
       const max = +`${obj.tileNum.toString().charAt(0)}0` + 10;
@@ -42,7 +42,7 @@ class UserGameBoard extends GameBoard {
 
   isValid = (obj) => {
     const ship = new Ship(obj);
-    if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj)) {
+    if (this.isTaken(ship.coordinates) || this.constructor.isTooBig(obj) || this.isNeighboring(ship.coordinates, obj.direction)) {
       return { valid: false, coordinates: ship.coordinates} 
     }
     return { valid: true, coordinates: ship.coordinates }

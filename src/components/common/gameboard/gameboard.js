@@ -33,10 +33,34 @@ class GameBoard {
     return false;
   }
 
-  /* Checks if coordinate is an edge tile */
-  static isEdge(coordinate) {
-    return (coordinate % 10 === 0)
-  }
+    /* Checks if ship would be neighboring a different ship */
+    isNeighboring(coordinates, direction) {
+      let coordinatesAllNeighbors = [];
+      if (direction === "horizontal") {
+        coordinatesAllNeighbors = coordinatesAllNeighbors.concat(coordinates.map(coor => coor + 10), coordinates.map(coor => coor - 10) ); // top and bottom neighbors
+        if (coordinates[0] === 1 || +(String(coordinates[0]).slice(0, -1)) === 1) {
+          coordinatesAllNeighbors.push(coordinates[-1] + 1); // right neighbor
+        } else if (coordinates[-1] % 10 === 0) {
+          coordinatesAllNeighbors.push(coordinates[0] -1); // left neighbor
+        } else {
+          coordinatesAllNeighbors.push(coordinates[coordinates.length -1] + 1, coordinates[0] -1) // left and right neighbors
+        }
+      } else {
+        coordinatesAllNeighbors = coordinatesAllNeighbors.concat(coordinates.map(coor => coor + 1), coordinates.map(coor => coor - 1) ); // left and right neighbors
+        if (coordinates[0] < 11) {
+          coordinatesAllNeighbors.push(coordinates[-1] + 10); // btm neighbor
+        } else if (coordinates[coordinates.length -1] > 90) {
+          coordinatesAllNeighbors.push(coordinates[0] -10); // top neighbor
+        } else {
+          coordinatesAllNeighbors.push(coordinates[coordinates.length -10] + 1, coordinates[0] -10) // top and btm neighbors
+        }
+      }
+      if (this.isTaken(coordinatesAllNeighbors)) {
+        return true
+      } 
+      return false;
+      
+    }
 
   /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */
 

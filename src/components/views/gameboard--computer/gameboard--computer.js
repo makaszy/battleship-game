@@ -11,7 +11,7 @@ class ComputerGameBoard extends GameBoard {
   placeShip(length) {
     let shipInfo = new ShipInfo(length);
     let ship = new Ship(shipInfo);
-    while (this.isTaken(ship.coordinates)) {
+    while (this.isTaken(ship.coordinates) || this.isNeighboring(ship.coordinates, ship.direction) ) {
       shipInfo = new ShipInfo(length);
       ship = new Ship(shipInfo);
     }
