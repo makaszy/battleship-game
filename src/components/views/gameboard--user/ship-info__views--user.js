@@ -35,6 +35,7 @@ function publishShipInfoCreate() {
     } return false
   })
   if (isComplete) {
+    console.log(shipInfo)
     userClick.createShip.publish(shipInfo); 
     shipPlacement.resetNum(); 
   }
