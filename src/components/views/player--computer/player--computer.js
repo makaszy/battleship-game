@@ -13,11 +13,24 @@ class ComputerPlayer extends Player {
     this.pubSub = pubSub;
   }
 
-  foundShip = {found: false, hit: false, coordinates: [], difference: null, endFound: false,}
+  foundShip = {
+    found: false,
+    hit: false,
+    coordinates: [],
+    difference: null,
+    endFound: false,
+    end: null,
+  };
 
   wasAttackSuccess = (obj) => {
     if (obj.sunk) {
-      this.foundShip = {found: false, hit: false, coordinates: [], difference: null, endFound: false,};
+      this.foundShip = {
+        found: false,
+        hit: false,
+        coordinates: [],
+        difference: null,
+        endFound: false,
+      };
     } else if (obj.hit && this.foundShip.found === false) {
       this.foundShip.coordinates.push(obj.tile);
       this.foundShip.hit = true;
@@ -26,39 +39,121 @@ class ComputerPlayer extends Player {
       this.foundShip.hit = true;
       this.foundShip.coordinates.push(obj.tile);
       if (this.foundShip.difference === null) {
-        this.foundShip.difference = Math.abs(this.foundShip.coordinates[0] - obj.tile)
-      } 
-    } else if (obj.hit === false && this.foundShip.found === true) {
-      console.log("endFound")
+        this.foundShip.difference = Math.abs(
+          this.foundShip.coordinates[0] - obj.tile
+        );
+      }
+    } else if (
+      obj.hit === false &&
+      this.foundShip.found === true &&
+      this.foundShip.coordinates.length > 1
+    ) {
+      console.log("endFound");
       this.foundShip.hit = false;
       this.foundShip.endFound = true;
+      this.foundShip.end =
+        this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+    } else if (obj.hit === false && this.foundShip.found === true) {
+      this.foundShip.hit = false;
     }
-  }
+  };
 
   attack = () => {
-    console.log(this.foundShip)
+    console.log(this.foundShip);
     let num;
     if (this.foundShip.coordinates.length === 1) {
-      num = this.foundShip.coordinates[0]+1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10;
-      while (!super.isNew(num) || num > 100 || num < 1) {
-        num = this.foundShip.coordinates[0] +1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10;
-      }
-    } else if (this.foundShip.coordinates.length > 1 && this.foundShip.hit === true) {
-      if (this.foundShip.endFound === false) {
-        num = this.foundShip.coordinates[this.foundShip.coordinates.length -1] + this.foundShip.difference
-        if (num > 100) {
-          num = this.foundShip.coordinates[0] - this.foundShip.difference
-        }
-        
-      } else if (this.foundShip.endFound === true) {
-        num = this.foundShip.coordinates[0] - this.foundShip.difference
-      } 
+      const sides = [1, 10];
+      const operators = [
+        {
+          sign: "+",
+          method: function (a, b) {
+            return a + b;
+          },
+        },
+        {
+          sign: "-",
+          method: function (a, b) {
+            return a - b;
+          },
+        },
+      ];
 
-    } else if (this.foundShip.coordinates.length > 1 && this.foundShip.hit === false) {
+      num = operators[Math.floor(Math.random() * operators.length)].method(
+        this.foundShip.coordinates[0],
+        sides[Math.floor(Math.random() * sides.length)]
+      );
+      console.log(num);
+      /* num = this.foundShip.coordinates[0]+1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10; */ //need to refactor this
+      while (!super.isNew(num) || num > 100 || num < 1) {
+        num = operators[Math.floor(Math.random() * operators.length)].method(
+          this.foundShip.coordinates[0],
+          sides[Math.floor(Math.random() * sides.length)]
+        );
+        console.log(num);
+        /*  num = this.foundShip.coordinates[0] +1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10; */
+      }
+    } else if (
+      this.foundShip.coordinates.length > 1 &&
+      this.foundShip.hit === true
+    ) {
+      if (this.foundShip.endFound === false) {
+        if (
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 1] >
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 2]
+        ) {
+          num =
+            this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
+            this.foundShip.difference;
+        } else if (
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 1] <
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 2]
+        ) {
+          num =
+            this.foundShip.coordinates[this.foundShip.coordinates.length - 1] -
+            this.foundShip.difference;
+        }
+        if (num > 100 || num < 1 || !super.isNew(num)) {
+          // for edge cases, and situations in which the end tile was already attacked
+          this.foundShip.endFound = true;
+          this.foundShip.end =
+            this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+          this.foundShip.coordinates = this.foundShip.coordinates.sort();
+          if (this.foundShip.end === this.foundShip.coordinates[0]) {
+            num =
+              this.foundShip.coordinates[
+                this.foundShip.coordinates.length - 1
+              ] + this.foundShip.difference;
+          } else {
+            num = this.foundShip.coordinates[0] - this.foundShip.difference;
+          }
+        }
+      } else if (this.foundShip.endFound === true) {
+        /* console.log num */
+        if (this.foundShip.end === this.foundShip.coordinates[0]) {
+          num =
+            this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
+            this.foundShip.difference;
+        } else {
+          num = this.foundShip.coordinates[0] - this.foundShip.difference;
+        }
+      }
+    } else if (
+      this.foundShip.coordinates.length > 1 &&
+      this.foundShip.hit === false
+    ) {
       this.foundShip.endFound = true;
-      num = this.foundShip.coordinates[0] - this.foundShip.difference
+      this.foundShip.end =
+        this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+      this.foundShip.coordinates = this.foundShip.coordinates.sort();
+      if (this.foundShip.end === this.foundShip.coordinates[0]) {
+        num =
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
+          this.foundShip.difference;
+      } else {
+        num = this.foundShip.coordinates[0] - this.foundShip.difference;
+      }
     }
-   if (this.foundShip.found === false) {
+    if (this.foundShip.found === false) {
       num = getRandomNum(101);
       while (!super.isNew(num)) {
         num = getRandomNum(101);
@@ -66,6 +161,7 @@ class ComputerPlayer extends Player {
     }
     super.attackArr = num;
     this.pubSub.publish(num);
+    console.log(num);
     return num;
   };
 }
