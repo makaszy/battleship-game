@@ -66,13 +66,13 @@ class ComputerPlayer extends Player {
       const operators = [
         {
           sign: "+",
-          method: function (a, b) {
+          method (a, b) {
             return a + b;
           },
         },
         {
           sign: "-",
-          method: function (a, b) {
+          method (a, b) {
             return a - b;
           },
         },
