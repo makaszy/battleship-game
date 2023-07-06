@@ -48,22 +48,20 @@ class ComputerPlayer extends Player {
       this.foundShip.found === true &&
       this.foundShip.coordinates.length > 1
     ) {
-      console.log("endFound");
       this.foundShip.hit = false;
       this.foundShip.endFound = true;
+      
       this.foundShip.end =
         this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+     
     } else if (obj.hit === false && this.foundShip.found === true) {
       this.foundShip.hit = false;
     }
   };
 
-  attack = () => {
-    console.log(this.foundShip);
-    let num;
-    if (this.foundShip.coordinates.length === 1) {
-      const sides = [1, 10];
-      const operators = [
+  static randomSideAttack(coordinate) {
+    const sides = [1, 10]; // data difference for vertical sides is 10, and horizontal sides is 1  
+      const operators = [ // array of operators (+, -) which are used to generate a random operator
         {
           sign: "+",
           method (a, b) {
@@ -77,47 +75,53 @@ class ComputerPlayer extends Player {
           },
         },
       ];
+      return operators[Math.floor(Math.random() * operators.length)].method(
+        coordinate/* this.foundShip.coordinates[0] */,
+        sides[Math.floor(Math.random() * sides.length)] 
+      ); // generates the data num of a random side (horizontal left = hit coordinate - 1 / vertical bottom = hit coordinate +10 etc.)
+  }
 
-      num = operators[Math.floor(Math.random() * operators.length)].method(
-        this.foundShip.coordinates[0],
-        sides[Math.floor(Math.random() * sides.length)]
-      );
-      console.log(num);
-      /* num = this.foundShip.coordinates[0]+1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10; */ //need to refactor this
+  attack = () => {
+    let num;
+    if (this.foundShip.coordinates.length === 1) { // if a ship was found, but was only hit once, so it is unknown whether its horizontal or vertical
+      num = ComputerPlayer.randomSideAttack(this.foundShip.coordinates[0])
       while (!super.isNew(num) || num > 100 || num < 1) {
-        num = operators[Math.floor(Math.random() * operators.length)].method(
-          this.foundShip.coordinates[0],
-          sides[Math.floor(Math.random() * sides.length)]
-        );
-        console.log(num);
-        /*  num = this.foundShip.coordinates[0] +1 || this.foundShip.coordinates[0]-1 || this.foundShip.coordinates[0] +10 || this.foundShip.coordinates[0] -10; */
+       num = ComputerPlayer.randomSideAttack(this.foundShip.coordinates[0]) // if the generated num was already attacked, or it's too big or too small to be on the board, it generates the num again
       }
     } else if (
       this.foundShip.coordinates.length > 1 &&
       this.foundShip.hit === true
     ) {
       if (this.foundShip.endFound === false) {
+    /*     let newCoor = this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+        let prevCoor = this.foundShip.coordinates[this.foundShip.coordinates.length - 2];
+        let coorDiff = this.foundShip.difference; */
         if (
+         /*  newCoor > prevCoor */
           this.foundShip.coordinates[this.foundShip.coordinates.length - 1] >
-          this.foundShip.coordinates[this.foundShip.coordinates.length - 2]
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 2] 
         ) {
-          num =
+          num =/*  newCoor + coorDiff; */
             this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
-            this.foundShip.difference;
+            this.foundShip.difference; 
         } else if (
+         /*  newCoor < prevCoor */
+          
           this.foundShip.coordinates[this.foundShip.coordinates.length - 1] <
-          this.foundShip.coordinates[this.foundShip.coordinates.length - 2]
+          this.foundShip.coordinates[this.foundShip.coordinates.length - 2] 
         ) {
-          num =
-            this.foundShip.coordinates[this.foundShip.coordinates.length - 1] -
-            this.foundShip.difference;
+          /* num = newCoor - coorDiff/*  */
+          num =  this.foundShip.coordinates[this.foundShip.coordinates.length - 1] -
+            this.foundShip.difference; 
         }
         if (num > 100 || num < 1 || !super.isNew(num)) {
           // for edge cases, and situations in which the end tile was already attacked
-          this.foundShip.endFound = true;
-          this.foundShip.end =
-            this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
-          this.foundShip.coordinates = this.foundShip.coordinates.sort();
+          this.foundShip.endFound = true; 
+          this.foundShip.end = this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
+            console.log(`foundshipcoor ${this.foundShip.coordinates[this.foundShip.coordinates.length - 1]}`)
+            
+          this.foundShip.coordinates = this.foundShip.coordinates.sort((a,b) => a - b);
+          console.log(`sorted ${this.foundShip.coordinates}`) //issue is sort not smallest to largest but largest to smallest
           if (this.foundShip.end === this.foundShip.coordinates[0]) {
             num =
               this.foundShip.coordinates[
@@ -125,10 +129,13 @@ class ComputerPlayer extends Player {
               ] + this.foundShip.difference;
           } else {
             num = this.foundShip.coordinates[0] - this.foundShip.difference;
+            console.log(`highest number is end ${num}`)
           }
         }
       } else if (this.foundShip.endFound === true) {
         /* console.log num */
+
+        this.foundShip.coordinates = this.foundShip.coordinates.sort((a,b) => a - b);
         if (this.foundShip.end === this.foundShip.coordinates[0]) {
           num =
             this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
@@ -144,7 +151,7 @@ class ComputerPlayer extends Player {
       this.foundShip.endFound = true;
       this.foundShip.end =
         this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
-      this.foundShip.coordinates = this.foundShip.coordinates.sort();
+      this.foundShip.coordinates = this.foundShip.coordinates.sort((a,b) => a - b);
       if (this.foundShip.end === this.foundShip.coordinates[0]) {
         num =
           this.foundShip.coordinates[this.foundShip.coordinates.length - 1] +
@@ -155,13 +162,14 @@ class ComputerPlayer extends Player {
     }
     if (this.foundShip.found === false) {
       num = getRandomNum(101);
-      while (!super.isNew(num)) {
+      while (!super.isNew(num) || num < 1 ) {
         num = getRandomNum(101);
       }
     }
     super.attackArr = num;
+
+    console.log(`published ${num}`);
     this.pubSub.publish(num);
-    console.log(num);
     return num;
   };
 }
