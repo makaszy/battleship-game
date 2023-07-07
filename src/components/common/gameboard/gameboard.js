@@ -1,5 +1,7 @@
 class GameBoard {
 
+  /* the pub sub responsible for handling the opponents attack */
+
   constructor(pubSub) {
     this.pubSub = pubSub;
   }
@@ -37,8 +39,7 @@ class GameBoard {
     this.missedArr.push(value);
   }
 
-
-  /* Checks if coordinates already have a ship on them */
+  /* checks if coordinates already have a ship on them */
 
   isTaken(coordinates) {
     for (let i = 0; i < coordinates.length; i += 1) {
@@ -51,7 +52,7 @@ class GameBoard {
     return false;
   }
 
-  /* Returns true if a ship is already placed on tiles neighboring passed coordinates */
+  /* returns true if a ship is already placed on tiles neighboring passed coordinates */
 
   isNeighboring(coordinates, direction) {
     let coordinatesAllNeighbors = [];
@@ -116,7 +117,7 @@ class GameBoard {
     return this.isTaken(coordinatesAllNeighbors);
   }
 
-  /* Checks if the num selected by player has a ship, if hit checks if ship is sunk, if sunk checks if game is over  */
+  /* checks if the the tile num selected by opponent has a ship, if hit checks if ship is sunk, if sunk checks if game is over, else adds tile num to missed array  */
 
   handleAttack = (num) => {
     for (let y = 0; y < this.ships.length; y += 1) {
@@ -140,7 +141,7 @@ class GameBoard {
     return this.pubSub.publish({ tile: num, hit: false, sunk: false });
   };
 
-  /* Called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */
+  /* called when a ship is sunk, returns A) GAME OVER if all ships are sunk or B) SUNK if there's more ships left */
 
   isOver = () => {
     const check = this.ships.every((ship) => ship.sunk === true);
