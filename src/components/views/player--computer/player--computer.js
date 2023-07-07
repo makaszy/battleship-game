@@ -76,7 +76,7 @@ class ComputerPlayer extends Player {
       },
     ];
     return operators[Math.floor(Math.random() * operators.length)].method(
-      coordinate /* this.foundShip.coordinates[0] */,
+      coordinate,
       sides[Math.floor(Math.random() * sides.length)]
     ); // generates the data num of a random side (horizontal left = hit coordinate - 1 / vertical bottom = hit coordinate +10 etc.)
   }
@@ -96,11 +96,11 @@ class ComputerPlayer extends Player {
     ) {
       /* B)1. if the end of the ship was not found */
       if (this.foundShip.endFound === false) {
-        let newCoor =
+        const newCoor =
           this.foundShip.coordinates[this.foundShip.coordinates.length - 1];
-        let prevCoor =
+        const prevCoor =
           this.foundShip.coordinates[this.foundShip.coordinates.length - 2];
-        let coorDiff = this.foundShip.difference;
+        const coorDiff = this.foundShip.difference;
         if (newCoor > prevCoor) {
           num = newCoor + coorDiff;
         } else if (newCoor < prevCoor) {
