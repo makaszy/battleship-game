@@ -1,13 +1,20 @@
 class GameBoard {
+
   constructor(pubSub) {
     this.pubSub = pubSub;
   }
 
   shipsArr = [];
 
+  missedArr = [];
+
+  /* property accessor for shipsArr */
+
   get ships() {
     return this.shipsArr;
   }
+
+  /* property accessor for shipsArr, accepts both arrays and single objects */
 
   set ships(value) {
     if (Array.isArray(value)) {
@@ -17,7 +24,19 @@ class GameBoard {
     }
   }
 
-  missedArr = [];
+  /* property accessors for missedArr */
+
+  get missed() {
+    return this.missedArr;
+  }
+
+  set missed(value) {
+    if (this.missed.includes(value)) {
+      throw new Error ("The same tile was attacked twice!")
+    }
+    this.missedArr.push(value);
+  }
+
 
   /* Checks if coordinates already have a ship on them */
 
@@ -33,7 +52,7 @@ class GameBoard {
   }
 
   /* Returns true if a ship is already placed on tiles neighboring passed coordinates */
-  
+
   isNeighboring(coordinates, direction) {
     let coordinatesAllNeighbors = [];
     if (direction === "horizontal") {
@@ -116,7 +135,7 @@ class GameBoard {
         return this.pubSub.publish({ tile: num, hit: true, sunk: false });
       }
     }
-    this.missedArr.push(num);
+    this.missed = num;
 
     return this.pubSub.publish({ tile: num, hit: false, sunk: false });
   };
