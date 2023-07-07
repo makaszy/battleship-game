@@ -7,23 +7,22 @@ import "../views/gameboard--user/gameboard--user";
 
 import * as init from "../pub-subs/initialize";
 
-import createEventTiles from "../common/create-tiles/create-event-tiles";
+import createTiles from "../common/create-tiles/create-tiles";
 import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
 
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
-
 /* Removes event listeners from the user gameboard */
-function removeEventListeners( ) {
-  const tiles = document.querySelectorAll(".gameboard--user .gameboard__tile")
+function removeEventListeners() {
+  const tiles = document.querySelectorAll(".gameboard--user .gameboard__tile");
   tiles.forEach((tile) => {
-    tile.removeEventListener("click", publishDomData.pickPlacement)
-  })
+    tile.removeEventListener("click", publishDomData.pickPlacement);
+  });
 }
 
 /* hides the form */
 function hideForm() {
-  const form = document.querySelector(".placement-form")
+  const form = document.querySelector(".placement-form");
   form.classList.add("hidden");
 }
 
@@ -32,12 +31,12 @@ function showCompBoard() {
   compBoard.classList.remove("hidden");
 }
 
-init.attackStage.subscribe(showCompBoard)
+init.attackStage.subscribe(showCompBoard);
 
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
-  removeEventListeners()
-  createEventTiles(gameBoardDivComputer, publishDomData.attack);
+  removeEventListeners();
+  createTiles(gameBoardDivComputer, publishDomData.attack);
 }
 
 /* Creates gameover notification and new game btn */
@@ -47,37 +46,36 @@ function createNewGameBtn() {
   btn.setAttribute("type", "button");
   btn.textContent = "Start New Game";
   btn.addEventListener("click", () => {
-    window.location.reload()
-  })
-  return btn
+    window.location.reload();
+  });
+  return btn;
 }
-
 
 function createGameOverAlert(string) {
   const div = document.createElement("div");
   div.classList.add("game-over-notification");
-  
+
   const h1 = document.createElement("h1");
-  h1.classList.add("game-over-notification__heading")
+  h1.classList.add("game-over-notification__heading");
   h1.textContent = "GAME OVER";
   div.appendChild(h1);
 
   const h3 = document.createElement("h3");
   h3.classList.add("game-over-notification__sub-heading");
-  (string === "user") ? (h3.textContent = "YOU LOST") : (h3.textContent = "YOU WON");
+  string === "user"
+    ? (h3.textContent = "YOU LOST")
+    : (h3.textContent = "YOU WON");
   div.appendChild(h3);
   div.appendChild(createNewGameBtn());
-  return div
-} 
-
+  return div;
+}
 
 function showGameOver(string) {
-  const main = document.querySelector("main")
+  const main = document.querySelector("main");
   const notification = createGameOverAlert(string);
   main.appendChild(notification);
 }
 
-
 init.attackStage.subscribe(initAttackStageTiles);
-init.attackStage.subscribe(hideForm)
-init.gameover.subscribe(showGameOver)
+init.attackStage.subscribe(hideForm);
+init.gameover.subscribe(showGameOver);

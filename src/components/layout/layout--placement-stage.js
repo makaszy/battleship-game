@@ -1,4 +1,4 @@
-import createEventTiles from "../common/create-tiles/create-event-tiles";
+import createTiles from "../common/create-tiles/create-tiles";
 import "../views/gameboard--user/ship-info__views--user";
 import "../views/gameboard--user/gameboard--user";
 import "../views/gameboard--user/gameboard-views--user";
@@ -11,7 +11,7 @@ function hideCompBoard() {
   computerBoard.classList.add("hidden");
 }
 
-init.placementStage.subscribe(hideCompBoard)
+init.placementStage.subscribe(hideCompBoard);
 
 function addInputListeners() {
   const formInputs = document.querySelectorAll(".placement-form__input");
@@ -20,20 +20,18 @@ function addInputListeners() {
   });
 }
 
-init.placementStage.subscribe(addInputListeners)
+init.placementStage.subscribe(addInputListeners);
 
 function addBtnListener() {
   const placeShipBtn = document.querySelector(".placement-form__place-btn");
   placeShipBtn.addEventListener("click", publishDomData.placeShipBtn);
 }
 
-init.placementStage.subscribe(addBtnListener)
+init.placementStage.subscribe(addBtnListener);
 
 function createPlacementTiles() {
   const gameBoardDivUser = document.querySelector(".gameboard--user");
-  createEventTiles(gameBoardDivUser, publishDomData.pickPlacement);
+  createTiles(gameBoardDivUser, publishDomData.pickPlacement);
 }
 
-init.placementStage.subscribe(createPlacementTiles)
-
-
+init.placementStage.subscribe(createPlacementTiles);
