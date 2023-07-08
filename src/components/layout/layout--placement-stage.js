@@ -1,17 +1,16 @@
-import createTiles from "../common/create-tiles/create-tiles";
+
 import "../views/gameboard--user/ship-info__views--user";
 import "../views/gameboard--user/gameboard--user";
 import "../views/gameboard--user/gameboard-views--user";
-import * as userClick from "../pub-subs/events"
 import "./layout--attack-stage";
-import * as init from "../pub-subs/initialize";
+import createTiles from "../common/create-tiles/create-tiles";
+import { placementStage as initPlacementStage, attackStage as initAttackStage }from "../pub-subs/initialize";
+import * as userClick from "../pub-subs/events"
 
 function hideCompBoard() {
   const computerBoard = document.querySelector(".div--computer");
   computerBoard.classList.add("hidden");
 }
-
-init.placementStage.subscribe(hideCompBoard);
 
 function addInputListeners() {
   const formInputs = document.querySelectorAll(".placement-form__input");
@@ -20,19 +19,14 @@ function addInputListeners() {
   });
 }
 
-init.placementStage.subscribe(addInputListeners);
-
 function addBtnListener() {
   const placeShipBtn = document.querySelector(".placement-form__place-btn");
   placeShipBtn.addEventListener("click", () => { userClick.shipPlaceBtn.publish();});
 }
 
-init.placementStage.subscribe(addBtnListener);
-
 function publishDataId() {
   const {id} = this.dataset; 
   userClick.pickPlacement.publish(id);
-
 }
 
 function createPlacementTiles() {
@@ -41,6 +35,7 @@ function createPlacementTiles() {
 }
 
 /* Removes event listeners from the user gameboard */
+
 function removeEventListeners() {
   const tiles = document.querySelectorAll(".gameboard--user .gameboard__tile");
   tiles.forEach((tile) => {
@@ -48,5 +43,10 @@ function removeEventListeners() {
   });
 }
 
-init.placementStage.subscribe(createPlacementTiles);
-init.attackStage.subscribe(removeEventListeners)
+/* initialization subscriptions */
+
+initPlacementStage.subscribe(addBtnListener);
+initPlacementStage.subscribe(addInputListeners);
+initPlacementStage.subscribe(hideCompBoard);
+initPlacementStage.subscribe(createPlacementTiles);
+initAttackStage.subscribe(removeEventListeners)
