@@ -22,7 +22,7 @@ const shipPlaceBtn = new PubSub();
 
 const createShip = new PubSub();
 
-/* UserGameBoard.publishPlaceShip publishes ship coordinates. GameBoardUserViewUpdater.handlePlacementView adds placement-ship class to tiles */
+/* UserGameBoard.publishPlaceShip publishes ship coordinates. GameBoardUserView.handlePlacementView adds placement-ship class to tiles */
 
 const createShipView = new PubSub();
 
