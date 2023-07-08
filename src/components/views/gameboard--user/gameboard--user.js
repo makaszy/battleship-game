@@ -1,10 +1,12 @@
 import GameBoard from "../../common/gameboard/gameboard";
 import Ship from "../../common/ship/ship";
 import { handleComputerAttack, computerAttack } from "../../pub-subs/attack--computer";
-import * as init from "../../pub-subs/initialize"
-import * as userClick from "../../pub-subs/events"
+import { attackStage as initAttackStage, placementStage as initPlacementStage } from "../../pub-subs/initialize";
+import * as userClick from "../../pub-subs/events";
 
 class UserGameBoard extends GameBoard {
+
+  /* checks ship validity */
 
   isValid = (obj) => {
     const ship = new Ship(obj);
@@ -32,15 +34,18 @@ class UserGameBoard extends GameBoard {
   }
 }
 
-function initUserBoard() {
+/* initialize user game board */
+
+function initUserGB() {
   const userBoard = new UserGameBoard(handleComputerAttack);
   userClick.shipInfo.subscribe(userBoard.publishValidity); 
   userClick.createShip.subscribe(userBoard.publishPlaceShip);
   function initHandleAttack() {
     computerAttack.subscribe(userBoard.handleAttack);
   }
-  init.attackStage.subscribe(initHandleAttack)
+  initAttackStage.subscribe(initHandleAttack)
 }
 
-initUserBoard();
+initPlacementStage.subscribe(initUserGB)
+
 

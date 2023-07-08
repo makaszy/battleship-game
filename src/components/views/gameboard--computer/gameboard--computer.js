@@ -7,7 +7,7 @@ import * as init from "../../pub-subs/initialize";
 
 class ComputerGameBoard extends GameBoard {
 
-  /* recreates a random ship, until its coordinates are not taken, neighboring other ships, or too big */
+/* recreates a random ship, until its coordinates are not taken, neighboring other ships, or too big */
 
   placeShip(length) {
     let shipInfo = new ShipInfo(length);
