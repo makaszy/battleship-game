@@ -1,6 +1,5 @@
 import Player from "../../common/player/player";
 import getRandomNum from "../../../utils/get-random-num";
-
 import { userAttack } from "../../pub-subs/attack--user";
 import {attackStage as initAttackStage} from "../../pub-subs/initialize";
 import {
@@ -183,3 +182,5 @@ function initCompPlayer() {
 }
 
 initAttackStage.subscribe(initCompPlayer);
+
+export default ComputerPlayer;

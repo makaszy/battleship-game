@@ -1,9 +1,10 @@
 import Player from "../../common/player/player";
-import * as init from "../../pub-subs/initialize";
+import { attackStage as initAttackStage }from "../../pub-subs/initialize";
 import { userAttack } from "../../pub-subs/attack--user";
 import * as userClick from "../../pub-subs/events"
 
 class UserPlayer extends Player {
+
  constructor(pubSub) {
     super();
     this.pubSub = pubSub;
@@ -24,6 +25,6 @@ function initPlayer() {
   userClick.attack.subscribe(player.attack);
 }
 
-init.attackStage.subscribe(initPlayer)
+initAttackStage.subscribe(initPlayer)
 
 export default UserPlayer;
