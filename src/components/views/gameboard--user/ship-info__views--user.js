@@ -1,13 +1,13 @@
 import ShipInfoUser from "./ship-info--user";
 import * as userClick from "../../pub-subs/events";
-import * as publishDomData from "../../common/publish-dom-data/publish-dom-data";
+
 import displayRadioValue from "../../../utils/display-radio-value";
 
 const shipPlacement = {
   tileNum: 0,
   updateNum(value) {
     this.tileNum = value;
-    publishDomData.alertShipInfoChanges();
+    userClick.input.publish();;
   },
   resetNum() {
     this.tileNum = 0;

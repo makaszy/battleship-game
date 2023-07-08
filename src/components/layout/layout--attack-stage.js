@@ -8,17 +8,9 @@ import "../views/gameboard--user/gameboard--user";
 import * as init from "../pub-subs/initialize";
 
 import createTiles from "../common/create-tiles/create-tiles";
-import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
+import * as userClick from "../pub-subs/events"
 
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
-
-/* Removes event listeners from the user gameboard */
-function removeEventListeners() {
-  const tiles = document.querySelectorAll(".gameboard--user .gameboard__tile");
-  tiles.forEach((tile) => {
-    tile.removeEventListener("click", publishDomData.pickPlacement);
-  });
-}
 
 /* hides the form */
 function hideForm() {
@@ -33,10 +25,15 @@ function showCompBoard() {
 
 init.attackStage.subscribe(showCompBoard);
 
+/* publish the tile's data-id */
+function publishDataId() {
+  const {id} = this.dataset;
+  userClick.attack.publish(id)
+}
+
 /* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
 function initAttackStageTiles() {
-  removeEventListeners();
-  createTiles(gameBoardDivComputer, publishDomData.attack);
+  createTiles(gameBoardDivComputer, publishDataId);
 }
 
 /* Creates gameover notification and new game btn */

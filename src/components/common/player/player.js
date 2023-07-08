@@ -1,3 +1,5 @@
+/* player base class */
+
 class Player {
 
   previousAttacks = []
@@ -14,7 +16,5 @@ class Player {
     return !this.attackArr.includes(value);
   }
 }
-
-
 
 export default Player;

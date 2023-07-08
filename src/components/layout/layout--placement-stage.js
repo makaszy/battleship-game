@@ -2,7 +2,7 @@ import createTiles from "../common/create-tiles/create-tiles";
 import "../views/gameboard--user/ship-info__views--user";
 import "../views/gameboard--user/gameboard--user";
 import "../views/gameboard--user/gameboard-views--user";
-import * as publishDomData from "../common/publish-dom-data/publish-dom-data";
+import * as userClick from "../pub-subs/events"
 import "./layout--attack-stage";
 import * as init from "../pub-subs/initialize";
 
@@ -16,7 +16,7 @@ init.placementStage.subscribe(hideCompBoard);
 function addInputListeners() {
   const formInputs = document.querySelectorAll(".placement-form__input");
   formInputs.forEach((input) => {
-    input.addEventListener("click", publishDomData.alertShipInfoChanges);
+    input.addEventListener("click", () => { userClick.input.publish();});
   });
 }
 
@@ -24,14 +24,29 @@ init.placementStage.subscribe(addInputListeners);
 
 function addBtnListener() {
   const placeShipBtn = document.querySelector(".placement-form__place-btn");
-  placeShipBtn.addEventListener("click", publishDomData.placeShipBtn);
+  placeShipBtn.addEventListener("click", () => { userClick.shipPlaceBtn.publish();});
 }
 
 init.placementStage.subscribe(addBtnListener);
 
+function publishDataId() {
+  const {id} = this.dataset; 
+  userClick.pickPlacement.publish(id);
+
+}
+
 function createPlacementTiles() {
   const gameBoardDivUser = document.querySelector(".gameboard--user");
-  createTiles(gameBoardDivUser, publishDomData.pickPlacement);
+  createTiles(gameBoardDivUser, publishDataId);
+}
+
+/* Removes event listeners from the user gameboard */
+function removeEventListeners() {
+  const tiles = document.querySelectorAll(".gameboard--user .gameboard__tile");
+  tiles.forEach((tile) => {
+    tile.removeEventListener("click", publishDataId);
+  });
 }
 
 init.placementStage.subscribe(createPlacementTiles);
+init.attackStage.subscribe(removeEventListeners)

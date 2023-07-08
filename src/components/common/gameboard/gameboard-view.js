@@ -1,5 +1,7 @@
 import * as init from "../../pub-subs/initialize"
 
+/* class used to update the DOM based on it's corresponding gameboard */
+
 class GameBoardView {
 
   /* string is used to query the correct gameboard, is computer or user */
