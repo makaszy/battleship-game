@@ -4,39 +4,40 @@ import "../views/gameboard--computer/gameboard--computer";
 import "../views/player--user/player--user";
 import "../views/player--computer/player--computer";
 import "../views/gameboard--user/gameboard--user";
-
-import * as init from "../pub-subs/initialize";
-
 import createTiles from "../common/create-tiles/create-tiles";
-import * as userClick from "../pub-subs/events"
+import { attackStage as initAttackStage, gameover as initGameover } from "../pub-subs/initialize";
+import { attack as userClickAttack } from "../pub-subs/events"; 
 
 const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 
-/* hides the form */
+/* hides the placement form */
+
 function hideForm() {
   const form = document.querySelector(".placement-form");
   form.classList.add("hidden");
 }
+
+/* show's the computer's board */
 
 function showCompBoard() {
   const compBoard = document.querySelector(".div--computer");
   compBoard.classList.remove("hidden");
 }
 
-init.attackStage.subscribe(showCompBoard);
-
 /* publish the tile's data-id */
+
 function publishDataId() {
   const {id} = this.dataset;
-  userClick.attack.publish(id)
+  userClickAttack.publish(id)
 }
 
-/* Creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
+/* creates tiles for the user gameboard, and tiles with eventListeners for the computer gameboard */
+
 function initAttackStageTiles() {
   createTiles(gameBoardDivComputer, publishDataId);
 }
 
-/* Creates gameover notification and new game btn */
+/* creates gameover notification and new game btn */
 
 function createNewGameBtn() {
   const btn = document.createElement("button");
@@ -51,14 +52,13 @@ function createNewGameBtn() {
 function createGameOverAlert(string) {
   const div = document.createElement("div");
   div.classList.add("game-over-notification");
-
   const h1 = document.createElement("h1");
   h1.classList.add("game-over-notification__heading");
   h1.textContent = "GAME OVER";
   div.appendChild(h1);
-
   const h3 = document.createElement("h3");
   h3.classList.add("game-over-notification__sub-heading");
+  // eslint-disable-next-line no-unused-expressions
   string === "user"
     ? (h3.textContent = "YOU LOST")
     : (h3.textContent = "YOU WON");
@@ -73,6 +73,9 @@ function showGameOver(string) {
   main.appendChild(notification);
 }
 
-init.attackStage.subscribe(initAttackStageTiles);
-init.attackStage.subscribe(hideForm);
-init.gameover.subscribe(showGameOver);
+/* Subscribe to initializing pub-subs */
+
+initAttackStage.subscribe(showCompBoard);
+initAttackStage.subscribe(initAttackStageTiles);
+initAttackStage.subscribe(hideForm);
+initGameover.subscribe(showGameOver);
