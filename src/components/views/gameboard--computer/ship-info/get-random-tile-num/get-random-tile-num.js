@@ -1,6 +1,6 @@
 import getRandomNum from "../../../../../utils/get-random-num";
 
-/* Create a random tileNum */
+/* create a random tileNum */
 
 function getRandomTileNum(length, direction) {
   if (direction === "horizontal") {

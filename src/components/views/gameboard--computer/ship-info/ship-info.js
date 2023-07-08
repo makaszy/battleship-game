@@ -9,7 +9,6 @@ class ShipInfo {
     this.direction = getRandomDirection();
     this.tileNum = getRandomTileNum(this.length, this.direction);
   }
-
 }
 
 export default ShipInfo;

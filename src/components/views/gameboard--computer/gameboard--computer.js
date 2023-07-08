@@ -6,7 +6,8 @@ import * as init from "../../pub-subs/initialize";
 
 
 class ComputerGameBoard extends GameBoard {
-  /* Recreates a random ship, until its coordinates are not taken. */
+
+  /* recreates a random ship, until its coordinates are not taken, neighboring other ships, or too big */
 
   placeShip(length) {
     let shipInfo = new ShipInfo(length);
@@ -19,12 +20,16 @@ class ComputerGameBoard extends GameBoard {
   }
 }
 
+/* initialize computer game board */
+
 function initCompGB() {
     const computerBoard = new ComputerGameBoard(handleUserAttack);
-    computerBoard.placeShip(5);
-    computerBoard.placeShip(4);
-    computerBoard.placeShip(3);
-    computerBoard.placeShip(2);
+    const shipsArr = [5, 4, 3, 2]
+
+    shipsArr.forEach((ship) => {
+      computerBoard.placeShip(ship)
+    });
+
     userAttack.subscribe(computerBoard.handleAttack); 
 }
 
