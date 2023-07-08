@@ -1,17 +1,20 @@
 import Player from "../../common/player/player";
 import getRandomNum from "../../../utils/get-random-num";
+
+import { userAttack } from "../../pub-subs/attack--user";
+import {attackStage as initAttackStage} from "../../pub-subs/initialize";
 import {
   computerAttack,
   handleComputerAttack,
 } from "../../pub-subs/attack--computer";
-import { userAttack } from "../../pub-subs/attack--user";
-import * as init from "../../pub-subs/initialize";
 
 class ComputerPlayer extends Player {
   constructor(pubSub) {
     super();
     this.pubSub = pubSub;
   }
+
+  /* holds information on any ship that was found */
 
   foundShip = {
     found: false,
@@ -21,6 +24,8 @@ class ComputerPlayer extends Player {
     endFound: false,
     end: null,
   };
+
+  /* receives information on the last attack and adjusts the foundShip object accordingly */
 
   wasAttackSuccess = (obj) => {
     if (obj.sunk) {
@@ -58,6 +63,8 @@ class ComputerPlayer extends Player {
     }
   };
 
+  /* generates a coordinate (either top, btm, left, or right) that is next to the coordinate passed */
+
   static randomSideAttack(coordinate) {
     const sides = [1, 10]; // data difference for vertical sides is 10, and horizontal sides is 1
     const operators = [
@@ -80,6 +87,8 @@ class ComputerPlayer extends Player {
       sides[Math.floor(Math.random() * sides.length)]
     ); // generates the data num of a random side (horizontal left = hit coordinate - 1 / vertical bottom = hit coordinate +10 etc.)
   }
+
+  /* computer attack logic */
 
   attack = () => {
     let num;
@@ -162,7 +171,6 @@ class ComputerPlayer extends Player {
     }
     /* Publish and Add to arr */
     super.attackArr = num;
-    console.log(`published ${num}`);
     this.pubSub.publish(num);
     return num;
   };
@@ -174,4 +182,4 @@ function initCompPlayer() {
   handleComputerAttack.subscribe(computerPlayer.wasAttackSuccess);
 }
 
-init.attackStage.subscribe(initCompPlayer);
+initAttackStage.subscribe(initCompPlayer);

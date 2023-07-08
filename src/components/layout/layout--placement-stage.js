@@ -1,11 +1,13 @@
-
-import "../views/gameboard--user/ship-info__views--user";
+import "../views/gameboard--user/ship-info/ship-info__views--user";
 import "../views/gameboard--user/gameboard--user";
 import "../views/gameboard--user/gameboard-views--user";
 import "./layout--attack-stage";
 import createTiles from "../common/create-tiles/create-tiles";
-import { placementStage as initPlacementStage, attackStage as initAttackStage }from "../pub-subs/initialize";
-import * as userClick from "../pub-subs/events"
+import {
+  placementStage as initPlacementStage,
+  attackStage as initAttackStage,
+} from "../pub-subs/initialize";
+import * as userClick from "../pub-subs/events";
 
 function hideCompBoard() {
   const computerBoard = document.querySelector(".div--computer");
@@ -15,17 +17,21 @@ function hideCompBoard() {
 function addInputListeners() {
   const formInputs = document.querySelectorAll(".placement-form__input");
   formInputs.forEach((input) => {
-    input.addEventListener("click", () => { userClick.input.publish();});
+    input.addEventListener("click", () => {
+      userClick.input.publish();
+    });
   });
 }
 
 function addBtnListener() {
   const placeShipBtn = document.querySelector(".placement-form__place-btn");
-  placeShipBtn.addEventListener("click", () => { userClick.shipPlaceBtn.publish();});
+  placeShipBtn.addEventListener("click", () => {
+    userClick.shipPlaceBtn.publish();
+  });
 }
 
 function publishDataId() {
-  const {id} = this.dataset; 
+  const { id } = this.dataset;
   userClick.pickPlacement.publish(id);
 }
 
@@ -49,4 +55,4 @@ initPlacementStage.subscribe(addBtnListener);
 initPlacementStage.subscribe(addInputListeners);
 initPlacementStage.subscribe(hideCompBoard);
 initPlacementStage.subscribe(createPlacementTiles);
-initAttackStage.subscribe(removeEventListeners)
+initAttackStage.subscribe(removeEventListeners);
