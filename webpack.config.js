@@ -7,7 +7,7 @@ module.exports = {
   devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js"
+    filename: "main.js",
   },
   module: {
     rules: [
@@ -15,16 +15,14 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
       },
       {
-      test: /\.s[ac]ss$/i,
+        test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
           "css-loader",
@@ -37,6 +35,6 @@ module.exports = {
           },
         ],
       },
-    ]
-  }
-}
+    ],
+  },
+};

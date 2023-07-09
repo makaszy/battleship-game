@@ -1,3 +1,11 @@
+
+ @import "./themes/light.scss";
+ @import "./themes/dark.scss";
+
+:root {
+  background-color: var(--background-clr);
+}
+
 .gameboard--computer {
   width: 400px;
   height: 500px; 
@@ -13,32 +21,31 @@
 .gameboard__tile {
   width: 100px;
   height: 100px;
-  border: 2px solid black;
+  border: 3px solid var(--user-clr);
 }
 
 .miss {
-  background-color: blue;
+  background-color: var(--user-clr);
 }
 
 .hit {
-  background-color: red !important ; 
+  background-color: var(--hit-clr) !important ; 
 }
 
 .sunk {
-  background-color: green !important ;
+  background-color: var(--miss-clr) !important ;
 }
 
 .placement--valid {
-  border-color: green;
+  border-color: var(--placement-valid-clr)
 }
 
 .placement--invalid {
-  border-color: red;
+  border-color: var(--placement-invalid-clr);
 }
 
 .placement--ship {
-
-  background-color: yellow;
+  background-color: var(--placed-ship-clr);
 }
 
 .hidden {
