@@ -27,7 +27,7 @@ class GameBoardView {
   /* gets tile status */
 
   static getStatus(obj) {
-    return obj.hit ? "hit" : "miss";
+    return obj.hit ? "gameboard__tile--hit" : "gameboard__tile--miss";
   }
 
   /* query tile based on string and data-id */
