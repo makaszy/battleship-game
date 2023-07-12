@@ -1,0 +1,14 @@
+@import "../../../themes/dark.scss";
+@import "../../../themes/light.scss";
+
+.placement--valid {
+  background-color: var(--placement-valid-clr) !important;
+}
+
+.placement--invalid {
+  background-color: var(--placement-invalid-clr);
+}
+
+.placement--ship {
+  background-color: var(--placed-ship-clr);
+}

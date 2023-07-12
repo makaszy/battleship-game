@@ -83,8 +83,34 @@
   background-color: var(--sunk-clr) !important;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-clr: rgba(107, 192, 249, 1);
+    --comp-clr: rgba(248, 92, 104, 1);
+    --hit-clr: rgba(248, 92, 104, 1);
+    --miss-clr: rgba(107, 192, 249, 1);
+    --sunk-clr: rgba(40, 40, 40, 255);
+    --placement-valid-clr: rgba(77, 200, 115, 1);
+    --placement-invalid-clr: rgba(248, 92, 104, 1);
+    --placed-ship-clr: rgba(251, 191, 36, 1);
+    --background-clr: rgba(0, 0, 0, 1);
+    --text-color-clr: rgba(255, 255, 255, 1);
+  }
+}
+:root {
+  --user-clr: rgba(27,117,187,255);
+  --comp-clr: rgba(190,30,45,255);
+  --hit-clr: rgba(190,30,45,255);
+  --miss-clr: rgba(27,117,187,255);
+  --sunk-clr: rgba(128, 128, 128, 255);
+  --placement-valid-clr: rgba(57, 177, 100, 255);
+  --placement-invalid-clr: rgba(190,30,45,255);
+  --placed-ship-clr: rgba(255, 201, 34, 255);
+  --background-clr: rgba(255,255,255,255);
+  --text-color-clr: rgba(255,255,255,255);
+}
+
 .placement--valid {
-  border-color: purple !important;
   background-color: var(--placement-valid-clr) !important;
 }
 

@@ -31,16 +31,3 @@
 .sunk {
   background-color: var(--sunk-clr) !important ;
 }
-
-.placement--valid {
-  border-color: purple !important; 
-  background-color: var(--placement-valid-clr) !important;
-}
-
-.placement--invalid {
-  background-color: var(--placement-invalid-clr);
-}
-
-.placement--ship {
-  background-color: var(--placed-ship-clr);
-}
