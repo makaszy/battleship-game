@@ -1,0 +1,35 @@
+@import "../../themes/light.scss";
+@import "../../themes/dark.scss";
+
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.main__placement-form {
+  border: 4px solid var(--user-clr);
+  position: fixed;
+  top: 0;
+}
+
+.div--placement-form {
+  background-color: var(--background-clr);
+  color: var(--user-clr);
+  font-weight: bolder;
+}
+
+.placement-form__input {
+  appearance: none;
+}
+
+.input--direction::after {
+  content: url("../../../src/images/anchor.svg");
+}
+
+.input--direction:checked {
+  filter: invert(90%) sepia(15%) saturate(5464%) hue-rotate(336deg) brightness(106%) contrast(108%);
+}
+
+
+
+

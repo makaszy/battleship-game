@@ -153,6 +153,7 @@ class GameBoard {
 
   /* checks if the the tile num selected by opponent has a ship, if hit checks if ship is sunk, if sunk checks if game is over, else adds tile num to missed array  */
 
+
   handleAttack = (num) => {
     for (let y = 0; y < this.ships.length; y += 1) {
       if (this.ships[y].coordinates.includes(+num)) {

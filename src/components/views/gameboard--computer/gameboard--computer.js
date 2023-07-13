@@ -22,6 +22,7 @@ class ComputerGameBoard extends GameBoard {
 
 /* initialize computer game board */
 
+
 function initCompGB() {
     const computerBoard = new ComputerGameBoard(handleUserAttack);
     const shipsArr = [5, 4, 3, 2]
@@ -29,6 +30,7 @@ function initCompGB() {
     shipsArr.forEach((ship) => {
       computerBoard.placeShip(ship)
     });
+    
 
     userAttack.subscribe(computerBoard.handleAttack); 
 }

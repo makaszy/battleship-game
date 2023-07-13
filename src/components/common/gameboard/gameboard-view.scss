@@ -3,17 +3,27 @@
 
 .gameboard--user, .gameboard--computer {
   display: grid;
-  grid-template-columns: repeat(10, 100px);
+  grid-template-columns: repeat(10, 1fr);
   gap: 4px;
-  border: 4px solid var(--user-clr);
-  background-color: var(--user-clr);
   width: fit-content;
 }
 
-.gameboard__tile {
-  width: 100px;
+.gameboard--user {
+  border: 4px solid var(--user-clr);
+  background-color: var(--user-clr);
+}
+
+.gameboard--computer {
+  border: 4px solid var(--comp-clr);
+  background-color: var(--comp-clr);
+}
+
+
+.gameboard__tile { 
+  width: 100px; 
   background-color: var(--background-clr);
   height: 100px;
+ 
 }
 
 .hidden {
@@ -24,10 +34,36 @@
   background-color: var(--miss-clr);
 }
 
+/* .sunk::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  width: 350px;
+  height:350px;
+  background-color: var(--miss-clr);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 45%;
+  animation: fill 2s ease-in-out;
+  z-index: 1;
+}
+@keyframes fill {
+  from {
+    top:250px;
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    top:-50px;
+    transform: translateX(-50%) rotate(360deg);
+  }
+} */
+
 .gameboard__tile--hit {
   background-color: var(--hit-clr) !important ; 
 }
 
 .sunk {
   background-color: var(--sunk-clr) !important ;
+/*   position: relative;
+  overflow: hidden; */
 }

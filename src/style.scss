@@ -6,9 +6,20 @@
 @import "./components/common/gameboard/gameboard-view.scss";
 @import "./components/views/gameboard--user/gameboard-views--user.scss";
 
+/* placement stage */
+@import "./components/layout/layout--placement-stage.scss";
+
 
 :root {
   background-color: var(--background-clr);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  
 }
 
 

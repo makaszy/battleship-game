@@ -1,20 +1,18 @@
 @media (prefers-color-scheme: "dark") {
   :root {
     --user-clr: rgba(107, 192, 249, 1); // light blue
-    --comp-clr: rgba(248, 92, 104, 1);// light red
-    
+    --comp-clr: rgba(248, 92, 104, 1); // light red
+
     --hit-clr: rgba(248, 92, 104, 1); // light red
     --miss-clr: rgba(107, 192, 249, 1); // light blue
     --sunk-clr: rgba(40, 40, 40, 255); // gray
-    
+
     --placement-valid-clr: rgba(77, 200, 115, 1); // light green
     --placement-invalid-clr: rgba(248, 92, 104, 1); // light red
-    
-    --placed-ship-clr: rgba(251, 191, 36, 1); // light yellow
-    
-    --background-clr: rgba(0, 0, 0, 1); // black
-    --text-color-clr: rgba(255, 255, 255, 1); // white
-    }
-}
 
-  
+    --placed-ship-clr: rgba(251, 191, 36, 1); // light yellow
+
+    --background-clr: rgba(0, 0, 0, 1); // black
+    --text-clr: rgba(255, 255, 255, 1); // white
+  }
+}

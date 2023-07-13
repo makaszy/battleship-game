@@ -1,14 +1,15 @@
 :root {
-  --user-clr: rgba(27,117,187,255);
-  --comp-clr: rgba(190,30,45,255);
-  --hit-clr: rgba(190,30,45,255);
-  --miss-clr: rgba(27,117,187,255);
-  --sunk-clr: rgba(128, 128, 128, 255);
-  --placement-valid-clr: rgba(57, 177, 100, 255);
-  --placement-invalid-clr: rgba(190,30,45,255);
-  --placed-ship-clr: rgba(255, 201, 34, 255);
-  --background-clr: rgba(255,255,255,255);
-  --text-color-clr: rgba(255,255,255,255);
+  --user-clr: rgba(27, 117, 187, 1);
+  --comp-clr: rgba(190, 30, 45, 1);
+  --hit-clr: rgba(190, 30, 45, 1);
+  --miss-clr: rgba(27, 117, 187, 1);
+  --sunk-clr: rgba(128, 128, 128, 1);
+  --placement-valid-clr: rgba(57, 177, 100, 1);
+  --placement-valid-clr--light: rgba(57, 177, 100, 0.5);
+  --placement-invalid-clr: rgba(190, 30, 45, 1);
+  --placed-ship-clr: rgba(255, 201, 34, 1);
+  --background-clr: rgba(255, 255, 255, 1);
+  --text-clr: rgba(255, 255, 255, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +23,7 @@
     --placement-invalid-clr: rgba(248, 92, 104, 1);
     --placed-ship-clr: rgba(251, 191, 36, 1);
     --background-clr: rgba(0, 0, 0, 1);
-    --text-color-clr: rgba(255, 255, 255, 1);
+    --text-clr: rgba(255, 255, 255, 1);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -36,29 +37,38 @@
     --placement-invalid-clr: rgba(248, 92, 104, 1);
     --placed-ship-clr: rgba(251, 191, 36, 1);
     --background-clr: rgba(0, 0, 0, 1);
-    --text-color-clr: rgba(255, 255, 255, 1);
+    --text-clr: rgba(255, 255, 255, 1);
   }
 }
 :root {
-  --user-clr: rgba(27,117,187,255);
-  --comp-clr: rgba(190,30,45,255);
-  --hit-clr: rgba(190,30,45,255);
-  --miss-clr: rgba(27,117,187,255);
-  --sunk-clr: rgba(128, 128, 128, 255);
-  --placement-valid-clr: rgba(57, 177, 100, 255);
-  --placement-invalid-clr: rgba(190,30,45,255);
-  --placed-ship-clr: rgba(255, 201, 34, 255);
-  --background-clr: rgba(255,255,255,255);
-  --text-color-clr: rgba(255,255,255,255);
+  --user-clr: rgba(27, 117, 187, 1);
+  --comp-clr: rgba(190, 30, 45, 1);
+  --hit-clr: rgba(190, 30, 45, 1);
+  --miss-clr: rgba(27, 117, 187, 1);
+  --sunk-clr: rgba(128, 128, 128, 1);
+  --placement-valid-clr: rgba(57, 177, 100, 1);
+  --placement-valid-clr--light: rgba(57, 177, 100, 0.5);
+  --placement-invalid-clr: rgba(190, 30, 45, 1);
+  --placed-ship-clr: rgba(255, 201, 34, 1);
+  --background-clr: rgba(255, 255, 255, 1);
+  --text-clr: rgba(255, 255, 255, 1);
 }
 
 .gameboard--user, .gameboard--computer {
   display: grid;
-  grid-template-columns: repeat(10, 100px);
+  grid-template-columns: repeat(10, 1fr);
   gap: 4px;
+  width: fit-content;
+}
+
+.gameboard--user {
   border: 4px solid var(--user-clr);
   background-color: var(--user-clr);
-  width: fit-content;
+}
+
+.gameboard--computer {
+  border: 4px solid var(--comp-clr);
+  background-color: var(--comp-clr);
 }
 
 .gameboard__tile {
@@ -75,12 +85,37 @@
   background-color: var(--miss-clr);
 }
 
+/* .sunk::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  width: 350px;
+  height:350px;
+  background-color: var(--miss-clr);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 45%;
+  animation: fill 2s ease-in-out;
+  z-index: 1;
+}
+@keyframes fill {
+  from {
+    top:250px;
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    top:-50px;
+    transform: translateX(-50%) rotate(360deg);
+  }
+} */
 .gameboard__tile--hit {
   background-color: var(--hit-clr) !important;
 }
 
 .sunk {
   background-color: var(--sunk-clr) !important;
+  /*   position: relative;
+    overflow: hidden; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -94,20 +129,21 @@
     --placement-invalid-clr: rgba(248, 92, 104, 1);
     --placed-ship-clr: rgba(251, 191, 36, 1);
     --background-clr: rgba(0, 0, 0, 1);
-    --text-color-clr: rgba(255, 255, 255, 1);
+    --text-clr: rgba(255, 255, 255, 1);
   }
 }
 :root {
-  --user-clr: rgba(27,117,187,255);
-  --comp-clr: rgba(190,30,45,255);
-  --hit-clr: rgba(190,30,45,255);
-  --miss-clr: rgba(27,117,187,255);
-  --sunk-clr: rgba(128, 128, 128, 255);
-  --placement-valid-clr: rgba(57, 177, 100, 255);
-  --placement-invalid-clr: rgba(190,30,45,255);
-  --placed-ship-clr: rgba(255, 201, 34, 255);
-  --background-clr: rgba(255,255,255,255);
-  --text-color-clr: rgba(255,255,255,255);
+  --user-clr: rgba(27, 117, 187, 1);
+  --comp-clr: rgba(190, 30, 45, 1);
+  --hit-clr: rgba(190, 30, 45, 1);
+  --miss-clr: rgba(27, 117, 187, 1);
+  --sunk-clr: rgba(128, 128, 128, 1);
+  --placement-valid-clr: rgba(57, 177, 100, 1);
+  --placement-valid-clr--light: rgba(57, 177, 100, 0.5);
+  --placement-invalid-clr: rgba(190, 30, 45, 1);
+  --placed-ship-clr: rgba(255, 201, 34, 1);
+  --background-clr: rgba(255, 255, 255, 1);
+  --text-clr: rgba(255, 255, 255, 1);
 }
 
 .placement--valid {
@@ -122,8 +158,73 @@
   background-color: var(--placed-ship-clr);
 }
 
+/* placement stage */
+:root {
+  --user-clr: rgba(27, 117, 187, 1);
+  --comp-clr: rgba(190, 30, 45, 1);
+  --hit-clr: rgba(190, 30, 45, 1);
+  --miss-clr: rgba(27, 117, 187, 1);
+  --sunk-clr: rgba(128, 128, 128, 1);
+  --placement-valid-clr: rgba(57, 177, 100, 1);
+  --placement-valid-clr--light: rgba(57, 177, 100, 0.5);
+  --placement-invalid-clr: rgba(190, 30, 45, 1);
+  --placed-ship-clr: rgba(255, 201, 34, 1);
+  --background-clr: rgba(255, 255, 255, 1);
+  --text-clr: rgba(255, 255, 255, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-clr: rgba(107, 192, 249, 1);
+    --comp-clr: rgba(248, 92, 104, 1);
+    --hit-clr: rgba(248, 92, 104, 1);
+    --miss-clr: rgba(107, 192, 249, 1);
+    --sunk-clr: rgba(40, 40, 40, 255);
+    --placement-valid-clr: rgba(77, 200, 115, 1);
+    --placement-invalid-clr: rgba(248, 92, 104, 1);
+    --placed-ship-clr: rgba(251, 191, 36, 1);
+    --background-clr: rgba(0, 0, 0, 1);
+    --text-clr: rgba(255, 255, 255, 1);
+  }
+}
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.main__placement-form {
+  border: 4px solid var(--user-clr);
+  position: fixed;
+  top: 0;
+}
+
+.div--placement-form {
+  background-color: var(--background-clr);
+  color: var(--user-clr);
+  font-weight: bolder;
+}
+
+.placement-form__input {
+  appearance: none;
+}
+
+.input--direction::after {
+  content: url("../../../src/images/anchor.svg");
+}
+
+.input--direction:checked {
+  filter: invert(90%) sepia(15%) saturate(5464%) hue-rotate(336deg) brightness(106%) contrast(108%);
+}
+
 :root {
   background-color: var(--background-clr);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 /*# sourceMappingURL=output.css.map */
