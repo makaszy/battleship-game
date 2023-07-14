@@ -72,9 +72,9 @@
 }
 
 .gameboard__tile {
-  width: 100px;
+  width: 25px;
   background-color: var(--background-clr);
-  height: 100px;
+  height: 25px;
 }
 
 .hidden {
@@ -118,20 +118,6 @@
     overflow: hidden; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --user-clr: rgba(107, 192, 249, 1);
-    --comp-clr: rgba(248, 92, 104, 1);
-    --hit-clr: rgba(248, 92, 104, 1);
-    --miss-clr: rgba(107, 192, 249, 1);
-    --sunk-clr: rgba(40, 40, 40, 255);
-    --placement-valid-clr: rgba(77, 200, 115, 1);
-    --placement-invalid-clr: rgba(248, 92, 104, 1);
-    --placed-ship-clr: rgba(251, 191, 36, 1);
-    --background-clr: rgba(0, 0, 0, 1);
-    --text-clr: rgba(255, 255, 255, 1);
-  }
-}
 :root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
@@ -146,6 +132,20 @@
   --text-clr: rgba(255, 255, 255, 1);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-clr: rgba(107, 192, 249, 1);
+    --comp-clr: rgba(248, 92, 104, 1);
+    --hit-clr: rgba(248, 92, 104, 1);
+    --miss-clr: rgba(107, 192, 249, 1);
+    --sunk-clr: rgba(40, 40, 40, 255);
+    --placement-valid-clr: rgba(77, 200, 115, 1);
+    --placement-invalid-clr: rgba(248, 92, 104, 1);
+    --placed-ship-clr: rgba(251, 191, 36, 1);
+    --background-clr: rgba(0, 0, 0, 1);
+    --text-clr: rgba(255, 255, 255, 1);
+  }
+}
 .placement--valid {
   background-color: var(--placement-valid-clr) !important;
 }
@@ -158,7 +158,25 @@
   background-color: var(--placed-ship-clr);
 }
 
-/* placement stage */
+.user__heading {
+  color: var(--background-clr);
+  background-color: var(--user-clr);
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.computer__heading {
+  color: var(--background-clr);
+  background-color: var(--comp-clr);
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+  font-size: 30px;
+} /* placement stage */
 :root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
@@ -187,11 +205,6 @@
     --text-clr: rgba(255, 255, 255, 1);
   }
 }
-main {
-  position: relative;
-  height: 100vh;
-}
-
 .main__placement-form {
   border: 4px solid var(--user-clr);
   position: relative;
@@ -206,6 +219,42 @@ main {
   color: var(--user-clr);
   font-weight: bolder;
   padding: 20px;
+}
+
+.game-over-notification {
+  background-color: var(--background-clr);
+  border: 6px solid var(--user-clr);
+  color: var(--user-clr);
+  font-weight: bolder;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over-notification__heading {
+  margin: 0px;
+}
+
+.game-over-notification__sub-heading {
+  margin: 0px;
+}
+
+.game-over-notification__btn {
+  appearance: none;
+  background-color: var(--background-clr);
+  font-family: "VT323", serif;
+  font-weight: bolder;
+  width: 105px;
+  height: 35px;
+  margin: auto;
+  border: 2px solid var(--user-clr);
+  border-radius: 20px;
+}
+.game-over-notification__btn:active {
+  transform: scale(0.9, 0.9);
 }
 
 .div--placement-form__decoration {
@@ -257,7 +306,7 @@ main {
 
 .placement-form {
   display: grid;
-  gap: 20px;
+  gap: 30px 35px;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -283,27 +332,33 @@ main {
 /* ship type input, responsible for the ship's length */
 #ship-5::after {
   content: "BATTLESHIP";
+  font-family: "VT323", serif;
 }
 
 #ship-4::after {
   content: "SUBMARINE";
+  font-family: "VT323", serif;
 }
 
 #ship-3::after {
   content: "CRUISER";
+  font-family: "VT323", serif;
 }
 
 #ship-2::after {
   content: "DESTROYER";
+  font-family: "VT323", serif;
 }
 
 /* direction input */
 #direction-horizontal::after {
   content: "HORIZONTAL";
+  font-family: "VT323", serif;
 }
 
 #direction-vertical::after {
   content: "VERTICAL";
+  font-family: "VT323", serif;
 }
 
 /* place ship button */
@@ -316,8 +371,7 @@ main {
   border-radius: 20px;
 }
 .placement-form__place-btn:active {
-  width: 100px;
-  height: 30px;
+  transform: scale(0.9, 0.9);
 }
 .placement-form__place-btn:disabled {
   border-color: var(--comp-clr);
@@ -345,6 +399,7 @@ fieldset {
 .place-btn {
   padding: 5px 10px;
   appearance: none;
+  font-family: "VT323", serif;
   background-color: var(--background-clr);
   color: var(--user-clr);
   font-weight: bolder;
@@ -354,12 +409,32 @@ fieldset {
   color: var(--placed-ship-clr);
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 :root {
   background-color: var(--background-clr);
+  font-family: "VT323", serif;
+}
+
+body {
+  margin: 0px;
+  width: 100vw;
+}
+
+header {
+  text-align: center;
 }
 
 main {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;

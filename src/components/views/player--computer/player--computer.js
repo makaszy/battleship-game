@@ -164,7 +164,7 @@ class ComputerPlayer extends Player {
     /* D) ship was not found */  
     } else {
       num = getRandomNum(101);
-      while (!super.isNew(num) || num < 70) {
+      while (!super.isNew(num) || num < 1) {
         num = getRandomNum(101);
       }
     }

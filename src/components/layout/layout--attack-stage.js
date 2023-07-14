@@ -13,7 +13,7 @@ const gameBoardDivComputer = document.querySelector(".gameboard--computer");
 /* hides the placement form */
 
 function hideForm() {
-  const form = document.querySelector(".placement-form");
+  const form = document.querySelector(".div--placement-form");
   form.classList.add("hidden");
 }
 
@@ -46,6 +46,7 @@ function createNewGameBtn() {
   btn.addEventListener("click", () => {
     window.location.reload();
   });
+  btn.classList.add("game-over-notification__btn")
   return btn;
 }
 

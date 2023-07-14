@@ -1,10 +1,5 @@
 @use "../../themes/themes";
 
-main {
-  position: relative;
-  height: 100vh;
-}
-
 .main__placement-form {
   border: 4px solid var(--user-clr);
   position: relative;
@@ -20,6 +15,46 @@ main {
   color: var(--user-clr);
   font-weight: bolder;
   padding: 20px;
+}
+
+.game-over-notification {
+  background-color: var(--background-clr);
+  border: 6px solid var(--user-clr);
+
+  color: var(--user-clr);
+  font-weight: bolder;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.game-over-notification__heading {
+  margin: 0px;
+}
+
+.game-over-notification__sub-heading {
+  margin: 0px;
+}
+.game-over-notification__btn {
+  appearance: none;
+  background-color: var(--background-clr);
+  font-family: "VT323", serif;
+  font-weight: bolder;
+  width: 105px;
+  height: 35px;
+
+  margin: auto;
+
+  border:  2px solid var(--user-clr);
+  border-radius: 20px;
+
+  &:active {
+    transform: scale(0.9, 0.9);
+  }
 }
 
 .div--placement-form__decoration {
@@ -73,7 +108,7 @@ main {
 
 .placement-form {
   display: grid;
-  gap: 20px;
+  gap: 30px 35px;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -101,28 +136,34 @@ main {
 
 #ship-5::after {
   content: "BATTLESHIP";
+  font-family: "VT323", serif;
 }
 
 #ship-4::after {
   content: "SUBMARINE";
+  font-family: "VT323", serif;
 }
 
 #ship-3::after {
   content: "CRUISER";
+  font-family: "VT323", serif;
 }
 
 #ship-2::after {
   content: "DESTROYER";
+  font-family: "VT323", serif;
 }
 
 /* direction input */
 
 #direction-horizontal::after {
   content: "HORIZONTAL";
+  font-family: "VT323", serif;
 }
 
 #direction-vertical::after {
   content: "VERTICAL";
+  font-family: "VT323", serif;
 }
 
 /* place ship button */
@@ -139,8 +180,7 @@ main {
   border-radius: 20px;
 
   &:active {
-    width: 100px;
-    height: 30px;
+    transform: scale(0.9, 0.9);
   }
   &:disabled {
     border-color: var(--comp-clr);
@@ -170,6 +210,7 @@ fieldset {
 .place-btn {
   padding: 5px 10px;
   appearance: none;
+  font-family: "VT323", serif;
 
   background-color: var(--background-clr);
 

@@ -1,21 +1,39 @@
 
-
 @import "./themes/light.scss";
 @import "./themes/dark.scss";
 
 @import "./components/common/gameboard/gameboard-view.scss";
 @import "./components/views/gameboard--user/gameboard-views--user.scss";
+@import "./components/views/gameboard--computer/gameboard-views--computer.scss";
 
 /* placement stage */
 @import "./components/layout/layout--placement-stage.scss";
 
 
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 :root {
   background-color: var(--background-clr);
+  font-family: "VT323", serif;
+}
+
+body {
+  margin: 0px;
+  width: 100vw;
+}
+header{
+  text-align: center;
 }
 
 main {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;

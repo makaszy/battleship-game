@@ -1,5 +1,4 @@
-@import "../../../themes/dark.scss";
-@import "../../../themes/light.scss";
+@use "../../../themes/themes";
 
 .placement--valid {
   background-color: var(--placement-valid-clr) !important; 
@@ -11,4 +10,14 @@
 
 .placement--ship {
   background-color: var(--placed-ship-clr);
+}
+
+.user__heading {
+  color: var(--background-clr);
+  background-color: var(--user-clr);
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+  font-size: 30px
 }
