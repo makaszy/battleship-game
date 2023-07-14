@@ -1,0 +1,192 @@
+@use "../../themes/themes";
+
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.main__placement-form {
+  border: 4px solid var(--user-clr);
+  position: relative;
+  top: 0;
+  box-sizing: border-box;
+
+  border-radius: 15px;
+  height: 250px;
+}
+
+.div--placement-form {
+  background-color: var(--background-clr);
+  color: var(--user-clr);
+  font-weight: bolder;
+  padding: 20px;
+}
+
+.div--placement-form__decoration {
+  position: absolute;
+  width: 150px;
+  top: 60px;
+  z-index: 1;
+  &:nth-of-type(1) {
+    left: -50px;
+    transform: rotate(-10deg);
+  };
+  &:nth-of-type(2) {
+    right: -50px;
+    transform: scaleX(-1) rotate(-10deg);
+  };
+
+}
+.div--placement-form__decoration--background {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: white;
+  
+  &:nth-of-type(1){ //top left
+    top: 140px;
+    left: -50px;
+    width: 70px;
+    height: 70px;
+  }
+  &:nth-of-type(2){ //nottom left
+    top: 200px;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+  }
+  &:nth-of-type(3){ //top right
+    top: 140px;
+    right:-50px;
+    width: 70px;
+    height: 70px;
+  }
+  &:nth-of-type(4){ //bottom right
+    top: 200px;
+    right: 15px;
+    width: 70px;
+    height: 70px;
+  }
+
+}
+
+.placement-form {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.placement-form__input {
+  appearance: none;
+  margin: auto;
+  z-index: 2;
+}
+
+.placement-form__input:checked {
+  filter: brightness(0) saturate(100%) invert(90%) sepia(15%) saturate(5464%) hue-rotate(336deg) brightness(106%) contrast(108%);
+  
+}
+
+.placement-form__label {
+  font-size: 0px;
+} 
+
+.placement-form__input::after {
+  font-weight: bolder;
+  color: var(--user-clr);
+}
+
+/* ship type input, responsible for the ship's length */
+
+#ship-5::after {
+  content: "BATTLESHIP";
+}
+
+#ship-4::after {
+  content: "SUBMARINE";
+}
+
+#ship-3::after {
+  content: "CRUISER";
+}
+
+#ship-2::after {
+  content: "DESTROYER";
+}
+
+/* direction input */
+
+#direction-horizontal::after {
+  content: "HORIZONTAL";
+}
+
+#direction-vertical::after {
+  content: "VERTICAL";
+}
+
+/* place ship button */
+
+.placement-form__place-btn {
+  grid-column: 1 /-1;
+  
+  width: 105px;
+  height: 35px;
+
+  margin: auto;
+
+  border:  2px solid var(--user-clr);
+  border-radius: 20px;
+
+  &:active {
+    width: 100px;
+    height: 30px;
+  }
+  &:disabled {
+    border-color: var(--comp-clr);
+    color: var(--comp-clr);
+    opacity: 0.4;
+  }
+}
+
+legend {
+  margin: auto;
+
+}
+fieldset {
+  border-color: var(--user-clr);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 125px;
+  border-radius: 15px;
+  border: 3px solid var(--user-clr)
+
+}
+
+/* style */
+.place-btn {
+  padding: 5px 10px;
+  appearance: none;
+
+  background-color: var(--background-clr);
+
+  color: var(--user-clr);
+  font-weight: bolder;
+    &:active {
+      border-color: var(--placed-ship-clr);
+      color: var(--placed-ship-clr);
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -16,26 +16,29 @@
     <div class="gameboard--user"></div>
   </div>
   <div class="div--placement-form main__placement-form">
+    <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="div--placement-form__decoration"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
+    <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="div--placement-form__decoration"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
+    
     <form class="placement-form" action="" method="post">
       <fieldset>
-        <legend>Ship length</legend>
-        <label for="ship-5">Ship length 5</label>
-        <input class="placement-form__input" required checked type="radio" id="ship-5" name="ship" value="5">
-        <label for="ship-4">Ship length 4</label>
-        <input class="placement-form__input" type="radio" id="ship-4" name="ship" value="4">
-        <label for="ship-3">Ship length 3</label>
-        <input class="placement-form__input" type="radio" id="ship-3" name="ship" value="3">
-        <label for="ship-2">Ship length 2</label>
-        <input class="placement-form__input" type="radio" id="ship-2" name="ship" value="2">
+        <legend>SHIP TYPE</legend>
+        <label class="placement-form__label" for="ship-5">Battleship</label>
+        <input class="placement-form__input placement-form__input--ship-type" required checked type="radio" id="ship-5" name="ship" value="5">
+        <label class="placement-form__label" for="ship-4">Submarine</label>
+        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-4" name="ship" value="4">
+        <label class="placement-form__label" for="ship-3">Cruiser</label>
+        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-3" name="ship" value="3">
+        <label class="placement-form__label" for="ship-2">Destroyer</label>
+        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-2" name="ship" value="2">
       </fieldset>
       <fieldset>
-        <legend>Direction</legend>
-        <label for="direction-horizontal">Horizontal</label>
+        <legend>DIRECTION</legend>
+        <label class="placement-form__label" for="direction-horizontal">Horizontal</label>
         <input class="placement-form__input input--direction" required checked type="radio" id="direction-horizontal" value="horizontal" name="direction">
-        <label for="direction-vertical">Vertical</label>
+        <label class="placement-form__label" for="direction-vertical">Vertical</label>
         <input class="placement-form__input input--direction" type="radio" id="direction-vertical" value="vertical" name="direction">
       </fieldset>
-      <button class= "placement-form__place-btn" type="button">Place Ship</button>
+      <button class= "placement-form__place-btn place-btn" type="button">Place Ship</button>
 
     </form>
   </div>
