@@ -59,11 +59,18 @@ function createGameOverAlert(string) {
   div.appendChild(h1);
   const h3 = document.createElement("h3");
   h3.classList.add("game-over-notification__sub-heading");
-  // eslint-disable-next-line no-unused-expressions
-  string === "user"
-    ? (h3.textContent = "YOU LOST")
-    : (h3.textContent = "YOU WON");
+  const image = document.createElement("img")
+  image.classList.add("game-over-notification__image")
+  image.setAttribute("alt", "game over notification")
+  if (string === "user") {
+    h3.textContent = "YOU LOST";
+    image.setAttribute("src", "../src/images/game-over--loss.png")
+  } else {
+    h3.textContent = "YOU WON"
+    image.setAttribute("src", "../src/images/game-over--win.png")
+  }
   div.appendChild(h3);
+  div.appendChild(image)
   div.appendChild(createNewGameBtn());
   return div;
 }
