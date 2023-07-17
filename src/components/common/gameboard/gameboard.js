@@ -142,7 +142,7 @@ class GameBoard {
       } else {
         // neither top or bottom border, adds the top and bottom tile
         coordinatesAllNeighbors.push(
-          coordinates[coordinates.length - 10] + 1,
+          coordinates[coordinates.length - 1] + 10,
           coordinates[0] - 10
         );
       }
