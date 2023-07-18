@@ -7,4 +7,16 @@
     padding: 10px;
     font-size: 30px
 }
+
+@media (min-width: 600px) {
+  .computer__heading {
+    font-size: 40px;
+  }
+}
   
+@media (min-width: 1400px) {
+  .computer__heading {
+    font-size: 180px;
+  }
+}
+

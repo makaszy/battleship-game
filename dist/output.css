@@ -133,6 +133,13 @@
     height: 75px;
   }
 }
+@media (min-width: 1400px) {
+  .gameboard__tile {
+    width: 200px;
+    background-color: var(--background-clr);
+    height: 200px;
+  }
+}
 :root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
@@ -190,6 +197,11 @@
     font-size: 40px;
   }
 }
+@media (min-width: 1400px) {
+  .user__heading {
+    font-size: 180px;
+  }
+}
 .computer__heading {
   color: var(--background-clr);
   background-color: var(--comp-clr);
@@ -198,7 +210,19 @@
   margin: 0px;
   padding: 10px;
   font-size: 30px;
-} /* placement stage */
+}
+
+@media (min-width: 600px) {
+  .computer__heading {
+    font-size: 40px;
+  }
+}
+@media (min-width: 1400px) {
+  .computer__heading {
+    font-size: 180px;
+  }
+}
+/* placement stage */
 :root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
@@ -266,6 +290,7 @@
   width: 15%;
   height: 15%;
   border-radius: 100%;
+  border-color: black;
   background-color: var(--background-clr);
 }
 .div--placement-form__decoration--background:nth-of-type(1) {
@@ -379,6 +404,7 @@ fieldset {
 
 /* style */
 .place-btn {
+  z-index: 5;
   padding: 5% 10%;
   appearance: none;
   font-family: "VT323", serif;
@@ -407,6 +433,30 @@ fieldset {
   }
   fieldset {
     min-height: 275px;
+  }
+}
+@media (min-width: 1400px) {
+  .main__placement-form {
+    width: 1250px;
+    height: 1250px;
+    border-width: 15px;
+  }
+  legend {
+    font-size: 100px;
+  }
+  #ship-5::after, #ship-4::after, #ship-3::after, #ship-2::after, #direction-vertical::after, #direction-horizontal::after {
+    font-size: 75px;
+  }
+  .place-btn {
+    font-size: 75px;
+  }
+  fieldset {
+    min-height: 275px;
+  }
+  .div--placement-form__decoration--background {
+    position: absolute;
+    width: 20%;
+    height: 20%;
   }
 }
 /* attack stage */
@@ -540,7 +590,7 @@ header {
 
 main {
   /* width: 100%; */
-  margin: 10%;
+  margin: 5% 10%;
   padding: 0px;
   position: relative;
   display: flex;
@@ -559,6 +609,14 @@ main {
   main {
     flex-direction: row;
     gap: 100px;
+  }
+}
+@media (min-width: 1400px) {
+  header {
+    font-size: 200px;
+  }
+  main {
+    gap: 500px;
   }
 }
 

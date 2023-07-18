@@ -27,5 +27,11 @@
   .user__heading {
     font-size: 40px;
   }
-
 }
+
+@media (min-width: 1400px) {
+  .user__heading {
+    font-size: 180px;
+  }
+}
+
