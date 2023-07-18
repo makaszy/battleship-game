@@ -1,0 +1,78 @@
+@use "../../themes/themes";
+
+%game-over-notification--shared {
+  position: fixed;
+  top: 50px;
+  border-width: 6px;
+  border-style: solid;
+  background-color: var(--background-clr);
+  font-weight: bolder;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over-notification--loss {
+  @extend %game-over-notification--shared;
+  border-color: var(--comp-clr);
+  color: var(--comp-clr); 
+}
+
+.game-over-notification--win {
+  @extend %game-over-notification--shared;
+  border-color: var(--user-clr);
+  color: var(--user-clr); 
+}
+
+.game-over-notification__heading {
+  margin: 20px;
+  z-index: 2;
+  color: var(--heading-clr)
+}
+
+
+.game-over-notification__sub-heading {
+  padding: 10px;
+  margin: 0px;
+  color: inherit;
+  z-index: 2;
+  background-color: var(--background-clr);
+}
+
+%game-over-notification__image--shared {
+  position: absolute;
+  top: 10px; 
+}
+
+.game-over-notification__image--loss {
+  @extend %game-over-notification__image--shared;
+  width: 100px;
+  left: 30px;
+}
+
+.game-over-notification__image--win {
+  @extend %game-over-notification--shared;
+  width: 70px;
+} 
+
+.game-over-notification__btn {
+  appearance: none;
+  background-color: var(--background-clr);
+  font-family: "VT323", serif;
+  font-weight: bolder;
+  width: 105px;
+  height: 35px;
+  z-index: 2;
+  margin: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: inherit;
+  border-radius: 20px;
+
+  &:active {
+    transform: scale(0.9, 0.9);
+  }
+}

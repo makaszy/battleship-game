@@ -3,11 +3,11 @@
 .main__placement-form {
   border: 4px solid var(--user-clr);
   position: relative;
-  top: 0;
   box-sizing: border-box;
 
   border-radius: 15px;
   height: 250px;
+  
 }
 
 .div--placement-form {
@@ -17,98 +17,12 @@
   padding: 20px;
 }
 
-.game-over-notification--loss {
-  position: fixed;
-  top: 50px;
-  background-color: var(--background-clr);
-  border: 6px solid var(--comp-clr);
-  color: var(--comp-clr);
-  font-weight: bolder;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-}
-
-.game-over-notification__heading--loss {
-  margin: 20px;
-  z-index: 2;
-  color: black;
-}
-.game-over-notification__sub-heading--loss {
-  margin: 0px;
-  color: inherit;
-}
-
-.game-over-notification__image--loss {
+.placement-form__decoration-img {
   position: absolute;
-  width: 70px;
-  top: 10px;
-  left: 54px;
-}
-
-.game-over-notification {
-  
-  position: fixed;
-  top: 50px;
-
-
-  color: var(--user-clr);
-  font-weight: bolder;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.game-over-notification__heading {
-  margin: 20px;
-  z-index: 2;
-  color: black;
-}
-
-.game-over-notification__sub-heading {
-  margin: 0px;
-}
-.game-over-notification__btn--loss {
-  appearance: none;
-  background-color: var(--background-clr);
-  font-family: "VT323", serif;
-  font-weight: bolder;
-  width: 105px;
-  height: 35px;
-  z-index: 2;
-
-  margin: auto;
-  border:  2px solid var(--comp-clr);
-  border-radius: 20px;
-
-  &:active {
-    transform: scale(0.9, 0.9);
-  }
-}
-
-.game-over-notification__image {
-  position: absolute;
-  width: 70px;
-  top: 10px;
-  left: 54px;
-
-  /* top: 10px;
-  
-  width: 50px; */
-  
-} 
-
-.div--placement-form__decoration {
-  position: absolute;
-  width: 150px;
-  top: 60px;
+  max-width: 100%;
+  height: auto;
+  width: 50%;
+  bottom: -25%;
   z-index: 1;
   &:nth-of-type(1) {
     left: -50px;
@@ -122,34 +36,26 @@
 }
 .div--placement-form__decoration--background {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 15%;
+  height: 15%;
   border-radius: 100%;
-  background-color: white;
+  background-color: var(--background-clr);
   
   &:nth-of-type(1){ //top left
-    top: 140px;
-    left: -50px;
-    width: 70px;
-    height: 70px;
+    bottom: 30%;
+    left: -10%;
   }
-  &:nth-of-type(2){ //nottom left
-    top: 200px;
-    left: 15px;
-    width: 70px;
-    height: 70px;
+  &:nth-of-type(2){ //bottom left
+    bottom: -5%;
+    left: 20%;
   }
   &:nth-of-type(3){ //top right
-    top: 140px;
-    right:-50px;
-    width: 70px;
-    height: 70px;
+    bottom: 30%;
+    right:-10%;
   }
   &:nth-of-type(4){ //bottom right
-    top: 200px;
-    right: 15px;
-    width: 70px;
-    height: 70px;
+    bottom: -5%;
+    right: 20%;
   }
 
 }
@@ -218,9 +124,9 @@
 
 .placement-form__place-btn {
   grid-column: 1 /-1;
-  
+  /* 
   width: 105px;
-  height: 35px;
+  height: 35px; */
 
   margin: auto;
 
@@ -242,13 +148,13 @@ legend {
 
 }
 fieldset {
+  min-height: 135px;
   border-color: var(--user-clr);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  height: 125px;
   border-radius: 15px;
   border: 3px solid var(--user-clr)
 
@@ -256,7 +162,7 @@ fieldset {
 
 /* style */
 .place-btn {
-  padding: 5px 10px;
+  padding: 5% 10%;
   appearance: none;
   font-family: "VT323", serif;
 
@@ -275,6 +181,29 @@ fieldset {
 
 
 
+@media (min-width: 600px) {
+  .main__placement-form {
+    width: 500px;
+    height: 500px;
+  }
+
+  legend {
+    font-size: 40px;
+  }
+  #ship-5::after, #ship-4::after, #ship-3::after, #ship-2::after, #direction-vertical::after, #direction-horizontal::after {
+    font-size: 40px;
+  }
+
+  .place-btn {
+    font-size: 40px;
+  }
+
+  fieldset {
+    min-height: 275px;
+
+  }
+
+}
 
 
 

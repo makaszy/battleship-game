@@ -21,3 +21,11 @@
   padding: 10px;
   font-size: 30px
 }
+
+
+@media (min-width: 600px) {
+  .user__heading {
+    font-size: 40px;
+  }
+
+}

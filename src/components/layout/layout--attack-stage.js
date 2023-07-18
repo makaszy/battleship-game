@@ -43,6 +43,7 @@ function createNewGameBtn() {
   const btn = document.createElement("button");
   btn.setAttribute("type", "button");
   btn.textContent = "Start New Game";
+  btn.classList.add("game-over-notification__btn")
   btn.addEventListener("click", () => {
     window.location.reload();
   });
@@ -52,34 +53,27 @@ function createNewGameBtn() {
 function createGameOverAlert(string) {
   const div = document.createElement("div"); 
   const h1 = document.createElement("h1");
+  h1.classList.add("game-over-notification__heading")
   h1.textContent = "GAME OVER";
   const h3 = document.createElement("h3");
+  h3.classList.add("game-over-notification__sub-heading");
   const image = document.createElement("img")
   image.setAttribute("alt", "game over notification")
-  const btn = createNewGameBtn();
   if (string === "user") {
     h3.textContent = "YOU LOST";
     image.setAttribute("src", "../src/images/game-over--loss.png")
     div.classList.add("game-over-notification--loss");
-    h1.classList.add("game-over-notification__heading--loss")
-    h3.classList.add("game-over-notification__sub-heading--loss");
     image.classList.add("game-over-notification__image--loss");
-
-  btn.classList.add("game-over-notification__btn--loss")
   } else {
     h3.textContent = "YOU WON"
     image.setAttribute("src", "../src/images/game-over--win.png")
     div.classList.add("game-over-notification--win");
-    h1.classList.add("game-over-notification__heading--win")
-    h3.classList.add("game-over-notification__sub-heading--win");
     image.classList.add("game-over-notification__image--win");
-
-  btn.classList.add("game-over-notification__btn--win")
   }
   div.appendChild(h1);
   div.appendChild(h3);
   div.appendChild(image)
-  div.appendChild(btn);
+  div.appendChild(createNewGameBtn());
   return div;
 }
 

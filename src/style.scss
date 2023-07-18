@@ -9,36 +9,72 @@
 /* placement stage */
 @import "./components/layout/layout--placement-stage.scss";
 
+/* attack stage */
+
+@import "./components/layout/layout-attack-stage";
+
+
+
 
 
 html {
   box-sizing: border-box;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+}
+
+
 :root {
   background-color: var(--background-clr);
   font-family: "VT323", serif;
+
 }
 
-body {
-  margin: 0px;
-  width: 100vw;
-}
 header{
   text-align: center;
+  width: 100%;
+  font-size: 24px;
 }
 
 main {
+
+/* width: 100%; */  
+margin: 10%;
+  padding: 0px; 
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   gap: 50px;
   
 }
+
+@media (min-width: 600px) {
+  header {
+    font-size: 40px;
+  }
+
+}
+
+@media (min-width: 920px) {
+  main {
+    flex-direction: row;
+    gap: 100px;
+  }
+}
+
+
 
 
 
