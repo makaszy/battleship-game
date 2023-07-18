@@ -14,5 +14,7 @@
 
     --background-clr: rgba(0, 0, 0, 1); // black
     --text-clr: rgba(255, 255, 255, 1); // white
+
+    --comp-filter: invert(66%) sepia(34%) saturate(5111%) hue-rotate(317deg) brightness(98%) contrast(123%);
   }
 }

@@ -10,7 +10,7 @@ class UserGameBoard extends GameBoard {
 
   isValid = (obj) => {
     const ship = new Ship(obj);
-    if (this.isTaken(ship.coordinates) || GameBoard.isTooBig(obj) || this.isNeighboring(ship.coordinates, obj.direction)) {
+    if (super.isTaken(ship.coordinates) || GameBoard.isTooBig(obj) || super.isNeighboring(ship.coordinates, obj.direction)) {
       return { valid: false, coordinates: ship.coordinates} 
     }
     return { valid: true, coordinates: ship.coordinates }

@@ -12,7 +12,7 @@ class ComputerGameBoard extends GameBoard {
   placeShip(length) {
     let shipInfo = new ShipInfo(length);
     let ship = new Ship(shipInfo);
-    while (this.isTaken(ship.coordinates) || this.isNeighboring(ship.coordinates, ship.direction) || GameBoard.isTooBig(shipInfo) ) {
+    while (super.isTaken(ship.coordinates) || super.isNeighboring(ship.coordinates, ship.direction) || GameBoard.isTooBig(shipInfo) ) {
       shipInfo = new ShipInfo(length);
       ship = new Ship(shipInfo);
     }

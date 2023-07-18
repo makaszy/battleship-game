@@ -4,9 +4,17 @@ import getRandomNum from "../../../../../utils/get-random-num";
 
 function getRandomTileNum(length, direction) {
   if (direction === "horizontal") {
-    return +(getRandomNum(10).toString() + getRandomNum(11 - length).toString());
+    let num = +(getRandomNum(10).toString() + getRandomNum(11 - length).toString());
+    while (num < 1 || num > 100) {
+      num = +(getRandomNum(10).toString() + getRandomNum(11 - length).toString());
+    }
+    return num
   }
-  return +(getRandomNum(11- length).toString() + getRandomNum(10).toString());
+   let num = +(getRandomNum(11- length).toString() + getRandomNum(10).toString());
+   while (num < 1 || num > 100) {
+    num = +(getRandomNum(10).toString() + getRandomNum(11 - length).toString());
+  }
+  return num
 }
 
 export default getRandomTileNum;
