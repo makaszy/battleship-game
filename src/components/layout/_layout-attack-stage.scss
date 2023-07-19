@@ -54,7 +54,7 @@
 }
 
 .game-over-notification__image--win {
-  @extend %game-over-notification--shared;
+  @extend %game-over-notification__image--shared;
   width: 70px;
 } 
 
