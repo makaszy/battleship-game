@@ -44,10 +44,10 @@
 }
 
 @media (min-width: 600px) {
-  /* .gameboard__tile { 
-    width: 45px; 
-    height: 45px;
-  } */
+  .gameboard--user, .gameboard--computer {
+    width: 500px;
+    height: 500px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -57,7 +57,13 @@
   } */
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
+  .gameboard--user, .gameboard--computer {
+    width: 1500px;
+    height: 1500px;
+    gap: 15px;
+    border-width: 15px;
+  }
   /* .gameboard__tile { 
     width: 200px; 
     height: 200px;

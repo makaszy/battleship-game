@@ -49,6 +49,7 @@ header{
 }
 
 main {
+  width: 100%;
   border: black solid 2px;
   padding: 0px; 
   display: flex;
@@ -63,10 +64,13 @@ main {
   header {
     font-size: 40px;
   }
-
 }
 
-@media (min-width: 920px) {
+@media (min-width: 1200px) {
+  main {
+    flex-direction: row;
+    gap: 100px;
+  }
 
 }
 

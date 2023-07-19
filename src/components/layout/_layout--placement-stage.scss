@@ -22,7 +22,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 10px;
 }
@@ -159,14 +159,14 @@
 /* place ship button */
 
 .placement-form__place-btn {
-  grid-column: 1 /-1;
+  /* grid-column: 1 /-1; */
   /* 
   width: 105px;
   height: 35px; */
-
+/* 
   margin: auto;
-
-  border:  2px solid var(--user-clr);
+ */
+  border:  3px solid var(--user-clr);
   border-radius: 20px;
 
   &:active {
@@ -218,37 +218,66 @@ fieldset:nth-of-type(2) {
     }
 }
 
-
-
-
-
-
 @media (min-width: 600px) {
- /*  .main__placement-form {
+ .placement-form {
     width: 500px;
     height: 500px;
-  } */
+  } 
 
   legend {
-    font-size: 40px;
+    font-size: 35px;
   }
   #ship-5::after, #ship-4::after, #ship-3::after, #ship-2::after, #direction-vertical::after, #direction-horizontal::after {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .place-btn {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   fieldset {
-    min-height: 275px;
-
+    min-height: 150px;
   }
 
+  .placement-form::before, .placement-form::after  {
+    scale: 0.5;
+  }
   
 
 }
 
+@media (min-width: 1600px) {
+  .placement-form {
+    width: 1500px;
+    height: 1500px;
+    border-width: 15px;
+  } 
+
+  legend {
+    font-size: 120px;
+  }
+  #ship-5::after, #ship-4::after, #ship-3::after, #ship-2::after, #direction-vertical::after, #direction-horizontal::after {
+    font-size: 115px;
+  }
+
+  .place-btn {
+    font-size: 115px;
+
+    border-width: 15px;
+  }
+
+  fieldset {
+    min-height: 400px;
+
+    border-width: 15px;
+  }
+
+  .placement-form::before, .placement-form::after  {
+    scale: 1.5;
+  }
+
+} 
+/* 
 
 @media (min-width: 1400px) {
   .main__placement-form {
@@ -280,3 +309,4 @@ fieldset:nth-of-type(2) {
   
 }
 
+ */
