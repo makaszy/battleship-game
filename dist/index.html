@@ -1,53 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battleship Game</title>
-  <script src="./main.js" defer></script>
-  <link rel="stylesheet" href="./output.css">
-  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=VT323">
-</head>
-<body>
-  <header><h1>BATTLESHIP</h1></header>
-  <main>
-  <div class="div--user">
-    <h1 class="user__heading">My Battle Zone</h1>
-    <div class="gameboard--user"></div>
-  </div>
-  <div class="div--placement-form main__placement-form">
-    <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="placement-form__decoration-img"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
-    <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="placement-form__decoration-img"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
-    <form class="placement-form" action="" method="post">
-      <fieldset>
-        <legend>SHIP TYPE</legend>
-        <label class="placement-form__label" for="ship-5">Battleship</label>
-        <input class="placement-form__input placement-form__input--ship-type" required checked type="radio" id="ship-5" name="ship" value="5">
-        <label class="placement-form__label" for="ship-4">Submarine</label>
-        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-4" name="ship" value="4">
-        <label class="placement-form__label" for="ship-3">Cruiser</label>
-        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-3" name="ship" value="3">
-        <label class="placement-form__label" for="ship-2">Destroyer</label>
-        <input class="placement-form__input placement-form__input--ship-type" type="radio" id="ship-2" name="ship" value="2">
-      </fieldset>
-      <fieldset>
-        <legend>DIRECTION</legend>
-        <label class="placement-form__label" for="direction-horizontal">Horizontal</label>
-        <input class="placement-form__input input--direction" required checked type="radio" id="direction-horizontal" value="horizontal" name="direction">
-        <label class="placement-form__label" for="direction-vertical">Vertical</label>
-        <input class="placement-form__input input--direction" type="radio" id="direction-vertical" value="vertical" name="direction">
-      </fieldset>
-      <button class= "placement-form__place-btn place-btn" type="button">Place Ship</button>
-
-    </form>
-  </div>
-  <div class="div--computer">
-    <h1 class="computer__heading">My Opponents Fleet</h1>
-    <div class="gameboard--computer"></div>
-  </div>
-  </main>
-  <footer></footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship Game</title>
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=VT323"
+    />
+  </head>
+  <body>
+    <header><h1>BATTLESHIP</h1></header>
+    <main>
+      <div class="div--user">
+        <h1 class="user__heading">My Battle Zone</h1>
+        <div class="gameboard--user"></div>
+      </div>
+      <div class="div--placement-form main__placement-form">
+        <form class="placement-form" action="" method="post">
+          <!-- <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="placement-form__decoration-img"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
+      <img src="../src/images/ship-no-waves.png" alt="a ship firing rockets" class="placement-form__decoration-img"><span class="div--placement-form__decoration--background"></span><span class="div--placement-form__decoration--background"></span>
+     -->
+          <fieldset>
+            <legend>SHIP TYPE</legend>
+            <label class="placement-form__label" for="ship-5"
+              >Battleship
+              <input
+                class="placement-form__input placement-form__input--ship-type"
+                required
+                checked
+                type="radio"
+                id="ship-5"
+                name="ship"
+                value="5"
+              />
+            </label>
+            <label class="placement-form__label" for="ship-4"
+              >Submarine
+              <input
+                class="placement-form__input placement-form__input--ship-type"
+                type="radio"
+                id="ship-4"
+                name="ship"
+                value="4"
+              />
+            </label>
+            <label class="placement-form__label" for="ship-3"
+              >Cruiser
+              <input
+                class="placement-form__input placement-form__input--ship-type"
+                type="radio"
+                id="ship-3"
+                name="ship"
+                value="3"
+              />
+            </label>
+            <label class="placement-form__label" for="ship-2"
+              >Destroyer
+              <input
+                class="placement-form__input placement-form__input--ship-type"
+                type="radio"
+                id="ship-2"
+                name="ship"
+                value="2"
+              />
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>DIRECTION</legend>
+            <label class="placement-form__label" for="direction-horizontal"
+              >Horizontal
+              <input
+                class="placement-form__input input--direction"
+                required
+                checked
+                type="radio"
+                id="direction-horizontal"
+                value="horizontal"
+                name="direction"
+              />
+            </label>
+            <label class="placement-form__label" for="direction-vertical"
+              >Vertical
+              <input
+                class="placement-form__input input--direction"
+                type="radio"
+                id="direction-vertical"
+                value="vertical"
+                name="direction"
+              />
+            </label>
+          </fieldset>
+          <button class="placement-form__place-btn place-btn" type="button">
+            Place Ship
+          </button>
+        </form>
+      </div>
+      <div class="div--computer">
+        <h1 class="computer__heading">My Opponents Fleet</h1>
+        <div class="gameboard--computer"></div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>

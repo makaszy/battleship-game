@@ -1,23 +1,52 @@
 @use "../../themes/themes";
 
 .main__placement-form {
-  border: 4px solid var(--user-clr);
-  position: relative;
-  box-sizing: border-box;
-
-  border-radius: 15px;
-  height: 250px;
   
+  position: relative;
 }
 
 .div--placement-form {
   background-color: var(--background-clr);
   color: var(--user-clr);
   font-weight: bolder;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
-.placement-form__decoration-img {
+.placement-form {
+
+  width: 300px;
+  border: 4px solid var(--user-clr);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.placement-form::before {
+  content: url("../../../src/images/ship-no-waves.png");
+  position: absolute;
+  bottom: -250px;
+  left: -150px;
+  scale: 0.3;
+}
+
+.placement-form::after {
+  content: url("../../../src/images/ship-no-waves.png");
+  position: absolute;
+  bottom: -250px;
+  right: -150px;
+  transform: scaleX(-1);
+  scale: 0.3;
+
+}
+
+/* .placement-form__decoration-img {
+  display: none;
   position: absolute;
   max-width: 100%;
   height: auto;
@@ -33,13 +62,13 @@
     transform: scaleX(-1) rotate(-10deg);
   };
 
-}
-.div--placement-form__decoration--background {
+} */
+/* .div--placement-form__decoration--background {
+  display: none;
   position: absolute;
   width: 15%;
   height: 15%;
   border-radius: 100%;
-  border-color: black;
   
   background-color: var(--background-clr);
   
@@ -60,13 +89,13 @@
     right: 20%;
   }
 
-}
+} */
 
-.placement-form {
+/* .placement-form {
   display: grid;
   gap: 30px 35px;
   grid-template-columns: repeat(2, 1fr);
-}
+} */
 
 .placement-form__input {
   appearance: none;
@@ -90,36 +119,41 @@
 
 /* ship type input, responsible for the ship's length */
 
-#ship-5::after {
-  content: "BATTLESHIP";
+%input-content-shared {
   font-family: "VT323", serif;
+  font-size: 16px;
+}
+
+#ship-5::after {
+  @extend %input-content-shared;
+  content: "BATTLESHIP";
 }
 
 #ship-4::after {
+  @extend %input-content-shared;
   content: "SUBMARINE";
-  font-family: "VT323", serif;
 }
 
 #ship-3::after {
+  @extend %input-content-shared;
   content: "CRUISER";
-  font-family: "VT323", serif;
 }
 
 #ship-2::after {
+  @extend %input-content-shared;
   content: "DESTROYER";
-  font-family: "VT323", serif;
 }
 
 /* direction input */
 
 #direction-horizontal::after {
+  @extend %input-content-shared;
   content: "HORIZONTAL";
-  font-family: "VT323", serif;
 }
 
 #direction-vertical::after {
+  @extend %input-content-shared;
   content: "VERTICAL";
-  font-family: "VT323", serif;
 }
 
 /* place ship button */
@@ -146,20 +180,25 @@
 }
 
 legend {
+  font-size: 20px;
   margin: auto;
-
 }
+
 fieldset {
-  min-height: 135px;
+  width: 100%;
+  min-height: 100px;
   border-color: var(--user-clr);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-items: center;
   align-items: center;
-  gap: 5px;
   border-radius: 15px;
   border: 3px solid var(--user-clr)
+}
+fieldset:nth-of-type(2) {
 
+  min-height: 70px;
 }
 
 /* style */
@@ -185,10 +224,10 @@ fieldset {
 
 
 @media (min-width: 600px) {
-  .main__placement-form {
+ /*  .main__placement-form {
     width: 500px;
     height: 500px;
-  }
+  } */
 
   legend {
     font-size: 40px;
@@ -205,6 +244,8 @@ fieldset {
     min-height: 275px;
 
   }
+
+  
 
 }
 

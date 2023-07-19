@@ -6,6 +6,7 @@ function createTile(id, callback) {
   tile.classList.add("gameboard__tile");
   tile.setAttribute("data-id", id)
   tile.addEventListener("click", callback);
+  tile.textContent= "";
   return tile;
 }
 
