@@ -113,8 +113,8 @@
 }
 @media (min-width: 1600px) {
   .gameboard--user, .gameboard--computer {
-    width: 1500px;
-    height: 1500px;
+    width: 2500px;
+    height: 2500px;
     gap: 15px;
     border-width: 15px;
   }
@@ -180,7 +180,7 @@
     font-size: 40px;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
   .user__heading {
     font-size: 180px;
   }
@@ -200,7 +200,7 @@
     font-size: 40px;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
   .computer__heading {
     font-size: 180px;
   }
@@ -241,13 +241,13 @@
 }
 
 .div--placement-form {
-  background-color: var(--background-clr);
   color: var(--user-clr);
   font-weight: bolder;
   /* padding: 20px; */
 }
 
 .placement-form {
+  background-color: var(--background-clr);
   width: 300px;
   border: 4px solid var(--user-clr);
   border-radius: 15px;
@@ -264,18 +264,19 @@
 .placement-form::before {
   content: url("../../../src/images/ship-no-waves.png");
   position: absolute;
-  bottom: -250px;
-  left: -150px;
-  scale: 0.3;
+  transform: scale(0.3);
+  transform-origin: bottom left;
+  bottom: -50px;
+  left: -20px;
 }
 
 .placement-form::after {
-  content: url("../../../src/images/ship-no-waves.png");
+  content: url("../../../src/images/ship-no-waves.-flip.png");
   position: absolute;
-  bottom: -250px;
-  right: -150px;
-  transform: scaleX(-1);
-  scale: 0.3;
+  transform: scale(0.3);
+  transform-origin: bottom right;
+  bottom: -50px;
+  right: -20px;
 }
 
 /* .placement-form__decoration-img {
@@ -454,7 +455,7 @@ fieldset:nth-of-type(2) {
     min-height: 150px;
   }
   .placement-form::before, .placement-form::after {
-    scale: 0.5;
+    transform: scale(0.5);
   }
 }
 @media (min-width: 1600px) {
@@ -478,7 +479,14 @@ fieldset:nth-of-type(2) {
     border-width: 15px;
   }
   .placement-form::before, .placement-form::after {
-    scale: 1.5;
+    bottom: -200px;
+    transform: scale(1.5);
+  }
+  .placement-form::before {
+    left: -80px;
+  }
+  .placement-form::after {
+    right: -80px;
   }
 }
 /* 
@@ -668,7 +676,6 @@ header {
 
 main {
   width: 100%;
-  border: black solid 2px;
   padding: 0px;
   display: flex;
   flex-direction: column;
@@ -681,6 +688,26 @@ main {
   header {
     font-size: 40px;
   }
+  body::before {
+    content: url("../src/images/right-whole-fixed.png");
+    position: fixed;
+    left: 0px;
+    transform: scale(0.45);
+    transform-origin: top left;
+    height: auto;
+    top: 75px;
+    z-index: -2;
+  }
+  body::after {
+    content: url("../src/images/right whole.png");
+    position: fixed;
+    right: 0px;
+    transform: scale(0.45);
+    transform-origin: top right;
+    height: auto;
+    top: 75px;
+    z-index: -2;
+  }
 }
 @media (min-width: 1200px) {
   main {
@@ -688,7 +715,7 @@ main {
     gap: 100px;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
   main {
     flex-direction: row;
     gap: 100px;
@@ -698,6 +725,9 @@ main {
   }
   main {
     gap: 500px;
+  }
+  body::before, body:after {
+    transform: scale(2);
   }
 }
 

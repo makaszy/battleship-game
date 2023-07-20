@@ -6,7 +6,6 @@
 }
 
 .div--placement-form {
-  background-color: var(--background-clr);
   color: var(--user-clr);
   font-weight: bolder;
   /* padding: 20px; */
@@ -14,6 +13,7 @@
 
 .placement-form {
 
+  background-color: var(--background-clr);
   width: 300px;
   border: 4px solid var(--user-clr);
   border-radius: 15px;
@@ -30,18 +30,20 @@
 .placement-form::before {
   content: url("../../../src/images/ship-no-waves.png");
   position: absolute;
-  bottom: -250px;
-  left: -150px;
-  scale: 0.3;
+  transform: scale(0.3);
+  transform-origin: bottom left;
+  bottom: -50px;
+  left: -20px;
+  
 }
 
 .placement-form::after {
-  content: url("../../../src/images/ship-no-waves.png");
+  content: url("../../../src/images/ship-no-waves.-flip.png");
   position: absolute;
-  bottom: -250px;
-  right: -150px;
-  transform: scaleX(-1);
-  scale: 0.3;
+  transform: scale(0.3);
+  transform-origin: bottom right;
+  bottom: -50px;
+  right: -20px;
 
 }
 
@@ -240,7 +242,7 @@ fieldset:nth-of-type(2) {
   }
 
   .placement-form::before, .placement-form::after  {
-    scale: 0.5;
+    transform: scale(0.5);
   }
   
 
@@ -273,8 +275,18 @@ fieldset:nth-of-type(2) {
   }
 
   .placement-form::before, .placement-form::after  {
-    scale: 1.5;
+    bottom: -200px;
+    transform: scale(1.5);
   }
+
+  .placement-form::before {
+    left: -80px;
+  }
+
+  .placement-form::after {
+    right: -80px;
+  }
+  
 
 } 
 /* 
