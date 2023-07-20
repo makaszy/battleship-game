@@ -153,6 +153,10 @@
     --heading-clr: rgba(255, 255, 255, 1);
   }
 }
+.gameboard--user {
+  cursor: url("../../../../src/images/anchor.svg"), auto;
+}
+
 .placement--valid {
   background-color: var(--placement-valid-clr) !important;
 }
@@ -185,6 +189,40 @@
     font-size: 180px;
   }
 }
+:root {
+  --user-clr: rgba(27, 117, 187, 1);
+  --comp-clr: rgba(190, 30, 45, 1);
+  --hit-clr: rgba(190, 30, 45, 1);
+  --miss-clr: rgba(27, 117, 187, 1);
+  --sunk-clr: rgba(128, 128, 128, 1);
+  --placement-valid-clr: rgba(57, 177, 100, 1);
+  --placement-valid-clr--light: rgba(57, 177, 100, 0.5);
+  --placement-invalid-clr: rgba(190, 30, 45, 1);
+  --placed-ship-clr: rgba(255, 201, 34, 1);
+  --background-clr: rgba(255, 255, 255, 1);
+  --text-clr: rgba(255, 255, 255, 1);
+  --heading-clr: rgba(0,0,0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-clr: rgba(107, 192, 249, 1);
+    --comp-clr: rgba(248, 92, 104, 1);
+    --hit-clr: rgba(248, 92, 104, 1);
+    --miss-clr: rgba(107, 192, 249, 1);
+    --sunk-clr: rgba(40, 40, 40, 255);
+    --placement-valid-clr: rgba(77, 200, 115, 1);
+    --placement-invalid-clr: rgba(248, 92, 104, 1);
+    --placed-ship-clr: rgba(251, 191, 36, 1);
+    --background-clr: rgba(0, 0, 0, 1);
+    --text-clr: rgba(255, 255, 255, 1);
+    --heading-clr: rgba(255, 255, 255, 1);
+  }
+}
+.gameboard--computer {
+  cursor: url("../../../../src/images/crosshair.svg"), auto;
+}
+
 .computer__heading {
   color: var(--background-clr);
   background-color: var(--comp-clr);

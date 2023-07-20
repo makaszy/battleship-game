@@ -49,6 +49,14 @@ function removeEventListeners() {
   });
 }
 
+/* removes anchor cursor from user gameboard */
+function removeAnchor() {
+  const gameboard = document.querySelector(".gameboard--user");
+  gameboard.setAttribute("style", "cursor: auto");
+}
+
+
+
 /* initialization subscriptions */
 
 initPlacementStage.subscribe(addBtnListener);
@@ -56,3 +64,4 @@ initPlacementStage.subscribe(addInputListeners);
 initPlacementStage.subscribe(hideCompBoard);
 initPlacementStage.subscribe(createPlacementTiles);
 initAttackStage.subscribe(removeEventListeners);
+initAttackStage.subscribe(removeAnchor);

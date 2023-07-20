@@ -1,3 +1,10 @@
+@use "../../../themes/themes";
+
+.gameboard--computer {
+  cursor: url("../../../../src/images/crosshair.svg"), auto;
+}
+
+
 .computer__heading {
     color: var(--background-clr);
     background-color: var(--comp-clr);

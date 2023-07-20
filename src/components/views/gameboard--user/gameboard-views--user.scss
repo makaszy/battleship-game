@@ -1,5 +1,9 @@
 @use "../../../themes/themes";
 
+.gameboard--user {
+  cursor: url("../../../../src/images/anchor.svg"), auto;
+}
+
 .placement--valid {
   background-color: var(--placement-valid-clr) !important; 
 }
