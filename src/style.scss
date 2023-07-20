@@ -65,7 +65,7 @@ main {
   }
 
   body::before {
-    content: url("../src/images/right-whole-fixed.png");
+    content: url("../src/images/body-decor--left.png");
     position: fixed;
     left: 0px;
     transform: scale(0.45);
@@ -76,7 +76,7 @@ main {
   }
 
   body::after {
-    content: url("../src/images/right\ whole.png");
+    content: url("../src/images/body-decor--right.png");
     position: fixed;
     right: 0px;
     transform: scale(0.45);
