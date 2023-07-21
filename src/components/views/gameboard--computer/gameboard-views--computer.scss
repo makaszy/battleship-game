@@ -1,15 +1,14 @@
 @use "../../../themes/themes";
 @use "../../common/custom-variables/font-sizes";
+@use "../../common/custom-variables/mixins";
 
 .gameboard--computer {
+  @include gameboard(var(--comp-clr));
   cursor: url("../../../../src/images/cursor--crosshair.svg"), auto;
 }
 
 .computer__heading {
-    color: var(--background-clr);
-    background-color: var(--comp-clr);
-    text-align: center;
-    font-size: var(--heading-font-size)
+  @include gameboard-heading(var(--comp-clr));
 }
 
 

@@ -1,7 +1,14 @@
 @use "../../../themes/themes";
 @use "../../common/custom-variables/font-sizes";
+@import "../../../components/common/custom-variables/mixins";
+
 .gameboard--user {
+  @include gameboard (var(--user-clr));
   cursor: url("../../../../src/images/cursor--anchor.svg"), auto;
+}
+
+.user__heading {
+  @include gameboard-heading(var(--user-clr));
 }
 
 .placement--valid {
@@ -9,16 +16,11 @@
 }
 
 .placement--invalid {
-  background-color: var(--placement-invalid-clr);
+  background-color: var(--placement-invalid-clr) !important;
 }
 
 .placement--ship {
   background-color: var(--placed-ship-clr);
 }
 
-.user__heading {
-  color: var(--background-clr);
-  background-color: var(--user-clr);
-  text-align: center;
-  font-size: var(--heading-font-size);
-}
+

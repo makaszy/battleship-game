@@ -15,9 +15,6 @@
 @import "./components/layout/layout-attack-stage";
 
 
-
-
-
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -33,7 +30,6 @@ html, body {
   padding: 0;
 
 }
-
 
 :root {
   background-color: var(--background-clr);
@@ -87,7 +83,6 @@ main {
     flex-direction: row;
     gap: 100px;
   }
-
 }
 
 @media (min-width: 1600px) {

@@ -1,0 +1,18 @@
+
+@use "./sizes";
+
+@mixin gameboard ($color) {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: var(--gameboard-gap);
+  border: var(--gameboard-border-width) solid $color;
+  background-color: $color;
+}
+
+@mixin gameboard-heading ($background-color) {
+  color: var(--background-clr);
+  text-align: center;
+  font-size: var(--heading-font-size);
+  background-color: $background-color;
+}
+
