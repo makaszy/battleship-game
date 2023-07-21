@@ -19,10 +19,10 @@
         <h1 class="user__heading loc-heading">My Battle Zone</h1>
         <div class="gameboard--user loc-gameboard"></div>
       </div>
-      <div class="div--placement-form main__placement-form">
-        <form class="placement-form" action="" method="post">
-          <fieldset>
-            <legend>SHIP TYPE</legend>
+      <div class="div--placement-form loc-div--placement-form">
+        <form class="placement-form loc-placement-form" action="" method="post">
+          <fieldset class="placement-form__fieldset loc-placement-form__fieldset">
+            <legend class="placement-form__legend">SHIP TYPE</legend>
             <label class="placement-form__label" for="ship-5"
               >Battleship
               <input
@@ -66,8 +66,8 @@
               />
             </label>
           </fieldset>
-          <fieldset>
-            <legend>DIRECTION</legend>
+          <fieldset class="placement-form__fieldset loc-placement-form__fieldset">
+            <legend class="placement-form__legend">DIRECTION</legend>
             <label class="placement-form__label" for="direction-horizontal"
               >Horizontal
               <input
@@ -91,7 +91,7 @@
               />
             </label>
           </fieldset>
-          <button class="placement-form__place-btn place-btn" type="button">
+          <button class="placement-form__place-btn loc-placement-form__place-btn" type="button">
             Place Ship
           </button>
         </form>

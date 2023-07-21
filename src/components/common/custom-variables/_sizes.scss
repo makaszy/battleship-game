@@ -1,15 +1,22 @@
 :root {
   --gameboard-size: 300px;
   --gameboard-gap: 4px;
-  --gameboard-border-width: 4px;
+  --gameboard-border-width: var(--gameboard-gap);
+  --placement-form-size: 300px;
+  --placement-form-border-width: var(--gameboard-border-width);
+  --place-btn-border-width: 3px;
+  --fieldset-border-width: var(--place-btn-border-width);
+
   @media (min-width: 600px) {
     --gameboard-size: 500px;
+    --placement-form-size:500px;
   };
   
   @media (min-width: 1600px) {
     --gameboard-size: 2500px;
     --gameboard-gap: 15px;
-    --gameboard-border-width:15px;
+    --placement-form-size: 1500px;
+    --place-btn-border-width: 11px;
   }
   
 }

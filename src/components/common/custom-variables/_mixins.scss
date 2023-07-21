@@ -16,3 +16,12 @@
   background-color: $background-color;
 }
 
+@mixin placement-form-decor($transform-origin) {
+  position: absolute;
+  transform: scale(0.3);
+  transform-origin: $transform-origin;
+  bottom: -50px;
+}
+
+
+

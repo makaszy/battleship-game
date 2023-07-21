@@ -9,38 +9,14 @@
   border-width: var(--gameboard-border-width);
 }
 
-/* %gameboard {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: var(--gameboard-gap);
-  border-style: solid;
-} */
-/* .gameboard--user, .gameboard--computer {
-  }
- */
 .loc-heading {
   margin: 0px;
   padding: 10px;
   width: 100%;
 }
 
-/* .gameboard--user {
-  border-color: var(--user-clr);
-  background-color: var(--user-clr);
-}
-
-.gameboard--computer {
-  border-color: var(--comp-clr);
-  background-color: var(--comp-clr);
-} */
-
-
 .gameboard__tile { 
   background-color: var(--background-clr);
-}
-
-.hidden {
-  display: none;
 }
 
 .gameboard__tile--miss {
