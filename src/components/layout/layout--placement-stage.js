@@ -14,6 +14,12 @@ function hideCompBoard() {
   computerBoard.classList.add("hidden");
 }
 
+function increaseGap() {
+  const main = document.querySelector("main");
+  main.setAttribute("style", "gap: 20px")
+
+}
+
 function addInputListeners() {
   const formInputs = document.querySelectorAll(".placement-form__input");
   formInputs.forEach((input) => {
@@ -65,3 +71,4 @@ initPlacementStage.subscribe(hideCompBoard);
 initPlacementStage.subscribe(createPlacementTiles);
 initAttackStage.subscribe(removeEventListeners);
 initAttackStage.subscribe(removeAnchor);
+initAttackStage.subscribe(increaseGap);

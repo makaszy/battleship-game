@@ -34,7 +34,6 @@ html, body {
 :root {
   background-color: var(--background-clr);
   font-family: "VT323", serif;
-
 }
 
 .header__heading {
@@ -49,7 +48,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center; 
-  gap: 50px;
+  gap: 0px; // is changed to 20px in js once attack stage starts
   
 }
 
@@ -86,10 +85,6 @@ main {
 }
 
 @media (min-width: 1600px) {
-  main {
-    flex-direction: row;
-    gap: 100px;
-  }
   main {
     gap: 500px;
   }
