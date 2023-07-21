@@ -1,7 +1,7 @@
 @use "../../themes/themes";
 @use "../../components/common/custom-variables/sizes";
 @use "../../components/common/custom-variables/font-sizes";
-@import "../common/custom-variables/mixins";
+@use "../common/custom-variables/mixins" as *;
 
 .hidden {
   display: none;

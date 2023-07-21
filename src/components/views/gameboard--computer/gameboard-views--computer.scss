@@ -1,6 +1,6 @@
 @use "../../../themes/themes";
 @use "../../common/custom-variables/font-sizes";
-@use "../../common/custom-variables/mixins";
+@use "../../common/custom-variables/mixins" as *;
 
 .gameboard--computer {
   @include gameboard(var(--comp-clr));

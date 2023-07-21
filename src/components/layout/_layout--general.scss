@@ -1,0 +1,71 @@
+@use "../common/custom-variables/font-sizes";
+@use "../../themes/themes";
+@use "../common/custom-variables/mixins" as *;
+
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+}
+
+:root {
+  background-color: var(--background-clr);
+  font-family: "VT323", serif;
+}
+
+.header__heading {
+  text-align: center;
+  font-size: var(--header-font-size);
+}
+
+.loc-main {
+  width: 100%;
+  padding: 0px; 
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  gap: 0px; // is changed to 20px in js once attack stage starts
+  
+}
+
+@media (min-width: 600px) {
+
+  body::before {
+    @include body-decor(top left);
+    content: url("../src/images/body-decor--left.png");
+    left: 0px;
+  }
+
+  body::after {
+    @include body-decor(top right);
+    content: url("../src/images/body-decor--right.png");
+    right: 0px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main {
+    flex-direction: row;
+    gap: 100px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .main {
+    gap: 500px;
+  }
+}

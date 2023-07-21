@@ -1,101 +1,13 @@
+/* gameboards */
+@use "./components/common/gameboard/gameboard-view.scss";
+@use "./components/views/gameboard--user/gameboard-views--user.scss";
+@use "./components/views/gameboard--computer/gameboard-views--computer.scss";
 
-@use "../src/components/common/custom-variables/font-sizes";
-@import "./themes/light.scss";
-@import "./themes/dark.scss";
-
-@import "./components/common/gameboard/gameboard-view.scss";
-@import "./components/views/gameboard--user/gameboard-views--user.scss";
-@import "./components/views/gameboard--computer/gameboard-views--computer.scss";
+/* general page */
+@use  "./components/layout/layout--general";
 
 /* placement stage */
-@import "./components/layout/layout--placement-stage.scss";
+@use "./components/layout/layout--placement-stage.scss";
 
 /* attack stage */
-
-@import "./components/layout/layout-attack-stage";
-
-
-html {
-  box-sizing: border-box;
-  width: 100vw;
-  margin: 0px;
-  padding: 0px;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-
-}
-
-:root {
-  background-color: var(--background-clr);
-  font-family: "VT323", serif;
-}
-
-.header__heading {
-  text-align: center;
-  font-size: var(--header-font-size);
-}
-
-main {
-  width: 100%;
-  padding: 0px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  gap: 0px; // is changed to 20px in js once attack stage starts
-  
-}
-
-@media (min-width: 600px) {
-
-  body::before {
-    content: url("../src/images/body-decor--left.png");
-    position: fixed;
-    left: 0px;
-    transform: scale(0.45);
-    transform-origin: top left;
-    height: auto;
-    top: 75px;
-    z-index: -2;
-  }
-
-  body::after {
-    content: url("../src/images/body-decor--right.png");
-    position: fixed;
-    right: 0px;
-    transform: scale(0.45);
-    transform-origin: top right;
-    height: auto;
-    top: 75px;
-    z-index: -2;
-  }
-}
-
-@media (min-width: 1200px) {
-  main {
-    flex-direction: row;
-    gap: 100px;
-  }
-}
-
-@media (min-width: 1600px) {
-  main {
-    gap: 500px;
-  }
-  body::before, body:after {
-    transform: scale(2);
-  }
-}
-
-
-
-
-
-
-
+@use "./components/layout/layout-attack-stage";

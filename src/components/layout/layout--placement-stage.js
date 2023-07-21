@@ -61,8 +61,6 @@ function removeAnchor() {
   gameboard.setAttribute("style", "cursor: auto");
 }
 
-
-
 /* initialization subscriptions */
 
 initPlacementStage.subscribe(addBtnListener);
