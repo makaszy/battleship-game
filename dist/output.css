@@ -1,4 +1,21 @@
 :root {
+  --heading-font-size: 30px;
+  --header-font-size: 45px;
+}
+@media (min-width: 600px) {
+  :root {
+    --heading-font-size: 40px;
+    --header-font-size: 60px;
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --heading-font-size: 180px;
+    --header-font-size: 250px;
+  }
+}
+
+:root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
   --hit-clr: rgba(190, 30, 45, 1);
@@ -28,19 +45,21 @@
     --heading-clr: rgba(255, 255, 255, 1);
   }
 }
-@media (prefers-color-scheme: dark) {
+:root {
+  --heading-font-size: 30px;
+  --header-font-size: 45px;
+}
+
+@media (min-width: 600px) {
   :root {
-    --user-clr: rgba(107, 192, 249, 1);
-    --comp-clr: rgba(248, 92, 104, 1);
-    --hit-clr: rgba(248, 92, 104, 1);
-    --miss-clr: rgba(107, 192, 249, 1);
-    --sunk-clr: rgba(40, 40, 40, 255);
-    --placement-valid-clr: rgba(77, 200, 115, 1);
-    --placement-invalid-clr: rgba(248, 92, 104, 1);
-    --placed-ship-clr: rgba(251, 191, 36, 1);
-    --background-clr: rgba(0, 0, 0, 1);
-    --text-clr: rgba(255, 255, 255, 1);
-    --heading-clr: rgba(255, 255, 255, 1);
+    --heading-font-size: 40px;
+    --header-font-size: 60px;
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --heading-font-size: 180px;
+    --header-font-size: 250px;
   }
 }
 :root {
@@ -58,12 +77,33 @@
   --heading-clr: rgba(0,0,0, 1);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --user-clr: rgba(107, 192, 249, 1);
+    --comp-clr: rgba(248, 92, 104, 1);
+    --hit-clr: rgba(248, 92, 104, 1);
+    --miss-clr: rgba(107, 192, 249, 1);
+    --sunk-clr: rgba(40, 40, 40, 255);
+    --placement-valid-clr: rgba(77, 200, 115, 1);
+    --placement-invalid-clr: rgba(248, 92, 104, 1);
+    --placed-ship-clr: rgba(251, 191, 36, 1);
+    --background-clr: rgba(0, 0, 0, 1);
+    --text-clr: rgba(255, 255, 255, 1);
+    --heading-clr: rgba(255, 255, 255, 1);
+  }
+}
 .gameboard--user, .gameboard--computer {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 4px;
   width: 300px;
   height: 300px;
+}
+
+.loc-heading {
+  margin: 0px;
+  padding: 10px;
+  width: 100%;
 }
 
 .gameboard--user {
@@ -153,6 +193,23 @@
     --heading-clr: rgba(255, 255, 255, 1);
   }
 }
+:root {
+  --heading-font-size: 30px;
+  --header-font-size: 45px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --heading-font-size: 40px;
+    --header-font-size: 60px;
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --heading-font-size: 180px;
+    --header-font-size: 250px;
+  }
+}
 .gameboard--user {
   cursor: url("../../../../src/images/cursor--anchor.svg"), auto;
 }
@@ -172,23 +229,10 @@
 .user__heading {
   color: var(--background-clr);
   background-color: var(--user-clr);
-  width: 100%;
   text-align: center;
-  margin: 0px;
-  padding: 10px;
-  font-size: 30px;
+  font-size: var(--heading-font-size);
 }
 
-@media (min-width: 600px) {
-  .user__heading {
-    font-size: 40px;
-  }
-}
-@media (min-width: 1600px) {
-  .user__heading {
-    font-size: 180px;
-  }
-}
 :root {
   --user-clr: rgba(27, 117, 187, 1);
   --comp-clr: rgba(190, 30, 45, 1);
@@ -219,6 +263,23 @@
     --heading-clr: rgba(255, 255, 255, 1);
   }
 }
+:root {
+  --heading-font-size: 30px;
+  --header-font-size: 45px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --heading-font-size: 40px;
+    --header-font-size: 60px;
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --heading-font-size: 180px;
+    --header-font-size: 250px;
+  }
+}
 .gameboard--computer {
   cursor: url("../../../../src/images/cursor--crosshair.svg"), auto;
 }
@@ -226,23 +287,10 @@
 .computer__heading {
   color: var(--background-clr);
   background-color: var(--comp-clr);
-  width: 100%;
   text-align: center;
-  margin: 0px;
-  padding: 10px;
-  font-size: 30px;
+  font-size: var(--heading-font-size);
 }
 
-@media (min-width: 600px) {
-  .computer__heading {
-    font-size: 40px;
-  }
-}
-@media (min-width: 1600px) {
-  .computer__heading {
-    font-size: 180px;
-  }
-}
 /* placement stage */
 :root {
   --user-clr: rgba(27, 117, 187, 1);
@@ -688,8 +736,7 @@ html {
   box-sizing: border-box;
   width: 100vw;
   margin: 0px;
-  padding: 0px; /* 
-overflow-x: hidden; */
+  padding: 0px;
 }
 
 *, *:before, *:after {
@@ -706,11 +753,9 @@ html, body {
   font-family: "VT323", serif;
 }
 
-header {
+.header__heading {
   text-align: center;
-  width: 100%;
-  font-size: 24px;
-  position: static;
+  font-size: var(--header-font-size);
 }
 
 main {
@@ -724,9 +769,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  header {
-    font-size: 40px;
-  }
   body::before {
     content: url("../src/images/body-decor--left.png");
     position: fixed;
@@ -758,9 +800,6 @@ main {
   main {
     flex-direction: row;
     gap: 100px;
-  }
-  header {
-    font-size: 200px;
   }
   main {
     gap: 500px;

@@ -1,5 +1,6 @@
-@import "../../../themes/dark.scss";
-@import "../../../themes/light.scss";
+
+@use "../custom-variables/font-sizes";
+@use "../../../themes/themes";
 
 .gameboard--user, .gameboard--computer {
   display: grid;
@@ -7,6 +8,12 @@
   gap: 4px;
   width: 300px;
   height: 300px;
+}
+
+.loc-heading {
+  margin: 0px;
+  padding: 10px;
+  width: 100%;
 }
 
 .gameboard--user {

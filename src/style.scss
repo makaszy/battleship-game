@@ -1,4 +1,5 @@
 
+@use "../src/components/common/custom-variables/font-sizes";
 @import "./themes/light.scss";
 @import "./themes/dark.scss";
 
@@ -21,8 +22,7 @@ html {
   box-sizing: border-box;
   width: 100vw;
   margin: 0px;
-  padding: 0px;/* 
-  overflow-x: hidden; */
+  padding: 0px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -41,11 +41,9 @@ html, body {
 
 }
 
-header{
+.header__heading {
   text-align: center;
-  width: 100%;
-  font-size: 24px;
-  position: static;
+  font-size: var(--header-font-size);
 }
 
 main {
@@ -60,9 +58,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  header {
-    font-size: 40px;
-  }
 
   body::before {
     content: url("../src/images/body-decor--left.png");
@@ -100,14 +95,10 @@ main {
     flex-direction: row;
     gap: 100px;
   }
-  header {
-    font-size: 200px;
-  }  
   main {
     gap: 500px;
   }
   body::before, body:after {
-
     transform: scale(2);
   }
 }

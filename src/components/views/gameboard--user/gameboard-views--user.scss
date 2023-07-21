@@ -1,5 +1,5 @@
 @use "../../../themes/themes";
-
+@use "../../common/custom-variables/font-sizes";
 .gameboard--user {
   cursor: url("../../../../src/images/cursor--anchor.svg"), auto;
 }
@@ -19,23 +19,6 @@
 .user__heading {
   color: var(--background-clr);
   background-color: var(--user-clr);
-  width: 100%;
   text-align: center;
-  margin: 0px;
-  padding: 10px;
-  font-size: 30px
+  font-size: var(--heading-font-size);
 }
-
-
-@media (min-width: 600px) {
-  .user__heading {
-    font-size: 40px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .user__heading {
-    font-size: 180px;
-  }
-}
-

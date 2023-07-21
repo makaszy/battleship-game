@@ -1,0 +1,15 @@
+:root {
+  --heading-font-size: 30px;
+  --header-font-size: 45px;
+
+  @media (min-width: 600px) {
+    --heading-font-size: 40px;
+    --header-font-size: 60px;
+  }
+
+  @media (min-width: 1600px) {
+    --heading-font-size: 180px;
+    --header-font-size: 250px;    
+  }
+}
+

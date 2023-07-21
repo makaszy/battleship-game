@@ -1,29 +1,15 @@
 @use "../../../themes/themes";
+@use "../../common/custom-variables/font-sizes";
 
 .gameboard--computer {
   cursor: url("../../../../src/images/cursor--crosshair.svg"), auto;
 }
 
-
 .computer__heading {
     color: var(--background-clr);
     background-color: var(--comp-clr);
-    width: 100%;
     text-align: center;
-    margin: 0px;
-    padding: 10px;
-    font-size: 30px
+    font-size: var(--heading-font-size)
 }
 
-@media (min-width: 600px) {
-  .computer__heading {
-    font-size: 40px;
-  }
-}
-  
-@media (min-width: 1600px) {
-  .computer__heading {
-    font-size: 180px;
-  }
-}
 
