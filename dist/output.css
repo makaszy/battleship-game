@@ -13,14 +13,6 @@
     --legend-font-size: 35px;
   }
 }
-@media (min-width: 1600px) {
-  :root {
-    --heading-font-size: 180px;
-    --header-font-size: 250px;
-    --input-content-font-size: 115px;
-    --legend-font-size: 120px;
-  }
-}
 
 :root {
   --gameboard-size: 300px;
@@ -35,14 +27,6 @@
   :root {
     --gameboard-size: 500px;
     --placement-form-size:500px;
-  }
-}
-@media (min-width: 1600px) {
-  :root {
-    --gameboard-size: 2500px;
-    --gameboard-gap: 15px;
-    --placement-form-size: 1500px;
-    --place-btn-border-width: 11px;
   }
 }
 
@@ -198,13 +182,6 @@ html, body {
     content: url("../src/images/body-decor--left.png");
     left: 0px;
   }
-}
-@media (min-width: 600px) and (min-width: 1600px) {
-  body::before {
-    transform: scale(2);
-  }
-}
-@media (min-width: 600px) {
   body::after {
     position: fixed;
     transform: scale(0.45);
@@ -216,20 +193,10 @@ html, body {
     right: 0px;
   }
 }
-@media (min-width: 600px) and (min-width: 1600px) {
-  body::after {
-    transform: scale(2);
-  }
-}
 @media (min-width: 1200px) {
   .main {
     flex-direction: row;
     gap: 100px;
-  }
-}
-@media (min-width: 1600px) {
-  .main {
-    gap: 500px;
   }
 }
 .hidden {
@@ -391,21 +358,6 @@ fieldset:nth-of-type(2) {
   }
   .placement-form::before, .placement-form::after {
     transform: scale(0.5);
-  }
-}
-@media (min-width: 1600px) {
-  fieldset {
-    min-height: 400px;
-  }
-  .placement-form::before, .placement-form::after {
-    bottom: -200px;
-    transform: scale(1.5);
-  }
-  .placement-form::before {
-    left: -80px;
-  }
-  .placement-form::after {
-    right: -80px;
   }
 }
 .game-over-notification--win, .game-over-notification--loss {

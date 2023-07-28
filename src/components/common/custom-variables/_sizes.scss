@@ -11,12 +11,4 @@
     --gameboard-size: 500px;
     --placement-form-size:500px;
   };
-  
-  @media (min-width: 1600px) {
-    --gameboard-size: 2500px;
-    --gameboard-gap: 15px;
-    --placement-form-size: 1500px;
-    --place-btn-border-width: 11px;
-  }
-  
 }
